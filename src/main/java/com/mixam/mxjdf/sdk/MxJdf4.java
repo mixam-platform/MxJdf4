@@ -11,14 +11,13 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 
-public class MxJdf {
+public class MxJdf4 {
     private String version;
     private String desc;
     private String referencedJobNumber;
     private String author;
     private Date dateCreated;
     private Job job;
-    private List<File> files;
     private Export export;
     private Double price;
     private String currencyCode;
@@ -85,17 +84,6 @@ public class MxJdf {
 
     public void setJob(Job job) {
         this.job = job;
-    }
-
-    public List<File> getFiles() {
-        if (files == null) {
-            files = new ArrayList<>();
-        }
-        return files;
-    }
-
-    public void setFiles(List<File> files) {
-        this.files = files;
     }
 
     public Export getExport() {

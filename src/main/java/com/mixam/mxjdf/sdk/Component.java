@@ -3,6 +3,9 @@ package com.mixam.mxjdf.sdk;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 
@@ -13,7 +16,18 @@ public class Component {
     private Material material;
     private Processing processing;
     private ComponentType type;
+    private List<File> files;
 
+    public List<File> getFiles() {
+        if (files == null) {
+            files = new ArrayList<>();
+        }
+        return files;
+    }
+
+    public void setFiles(List<File> files) {
+        this.files = files;
+    }
     public int getPages() {
         return pages;
     }

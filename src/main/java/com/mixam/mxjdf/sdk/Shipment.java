@@ -12,7 +12,7 @@ import java.util.List;
 public class Shipment {
     private List<RecipientAddress> deliveryAddresses;
     private Address senderForLabel;
-    private Delivery delivery;
+
     private double weight;
     private WeightUnitType units;
 
@@ -32,13 +32,7 @@ public class Shipment {
         this.units = units;
     }
 
-    public Delivery getDelivery() {
-        return delivery;
-    }
 
-    public void setDelivery(Delivery delivery) {
-        this.delivery = delivery;
-    }
 
     public List<RecipientAddress> getDeliveryAddresses() {
         if (deliveryAddresses == null) {

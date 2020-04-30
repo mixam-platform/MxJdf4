@@ -11,9 +11,18 @@ import java.util.Date;
 public class RecipientAddress {
     private Address address;
     private int circulation;
+    private Delivery delivery;
 
     private Date dispatchDate;
     private Date deliveryDate;
+
+    public Delivery getDelivery() {
+        return delivery;
+    }
+
+    public void setDelivery(Delivery delivery) {
+        this.delivery = delivery;
+    }
 
     public Date getDeliveryDate() {
         return deliveryDate;

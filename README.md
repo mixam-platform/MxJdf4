@@ -51,7 +51,6 @@ The top level of the MxJdf document contains the following elements:
   "price" : 105.31,
   “currencyCode”: “gbp”,
   "job": {...},
-  "files": [...],
   "export": {...}
 }
 ```
@@ -66,7 +65,6 @@ The top level of the MxJdf document contains the following elements:
 |price|The pre-agreed cost price of the job (Double precision number)|   |
 |currencyCode|The currency in which the price is specified. (String)|“GBP”, “USD”, “CAD”, “AUD”|
 |job|A map of properties describing the job.|See bellow|
-|files|A list of artwork files associated with the job. (List<File>)|See bellow|
 |export|A map of properties describing the export value of the goods. (Map). Applicable only when goods are shipped overseas.| See bellow.|
 
 # 2. Element: job
@@ -108,6 +106,7 @@ The top level of the MxJdf document contains the following elements:
   "format": {...},
   "material": {...},
   "processing": {...},
+  "files": [...],
   "type": 2
 }
 ```` 
@@ -119,6 +118,7 @@ The top level of the MxJdf document contains the following elements:
 |format|Format element which specify the component measurements|See below|
 |material|Material element which specify the component paper stock.|See below|
 |processing|Processing element which specify additional processing such as binding.|See below|
+|files|A list of artwork files associated with the component. (List<File>)|See bellow|
 |type|ComponentType|INVALID(0),<br>CONTENT(1),<br>COVER(2),<br>JACKET(3),<br>BOOKMARK(4),<br>ENVELOPE (5)|
 
 # 5. Element: chromaticity
@@ -245,9 +245,8 @@ The top level of the MxJdf document contains the following elements:
 # 12. Element: shipment
 ```javascript
 "shipment": {
-   "deliveryItems": [...],
+   "deliveryAddresses": [...],
    "senderForLabel": {...},
-   "delivery": {...},
    "weight": 1.2
    "units": 1
 }
@@ -255,9 +254,8 @@ The top level of the MxJdf document contains the following elements:
 
 | Property  | Description | Values |
 |---|---|---|
-|deliveryItems|A list of RecipientAddress elements. (List<RecipientAddress>)|See bellow|
+|deliveryAddresses|A list of RecipientAddress elements. (List<RecipientAddress>)|See bellow|
 |senderForLabel|The sender address. (Address)|See bellow|
-|delivery|Delivery details. (Delivery)|See bellow|
 |Weight|The expected weight of the goods. (Double precision number)||
 |units|The units in which the weight is specified. KILOGRAM on metric system, LIBRA on imperial.|KILOGRAM(0), <br>LIBRA(1),|
 
@@ -266,6 +264,7 @@ The top level of the MxJdf document contains the following elements:
 {
   "address": {...},
   "circulation:  100,
+  "delivery": {...},
   "dispatchDate": 1579693407751,
   "deliveryDate": 1579695818930
 }
@@ -275,6 +274,7 @@ The top level of the MxJdf document contains the following elements:
 |---|---|---|
 |address|Address of recipient (Address)|See bellow|
 |circulation|How many copies to this specific address. (Integer number)||
+|delivery|Delivery details. (Delivery)|See bellow|
 |dispatchDate|Epoch date of dispatch (when the boxes are due to be collected by the carrier.) (Long number)|A Unix Timestamp|
 |deliveryDate|Epoch date of delivery (when the boxes are due to arrive at the customer address.) (Long number)|A Unix Timestamp|
 
