@@ -1,0 +1,6 @@
+target/
+logs/
+# MacOS directory store
+.DS_Store
+.idea
+*.iml
