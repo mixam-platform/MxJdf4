@@ -11,7 +11,7 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 
 public class Article {
-    @JacksonXmlElementWrapper(useWrapping = false)
+    // @JacksonXmlElementWrapper(useWrapping = false)
     private List<Component> components;
     private ArticleTaxType type;
     private ProductGroupType product;
