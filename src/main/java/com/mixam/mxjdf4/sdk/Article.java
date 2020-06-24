@@ -2,7 +2,6 @@ package com.mixam.mxjdf4.sdk;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +10,6 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 
 public class Article {
-    // @JacksonXmlElementWrapper(useWrapping = false)
     private List<Component> components;
     private ArticleTaxType type;
     private ProductGroupType product;
