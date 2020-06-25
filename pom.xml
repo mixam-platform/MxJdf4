@@ -21,7 +21,11 @@
             <artifactId>jackson-annotations</artifactId>
             <version>${org.codehaus.jackson-version}</version>
         </dependency>
-
+       <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-xml</artifactId>
+            <version>${org.codehaus.jackson-version}</version>
+        </dependency>
     </dependencies>
 
     <build>

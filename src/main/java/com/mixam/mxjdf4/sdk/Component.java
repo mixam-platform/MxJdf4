@@ -2,6 +2,7 @@ package com.mixam.mxjdf4.sdk;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +17,7 @@ public class Component {
     private Material material;
     private Processing processing;
     private ComponentType type;
+    @JacksonXmlElementWrapper(localName = "files-list")
     private List<File> files;
 
     public List<File> getFiles() {

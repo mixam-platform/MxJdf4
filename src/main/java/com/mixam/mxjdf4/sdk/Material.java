@@ -2,6 +2,7 @@ package com.mixam.mxjdf4.sdk;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.List;
 public class Material {
     private int weight;
     private PaperWeightUnit units;
+    @JacksonXmlElementWrapper(localName = "refinings-list")
     private List<MaterialRefining> refinings;
     private MaterialType type;
     private MaterialColor color;
