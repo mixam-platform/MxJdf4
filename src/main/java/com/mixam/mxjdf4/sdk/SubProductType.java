@@ -16,7 +16,12 @@ public enum SubProductType {
     PRODUCT_ZINES(10),
     PRODUCT_COMIC_BOOKS(11),
     PRODUCT_ART_PRINTS(12),
-    PRODUCT_MANGA(13);
+    PRODUCT_MANGA(13),
+    PRODUCT_WEDDING_BOOK(14),
+    PRODUCT_YEARBOOK(15),
+    PRODUCT_COOKBOOK(16),
+        ;
+
 
     private final int value;
 
