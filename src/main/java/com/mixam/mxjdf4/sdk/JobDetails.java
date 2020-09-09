@@ -7,16 +7,25 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonIgnoreProperties(ignoreUnknown = true)
 
 public class JobDetails {
-    private String orderId;
+    private String additionalProjectName;
     private CompletionType completionType;
     private int totalCirculation;
+    private AssumedPrintType assumedPrintType;
 
-    public String getOrderId() {
-        return orderId;
+    public AssumedPrintType getAssumedPrintType() {
+        return assumedPrintType;
     }
 
-    public void setOrderId(String orderId) {
-        this.orderId = orderId;
+    public void setAssumedPrintType(AssumedPrintType assumedPrintType) {
+        this.assumedPrintType = assumedPrintType;
+    }
+
+    public String getAdditionalProjectName() {
+        return additionalProjectName;
+    }
+
+    public void setAdditionalProjectName(String additionalProjectName) {
+        this.additionalProjectName = additionalProjectName;
     }
 
     public CompletionType getCompletionType() {
