@@ -7,14 +7,27 @@ import java.util.Date;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-
 public class RecipientAddress {
+    private String deliveryId;
+
     private Address address;
     private int circulation;
     private Delivery delivery;
 
     private Date dispatchDate;
     private Date deliveryDate;
+
+    /**
+     * Unique, Mixam-assigned, opaque identifier for the {@code Delivery} associated with this
+     * address.
+     */
+    public String getDeliveryId() {
+        return deliveryId;
+    }
+
+    public void setDeliveryId(String deliveryId) {
+        this.deliveryId = deliveryId;
+    }
 
     public Delivery getDelivery() {
         return delivery;
