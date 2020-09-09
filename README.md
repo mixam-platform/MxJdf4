@@ -264,6 +264,7 @@ The top level of the MxJdf document contains the following elements:
 # 13. Element: RecipientAddress
 ```javascript
 {
+  "deliveryId": "abc123456",
   "address": {...},
   "circulation:  100,
   "delivery": {...},
@@ -274,6 +275,7 @@ The top level of the MxJdf document contains the following elements:
 
 | Property  | Description | Values |
 |---|---|---|
+|deliveryId|Unique identifier of the delivery (String).|Useful in cases where the supplier needs to report back a completion of a specific delivery|
 |address|Address of recipient (Address)|See bellow|
 |circulation|How many copies to this specific address. (Integer number)||
 |delivery|Delivery details. (Delivery)|See bellow|
