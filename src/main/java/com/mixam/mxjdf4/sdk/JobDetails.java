@@ -12,6 +12,16 @@ public class JobDetails {
     private int totalCirculation;
     private AssumedPrintType assumedPrintType;
 
+
+    // orderId is an alias to additionalProjectName
+    public String getOrderId() {
+        return additionalProjectName;
+    }
+
+    public void setOrderId(String orderId) {
+        this.additionalProjectName = orderId;
+    }
+
     public AssumedPrintType getAssumedPrintType() {
         return assumedPrintType;
     }
