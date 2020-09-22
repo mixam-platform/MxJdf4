@@ -168,7 +168,7 @@ The top level of the MxJdf document contains the following elements:
 |glossiness|Paper glossiness (MaterialGlossinessType)|NONE(0),<br>MATT(1),<br>GLOSS(2),|
 |weight|The weight on one unit (Integer number)||
 |units|Units of weight (PaperWeightUnit)|INVALID(0),<br>GSM(1),<br>LIBRA_COVER(2),<br> LIBRA_TEXT(3),<br> LIBRA_CARD(4),|
-|type|(MaterialType)|INVALID(0)<br>SILK(1)<br>GLOSS(2)<br>UNCOATED(3)<br>AFFICHE_PAPER(4)<br>OUTDOOR_PAPER(5)<br>ILLUSTRATION_PRINTING_PAPER(6)<br>PHOTOGRAPHIC_PRINTING_PAPER(7)<br>POSTCARD_BOARD(8)<br>RECYCLED_NATURAL_PAPER(9)<br>RECYCLED_SILK_PAPER(10)<br>MATT(11)<br>WEATHERPROOF_VINYL(12)<br>RECYCLED_UNCOATED_PAPER(13)|
+|type|(MaterialType) (SILK is known as SATIN in the US)|INVALID(0)<br>SILK(1)<br>GLOSS(2)<br>UNCOATED(3)<br>AFFICHE_PAPER(4)<br>OUTDOOR_PAPER(5)<br>ILLUSTRATION_PRINTING_PAPER(6)<br>PHOTOGRAPHIC_PRINTING_PAPER(7)<br>POSTCARD_BOARD(8)<br>RECYCLED_NATURAL_PAPER(9)<br>RECYCLED_SILK_PAPER(10)<br>MATT(11)<br>WEATHERPROOF_VINYL(12)<br>RECYCLED_UNCOATED_PAPER(13)|
 |refinings|List of refining of material such as lamination coating and UV coating. (MaterialRefining)|See below|
 |color|The colour of the material|WHITE (0),<br>YELLOW(1),<br>GREEN(2),<br>RED(3)|
 
