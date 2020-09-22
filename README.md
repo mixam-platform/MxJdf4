@@ -43,7 +43,7 @@ Current version is 4.01.03
 The top level of the MxJdf document contains the following elements:
 ```javascript
 {
-  "version": 4.01.02,
+  "version": 4.01.03,
   "desc": "mixam.job.description",
   "dateCreated": 1579177108174,
   "author" : "Mary Ansell",
@@ -57,7 +57,7 @@ The top level of the MxJdf document contains the following elements:
 
 | Property  | Description | Values |
 |---|---|---|
-|version| Current version of the protocol. (String)  | Currently ‘3.08’|
+|version| Current version of the protocol. (String)  | Currently ‘4.01.03’|
 |desc|Document description. (String)|Always "mixam.job.description"|
 |dateCreated|Epoch date of creation. (Long number)|A Unix Timestamp of the date the document was created|
 |author|The name of the person who created the document. (String)|   |
@@ -415,7 +415,7 @@ Optional, applicable only when goods are shipped overseas.
 
 ```javascript
 {
-  "version": "3.08",
+  "version": "4.01.03",
   "desc": "mixam.job.description",
   "referencedJobNumber": "37663402",
   "author": "Mary Ansell",
@@ -528,7 +528,7 @@ Optional, applicable only when goods are shipped overseas.
 
 ```xml
 <MxJdf>
-    <version>3.08</version>
+    <version>4.01.03</version>
     <desc>mixam.job.description</desc>
     <referencedJobNumber>37663402</referencedJobNumber>
     <author>Mary Ansell</author>
