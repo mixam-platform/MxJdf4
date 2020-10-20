@@ -1,5 +1,6 @@
 package com.mixam.mxjdf4.sdk;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum EndPaperColorType {
@@ -66,8 +67,22 @@ public enum EndPaperColorType {
         this.value = value;
     }
 
+    public static EndPaperColorType forCode(int value) {
+        for (EndPaperColorType en: EndPaperColorType.values()) {
+            if (en.value == value) {
+                return en;
+            }
+        }
+        return null;
+    }
+
     @JsonValue
     public int getValue() {
         return value;
+    }
+
+    @JsonCreator
+    public static EndPaperColorType forValue(String v) {
+        return EndPaperColorType.forCode(Integer.parseInt(v));
     }
 }

@@ -11,7 +11,7 @@ Mixam offers the protocol as a JSON document or an XML document.
 
 The document can be attached to an email message or posted to the printer preferred end-point.
 
-Current version is 4.01.04
+Current version is 4.01.05
 
 ## Table of content
 
@@ -43,7 +43,7 @@ Current version is 4.01.04
 The top level of the MxJdf document contains the following elements:
 ```javascript
 {
-  "version": 4.01.03,
+  "version": 4.01.05,
   "desc": "mixam.job.description",
   "dateCreated": 1579177108174,
   "author" : "Mary Ansell",
@@ -416,7 +416,7 @@ Optional, applicable only when goods are shipped overseas.
 
 ```javascript
 {
-  "version": "4.01.03",
+  "version": "4.01.05",
   "desc": "mixam.job.description",
   "referencedJobNumber": "37663402",
   "author": "Mary Ansell",
@@ -529,7 +529,7 @@ Optional, applicable only when goods are shipped overseas.
 
 ```xml
 <MxJdf>
-    <version>4.01.03</version>
+    <version>4.01.05</version>
     <desc>mixam.job.description</desc>
     <referencedJobNumber>37663402</referencedJobNumber>
     <author>Mary Ansell</author>
