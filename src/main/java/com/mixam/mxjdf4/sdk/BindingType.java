@@ -9,7 +9,7 @@ public enum BindingType {
     WIRO_BINDING(3),
     LOOP_BINDING(4),
     BOOK_BINDING(5),
-    SEW_BINDING(6),
+    SEWING_BINDING(6),
     CALENDAR_BINDING(7),
     ;
 
