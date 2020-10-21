@@ -418,26 +418,63 @@ Optional, applicable only when goods are shipped overseas.
 {
   "version": "4.01.05",
   "desc": "mixam.job.description",
-  "referencedJobNumber": "37663402",
+  "referencedJobNumber": "484134",
   "author": "Mary Ansell",
-  "dateCreated": 1580388681718,
+  "dateCreated": 1603279100614,
   "job": {
     "article": {
       "components": [
         {
-          "pages": 28,
+          "pages": 4,
           "chromaticity": {
             "front": 3,
-            "back": 3
+            "back": 0
           },
           "format": {
-            "longEdge": 210.0,
-            "orientation": 1,
-            "shortEdge": 148.0,
+            "longEdge": 297.0,
+            "orientation": 0,
+            "shortEdge": 210.0,
             "units": 0
           },
           "material": {
-            "weight": 150,
+            "weight": 170,
+            "units": 1,
+            "refinings": [
+              {
+                "effect": 2,
+                "side": 4,
+                "type": 2
+              }
+            ],
+            "type": 1,
+            "color": 0
+          },
+          "processing": {},
+          "type": 2,
+          "files": [
+            {
+              "type": 2,
+              "name": "job484134-cover.pdf",
+              "url": "https://s3.wasabisys.com/files.mixam.com/76f1a499451752af04e37aa328718a86c0afb2f8/job484134-cover.pdf",
+              "checksum": "4e8dcebe35e8b00dbd6b7b72ecbcba38",
+              "sizeInBytes": 13273803
+            }
+          ]
+        },
+        {
+          "pages": 28,
+          "chromaticity": {
+            "front": 2,
+            "back": 3
+          },
+          "format": {
+            "longEdge": 297.0,
+            "orientation": 0,
+            "shortEdge": 210.0,
+            "units": 0
+          },
+          "material": {
+            "weight": 200,
             "units": 1,
             "refinings": [],
             "type": 1,
@@ -445,48 +482,71 @@ Optional, applicable only when goods are shipped overseas.
           },
           "processing": {
             "binding": {
-              "type": 1,
-              "spineWidth": 0.0
+              "type": 5,
+              "endPaperColor": 2,
+              "spineWidth": 28.0
             }
           },
-          "type": 1
+          "type": 1,
+          "files": [
+            {
+              "type": 1,
+              "name": "job484134-body.pdf",
+              "url": "https://s3.wasabisys.com/files.mixam.com/76f1a499451752af04e37aa328718a86c0afb2f8/job484134-body.pdf",
+              "checksum": "05551af33a81f6f13802ca1858919414",
+              "sizeInBytes": 256689704
+            }
+          ]
         }
       ],
-      "product": 1,
+      "type": 0,
+      "product": 7,
       "subProduct": 0
     },
     "details": {
-      "orderId": "5e31a3dc2f231530f33ef3a4",
-      "completionType": 2,
-      "totalCirculation": 250
+      "additionalProjectName": "5f7c9449a478e23e57444661",
+      "completionType": 4,
+      "totalCirculation": 1,
+      "assumedPrintType": 2,
+      "orderId": "5f7c9449a478e23e57444661"
     },
     "shipment": {
       "deliveryAddresses": [
         {
+          "deliveryId": "a895ac12-9a6a-4551-a71e-58e03393353b",
           "address": {
             "salutation": "Mr.",
-            "firstName": "Charlotte ",
-            "surName": "Hall",
-            "street1": "Interaction The Vaults",
-            "street2": " 1-2 Bartlett Street ",
-            "postalCode": "BA12QZ",
-            "city": " Bath",
-            "county": " Somerset",
+            "firstName": "John",
+            "surName": "Royle",
+            "street1": "22 Ash drive",
+            "street2": "Swinton",
+            "postalCode": "M27 9RS",
+            "city": "Manchester",
+            "county": "N/A",
             "country": "GB",
-            "telephoneNumber": "01225485600",
-            "company": "Interaction",
+            "telephoneNumber": "07807123106",
+            "company": "",
             "locationType": 0
           },
-          "circulation": 250,
-          "dispatchDate": 1580428800000,
-          "deliveryDate": 1580688000000
+          "circulation": 1,
+          "delivery": {
+            "type": 0,
+            "carrier": "Interlink",
+            "serviceType": "DPD Next day",
+            "serviceDescription": "DPD Next day",
+            "canonicalUri": "DPD-DPD_NEXT_DAY-zxa-1",
+            "cost": 6.5,
+            "url": "https://mixam.co.uk/spedition/5f88be4ef9936c52e6c93d86"
+          },
+          "dispatchDate": 1603234800000,
+          "deliveryDate": 1603321200000
         }
       ],
       "senderForLabel": {
         "salutation": "Mr.",
         "firstName": "Darren",
         "surName": "Elgin",
-        "street1": "6 Hercules Way",
+        "street1": "6 Hercules Way, Watford, Hertfordshire, WD25 7GS",
         "postalCode": "WD25 7GS",
         "city": "Watford",
         "county": "Hertfordshire",
@@ -495,32 +555,15 @@ Optional, applicable only when goods are shipped overseas.
         "email": "info@mixam.co.uk",
         "company": "Mixam Print"
       },
-      "delivery": {
-        "type": 0,
-        "carrier": "Interlink",
-        "serviceType": "DPD Next day",
-        "serviceDescription": "DPD Next day",
-        "canonicalUri": "DPD-DPD_NEXT_DAY-zxa-1",
-        "cost": 8.39
-      },
-      "weight": 16.299999237060547,
+      "weight": 1.7999999523162842,
       "units": 0
     }
   },
-  "files": [
-    {
-      "type": 0,
-      "name": "job376634.pdf",
-      "url": "https://s3-eu-west-1.amazonaws.com/files.mixam.com/8472912a7dba3e57ddeb36131ae96726ff3cc5da/job376634.pdf",
-      "checksum": "584f4618c4532fbacda1d36d8a0d8338",
-      "sizeInBytes": 11437989
-    }
-  ],
   "export": {
-    "customsValueSum": 143.85000610351562,
+    "customsValueSum": 33.16999816894531,
     "customsValueCurrency": "GBP"
   },
-  "price": 143.85000610351562,
+  "price": 33.16999816894531,
   "currencyCode": "GBP"
 }
 ```
@@ -528,15 +571,15 @@ Optional, applicable only when goods are shipped overseas.
 # 21. XML Example
 
 ```xml
-<MxJdf>
-    <version>4.01.05</version>
+<MxJdf4>
+    <version>4.01</version>
     <desc>mixam.job.description</desc>
     <referencedJobNumber>37663402</referencedJobNumber>
     <author>Mary Ansell</author>
-    <dateCreated>1580388597661</dateCreated>
+    <dateCreated>1603279655663</dateCreated>
     <job>
         <article>
-            <components>
+            <components-list>
                 <components>
                     <pages>28</pages>
                     <chromaticity>
@@ -552,7 +595,7 @@ Optional, applicable only when goods are shipped overseas.
                     <material>
                         <weight>150</weight>
                         <units>1</units>
-                        <refinings/>
+                        <refinings-list/>
                         <type>1</type>
                         <color>0</color>
                     </material>
@@ -563,19 +606,32 @@ Optional, applicable only when goods are shipped overseas.
                         </binding>
                     </processing>
                     <type>1</type>
+                    <files-list>
+                        <files>
+                            <type>1</type>
+                            <name>job376634.pdf</name>
+                            <url>https://s3.wasabisys.com/files.mixam.com/8472912a7dba3e57ddeb36131ae96726ff3cc5da/job376634.pdf</url>
+                            <checksum>584f4618c4532fbacda1d36d8a0d8338</checksum>
+                            <sizeInBytes>11437989</sizeInBytes>
+                        </files>
+                    </files-list>
                 </components>
-            </components>
+            </components-list>
+            <type>0</type>
             <product>1</product>
             <subProduct>0</subProduct>
         </article>
         <details>
-            <orderId>5e31a3dc2f231530f33ef3a4</orderId>
+            <additionalProjectName>5e31a3dc2f231530f33ef3a4</additionalProjectName>
             <completionType>2</completionType>
             <totalCirculation>250</totalCirculation>
+            <assumedPrintType>3</assumedPrintType>
+            <orderId>5e31a3dc2f231530f33ef3a4</orderId>
         </details>
         <shipment>
-            <deliveryAddresses>
+            <deliveryAddresses-list>
                 <deliveryAddresses>
+                    <deliveryId>82dcdf2c-f5d9-46d3-b06f-a47e3fd41bf9</deliveryId>
                     <address>
                         <salutation>Mr.</salutation>
                         <firstName>Charlotte</firstName>
@@ -591,15 +647,23 @@ Optional, applicable only when goods are shipped overseas.
                         <locationType>0</locationType>
                     </address>
                     <circulation>250</circulation>
+                    <delivery>
+                        <type>0</type>
+                        <carrier>Interlink</carrier>
+                        <serviceType>DPD Next day</serviceType>
+                        <serviceDescription>DPD Next day</serviceDescription>
+                        <canonicalUri>DPD-DPD_NEXT_DAY-zxa-1</canonicalUri>
+                        <cost>8.39</cost>
+                    </delivery>
                     <dispatchDate>1580428800000</dispatchDate>
                     <deliveryDate>1580688000000</deliveryDate>
                 </deliveryAddresses>
-            </deliveryAddresses>
+            </deliveryAddresses-list>
             <senderForLabel>
                 <salutation>Mr.</salutation>
                 <firstName>Darren</firstName>
                 <surName>Elgin</surName>
-                <street1>6 Hercules Way</street1>
+                <street1>6 Hercules Way, Watford, Hertfordshire, WD25 7GS</street1>
                 <postalCode>WD25 7GS</postalCode>
                 <city>Watford</city>
                 <county>Hertfordshire</county>
@@ -608,34 +672,17 @@ Optional, applicable only when goods are shipped overseas.
                 <email>info@mixam.co.uk</email>
                 <company>Mixam Print</company>
             </senderForLabel>
-            <delivery>
-                <type>0</type>
-                <carrier>Interlink</carrier>
-                <serviceType>DPD Next day</serviceType>
-                <serviceDescription>DPD Next day</serviceDescription>
-                <canonicalUri>DPD-DPD_NEXT_DAY-zxa-1</canonicalUri>
-                <cost>8.39</cost>
-            </delivery>
             <weight>16.299999237060547</weight>
             <units>0</units>
         </shipment>
     </job>
-    <files>
-        <files>
-            <type>0</type>
-            <name>job376634.pdf</name>
-            <url>https://s3-eu-west-1.amazonaws.com/files.mixam.com/8472912a7dba3e57ddeb36131ae96726ff3cc5da/job376634.pdf</url>
-            <checksum>584f4618c4532fbacda1d36d8a0d8338</checksum>
-            <sizeInBytes>11437989</sizeInBytes>
-        </files>
-    </files>
     <export>
         <customsValueSum>143.85000610351562</customsValueSum>
         <customsValueCurrency>GBP</customsValueCurrency>
     </export>
     <price>143.85000610351562</price>
     <currencyCode>GBP</currencyCode>
-</MxJdf>
+</MxJdf4>
 ```
 
 ## License
