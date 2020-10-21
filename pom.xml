@@ -8,6 +8,20 @@
     <name>Mixam Job Description Format</name>
     <packaging>jar</packaging>
 
+    <scm>
+        <connection>scm:git:https://github.com/mixam-platform/MxJdf4.git</connection>
+        <developerConnection>scm:git:https://github.com/mixam-platform/MxJdf4.git</developerConnection>
+        <url>https://github.com/mixam-platform/MxJdf4.git</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub OWNER Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/mixam-platform/packages</url>
+        </repository>
+    </distributionManagement>
 
     <properties>
         <java-version>11</java-version>
