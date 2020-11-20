@@ -46,7 +46,7 @@ The top level of the MxJdf document contains the following elements:
   "version": 4.01.05,
   "desc": "mixam.job.description",
   "dateCreated": 1579177108174,
-  "author" : "Mary Ansell",
+  "author" : "Sherlock Holmes",
   "referencedJobNumber": 303171489,
   "price" : 105.31,
   “currencyCode”: “gbp”,
