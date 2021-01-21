@@ -1,45 +1,49 @@
-# Mixam Job Description Format
+![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/mixam-platform/MxJdf4?label=Latest%20Version&style=for-the-badge)
+
+# Mixam Job Description Format, v. 4
+
 ## API & SDK for ordering a print job
 
-The Mixam Job Description Format is a definition of a structure describing a print job in an unambiguous way.
+The _Mixam Job Description Format_ describes the structure of a print job in an unambiguous way.
 
-Although the Mixam platform is capable of describing a job in many formats (cXML, OneFlow and vendor specific formats), the MXJDF (Mixam Job Description Format)  is the most useful of them all and the recommended way to establish an automated connection with us.    
+Although the Mixam Platform is capable of specifying a job in many formats (cXML, OneFlow, and
+vendor specific formats), the MXJDF (Mixam Job Description Format) is the most complete and useful,
+and also the recommended way to establish an automated connection with us.
 
-The format is made of attributes and values and can be implemented in XML and JSON syntax. We provide a Java implementation of the MXJDF format but it can easily be implemented by other programing languages such as PHP or JavaScript. 
+The MXJDF format is made of attributes and values and can be provided as an XML and/or JSON
+document. We also provide a Java implementation of the MXJDF format, but it can easily be
+implemented with other programing languages such as PHP or JavaScript.
 
-Mixam offers the protocol as a JSON document or an XML document. 
+MXJDF documents can be attached to an email message or posted to the printer's preferred end-point
+using HTTPS or SFTP.
 
-The document can be attached to an email message or posted to the printer preferred end-point.
+## Table of Contents
 
-Current version is 4.01.05
-
-## Table of content
-
-|Chapter|Number|
+| Chapter | Number |
 |---|--:|
-|The top level|1|
-|Element: job|2|
-|Element: article|3|
-|Element: component|4| 
-|Element: chromaticity|5| 
-|Element: format|6| 
-|Element: material|7| 
-|Element: refining|8| 
-|Element: processing|9| 
-|Element: binding|10| 
-|Element: details|11| 
-|Element: shipment|12| 
-|Element: RecipientAddress|13| 
-|Element: address|14| 
-|Element: senderForLabel (Address)|15| 
-|Type: Address|16| 
-|Element: delivery|17| 
-|Element: File|18| 
-|Element: export|19| 
-|JSON Example|20| 
-|XML Example|21| 
+| [Top Level Element](#1-top-level-element) | 1 |
+| [Element: job](#2-element-job) | 2 |
+| [Element: article](#3-element-article) | 3 |
+| [Element: component](#4-element-component) | 4 |
+| [Element: chromaticity](#5-element-chromaticity) | 5 |
+| [Element: format](#6-element-format) | 6 |
+| [Element: material](#7-element-material) | 7 |
+| [Element: refining](#8-element-refining) | 8 |
+| [Element: processing](#9-element-processing) | 9 |
+| [Element: binding](#10-element-binding) | 10 |
+| [Element: details](#11-element-details) | 11 |
+| [Element: shipment](#12-element-shipment) | 12 |
+| [Element: RecipientAddress](#13-element-recipientaddress) | 13 |
+| [Element: address](#14-element-address) | 14 |
+| [Element: senderForLabel (Address)](#15-element-senderforlabel-address) | 15 |
+| [Type: Address](#16-type-address) | 16 |
+| [Element: delivery](#17-element-delivery) | 17 |
+| [Element: File](#18-element-file) | 18 |
+| [Element: export](#19-element-export) | 19 |
+| [JSON Example](#20-json-example) | 20 |
+| [XML Example](#21-xml-example) | 21 |
  
-# 1. The top level
+# 1. Top Level Element
 The top level of the MxJdf document contains the following elements:
 ```javascript
 {
@@ -244,6 +248,7 @@ The top level of the MxJdf document contains the following elements:
 |completionType|Urgency of the job. Default value is 4 (Standard)|INVALID(0), <br>SAME_DAY(1), <br>EXPRESS(2), <br>OVERNIGHT(3), <br>STANDARD(4), <br>SAVER(5);|
 |totalCirculation|The total number of copies (Integer)||
 |assumedPrintType|The expect print technology|NONE(0), <br>LITHO(1), <br>DIGITAL(2), <br>INKJET(3)|
+|jobType|Classification of print job|PRIMARY_PRINT(0), <br>RIPPED_PROOF(1), <br>HARD_COPY_PROOF(2)|
 
 # 12. Element: shipment
 ```javascript

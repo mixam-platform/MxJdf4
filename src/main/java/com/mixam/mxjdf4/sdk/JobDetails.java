@@ -5,19 +5,25 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-
+@SuppressWarnings("unused")
 public class JobDetails {
+
     private String additionalProjectName;
     private CompletionType completionType;
     private int totalCirculation;
     private AssumedPrintType assumedPrintType;
+    private JobType jobType;
 
-
-    // orderId is an alias to additionalProjectName
+    /**
+     * Alias of {@code additionalProjectName}.
+     */
     public String getOrderId() {
         return additionalProjectName;
     }
 
+    /**
+     * Alias of {@code additionalProjectName}.
+     */
     public void setOrderId(String orderId) {
         this.additionalProjectName = orderId;
     }
@@ -53,4 +59,13 @@ public class JobDetails {
     public void setTotalCirculation(int totalCirculation) {
         this.totalCirculation = totalCirculation;
     }
+
+    public JobType getJobType() {
+        return jobType;
+    }
+
+    public void setJobType(JobType jobType) {
+        this.jobType = jobType;
+    }
+
 }
