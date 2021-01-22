@@ -267,6 +267,8 @@ The top level of the MxJdf document contains the following elements:
 |Weight|The expected weight of the goods. (Double precision number)||
 |units|The units in which the weight is specified. KILOGRAM on metric system, LIBRA on imperial.|KILOGRAM(0), <br>LIBRA(1),|
 
+> NOTE: ripped (digital) proof jobs will not contain a `shipment` element. 
+
 # 13. Element: RecipientAddress
 ```javascript
 {
@@ -416,6 +418,8 @@ Optional, applicable only when goods are shipped overseas.
 |---|---|---|
 |customsValueSum|Value of the goods for custom evaluation. (Integer number)||
 |customsValueCurrency|Currency code  of the above value.|GBP, USD, CAD, AUD|
+
+> NOTE: ripped (digital) proof documents will not contain an `export` element.
 
 # 20. JSON Example
 

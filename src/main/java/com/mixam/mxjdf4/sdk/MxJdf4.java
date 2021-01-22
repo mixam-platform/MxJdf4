@@ -85,9 +85,6 @@ public class MxJdf4 {
     }
 
     public Export getExport() {
-        if (export == null) {
-            export = new Export();
-        }
         return export;
     }
 
