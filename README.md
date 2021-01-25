@@ -32,16 +32,17 @@ using HTTPS or SFTP.
 | [Element: processing](#9-element-processing) | 9 |
 | [Element: binding](#10-element-binding) | 10 |
 | [Element: details](#11-element-details) | 11 |
-| [Element: shipment](#12-element-shipment) | 12 |
-| [Element: RecipientAddress](#13-element-recipientaddress) | 13 |
-| [Element: address](#14-element-address) | 14 |
-| [Element: senderForLabel (Address)](#15-element-senderforlabel-address) | 15 |
-| [Type: Address](#16-type-address) | 16 |
-| [Element: delivery](#17-element-delivery) | 17 |
-| [Element: File](#18-element-file) | 18 |
-| [Element: export](#19-element-export) | 19 |
-| [JSON Example](#20-json-example) | 20 |
-| [XML Example](#21-xml-example) | 21 |
+| [Element: proof](#12-element-proof) | 12 |
+| [Element: shipment](#13-element-shipment) | 13 |
+| [Element: RecipientAddress](#14-element-recipientaddress) | 14 |
+| [Element: address](#15-element-address) | 15 |
+| [Element: senderForLabel (Address)](#16-element-senderforlabel-address) | 16 |
+| [Type: Address](#17-type-address) | 17 |
+| [Element: delivery](#18-element-delivery) | 18 |
+| [Element: File](#19-element-file) | 19 |
+| [Element: export](#20-element-export) | 20 |
+| [JSON Example](#21-json-example) | 21 |
+| [XML Example](#22-xml-example) | 22 |
  
 # 1. Top Level Element
 The top level of the MxJdf document contains the following elements:
@@ -59,7 +60,7 @@ The top level of the MxJdf document contains the following elements:
 }
 ```
 
-| Property  | Description | Values |
+| Property | Description | Values |
 |---|---|---|
 |version| Current version of the protocol. (String)  | Currently ‘4.01.03’|
 |desc|Document description. (String)|Always "mixam.job.description"|
@@ -79,7 +80,7 @@ The top level of the MxJdf document contains the following elements:
     "shipment": {...}
 }
 ```
-| Property  | Description | Values |
+| Property | Description | Values |
 |---|---|---|
 |article|The article describes the print requirements (map)|See bellow|
 |details|Contains some meta data regarding the number of copies, tax and alternative id. (map)|See bellow|
@@ -95,7 +96,7 @@ The top level of the MxJdf document contains the following elements:
   "subProduct": 1
  }
 ````
-| Property  | Description | Values |
+| Property | Description | Values |
 |---|---|---|
 |components|A list of components (such as text, cover, dust jacket etc.) (List<component>)|See bellow|
 |type|Taxation type (VAT, GST etc.) (ArticleTaxType)|EXEMPT(0),<br> VAT(1),<br> GST(2),<br> USA_TAX(3);|
@@ -116,7 +117,7 @@ The top level of the MxJdf document contains the following elements:
 }
 ```` 
 
-| Property  | Description | Values |
+| Property | Description | Values |
 |---|---|---|
 |pages|Number of pages in the component (Integer number)|4, 8, 32, to name a few|
 |chromaticity|Chromaticity element which specify the colour space on the front and back|See below|
@@ -134,7 +135,7 @@ The top level of the MxJdf document contains the following elements:
 }
 ```
 
-| Property  | Description | Values |
+| Property | Description | Values |
 |---|---|---|
 |front|Colour space on front / outside. (ColorType)|INVALID (0),<br>HKS (1),<br>BLACK (2),<br>PROCESS (3);|
 |back|Colour space on back / inside. (ColorType)|INVALID (0),<br>HKS (1),<br>BLACK (2),<br>PROCESS (3);|
@@ -149,7 +150,7 @@ The top level of the MxJdf document contains the following elements:
 }
 ```
 
-| Property  | Description | Values |
+| Property | Description | Values |
 |---|---|---|
 |longEdge|Component long axis. (Double precision number) in shop’s units||
 |shortEdge|Component short axis. (Double precision number) in shop’s units ||
@@ -167,7 +168,7 @@ The top level of the MxJdf document contains the following elements:
 }
 ````
 
-| Property  | Description | Values |
+| Property | Description | Values |
 |---|---|---|
 |glossiness|Paper glossiness (MaterialGlossinessType)|NONE(0),<br>MATT(1),<br>GLOSS(2),|
 |weight|The weight on one unit (Integer number)||
@@ -185,7 +186,7 @@ The top level of the MxJdf document contains the following elements:
 }
 ````
 
-| Property  | Description | Values |
+| Property | Description | Values |
 |---|---|---|
 |effect|(RefiningEffect)|NONE (0),<br>MATT_FINISH(1),<br>GLOSS_FINISH (2),<br>SILK_FINISH (3),<br>SOFT_TOUCH (4),<br>GOLD (5),<br>SILVER (6),|
 |side|(RefiningSideType)|NONE(0),<br>FRONT(1),<br>BACK(2),<br>FRONT_AND_BACK(3),<br>OUTSIDE(4),<br>INSIDE (5)<br>OUTSIDE_AND_INSIDE(6)|
@@ -204,7 +205,7 @@ The top level of the MxJdf document contains the following elements:
 }
 ```
 
-| Property  | Description | Values |
+| Property | Description | Values |
 |---|---|---|
 |binding|Binding element (map)|See below|
 |creasing|(CreasingType)|NONE(0),<br>>CREASING_NECESSARY(1)|
@@ -224,7 +225,7 @@ The top level of the MxJdf document contains the following elements:
    "spineWidth": 7.5,
 }
 ```
-| Property  | Description | Values |
+| Property | Description | Values |
 |---|---|---|
 |type|(BindingType)|NONE(0), <br>STAPLE_BINDING(1), <br>PERFECT_BINDING(2), <br>WIRO_BINDING(3), <br>LOOP_BINDING(4), <br>BOOK_BINDING(5), <br> SEW_BINDING(6), <br>CALENDAR_BINDING (7)|
 |color|Wiro spiral colour (BindingColorType)|NONE (0), <br>BLACK (1), <br>SILVER (2), <br>WHITE (3),|
@@ -242,7 +243,7 @@ The top level of the MxJdf document contains the following elements:
  }
 ```
 
-| Property  | Description | Values |
+| Property | Description | Values |
 |---|---|---|
 |additionalProjectName||Additional Order number. Reference number. (String)||
 |completionType|Urgency of the job. Default value is 4 (Standard)|INVALID(0), <br>SAME_DAY(1), <br>EXPRESS(2), <br>OVERNIGHT(3), <br>STANDARD(4), <br>SAVER(5);|
@@ -250,7 +251,22 @@ The top level of the MxJdf document contains the following elements:
 |assumedPrintType|The expect print technology|NONE(0), <br>LITHO(1), <br>DIGITAL(2), <br>INKJET(3)|
 |jobType|Classification of print job|PRIMARY_PRINT(0), <br>RIPPED_PROOF(1), <br>HARD_COPY_PROOF(2)|
 
-# 12. Element: shipment
+# 12. Element: proof
+```javascript
+"proof": {
+    "referencedJobNumber": "532809",
+    "jobType": 1
+}
+```
+
+> NOTE: jobs that did not have a previous proof will not include the `proof` element.
+
+| Property | Description | Values |
+|---|---|---|
+|referencedJobNumber|The associated proof order’s id in the Mixam system. (String)|   |
+|jobType|Print job classification of the proof|RIPPED_PROOF(1), <br>HARD_COPY_PROOF(2)|
+
+# 13. Element: shipment
 ```javascript
 "shipment": {
    "deliveryAddresses": [...],
@@ -260,7 +276,7 @@ The top level of the MxJdf document contains the following elements:
 }
 ```
 
-| Property  | Description | Values |
+| Property | Description | Values |
 |---|---|---|
 |deliveryAddresses|A list of RecipientAddress elements. (List<RecipientAddress>)|See bellow|
 |senderForLabel|The sender address. (Address)|See bellow|
@@ -269,7 +285,7 @@ The top level of the MxJdf document contains the following elements:
 
 > NOTE: ripped (digital) proof jobs will not contain a `shipment` element. 
 
-# 13. Element: RecipientAddress
+# 14. Element: RecipientAddress
 ```javascript
 {
   "deliveryId": "abc123456",
@@ -281,7 +297,7 @@ The top level of the MxJdf document contains the following elements:
 }
 ```
 
-| Property  | Description | Values |
+| Property | Description | Values |
 |---|---|---|
 |deliveryId|Unique identifier of the delivery (String).|Useful in cases where the supplier needs to report back a completion of a specific delivery|
 |address|Address of recipient (Address)|See bellow|
@@ -290,7 +306,7 @@ The top level of the MxJdf document contains the following elements:
 |dispatchDate|Epoch date of dispatch (when the boxes are due to be collected by the carrier.) (Long number)|A Unix Timestamp|
 |deliveryDate|Epoch date of delivery (when the boxes are due to arrive at the customer address.) (Long number)|A Unix Timestamp|
 
-# 14. Element: address
+# 15. Element: address
 ```javascript
 "address": {
       "salutation": "Mr.",
@@ -308,7 +324,7 @@ The top level of the MxJdf document contains the following elements:
 
 See type ‘Address’
 
-# 15. Element: senderForLabel (Address)
+# 16. Element: senderForLabel (Address)
 ```javascript
 "senderForLabel": {
     "salutation": "Mr.",
@@ -327,7 +343,7 @@ See type ‘Address’
 ```
 See type ‘Address’
 
-# 16. Type: Address
+# 17. Type: Address
 ```javascript
 {
     "salutation": "Mr.",
@@ -346,7 +362,7 @@ See type ‘Address’
 }
 ```
 
-| Property  | Description | Values |
+| Property | Description | Values |
 |---|---|---|
 |salutation|(SalutationType)|MX("Mx."), <br>MS("Ms."), <br>MR("Mr."), <br>DR("Dr."), <br>MRS("Mrs"), <br>PROF("Prof"),|
 |companyName|(String)||
@@ -363,7 +379,7 @@ See type ‘Address’
 |email|(String)||
 |locationType|(AddressLocationType)|RESIDENTIAL(0), <br>BUSINESS_DOCK(1), <br>BUSINESS_NO_DOCK(2), <br>LIMITED_ACCESS(3), <br>TRADE_SHOW(4), <br>CONSTRUCTION(5), <br>FARM(6),|
  
-# 17. Element: delivery
+# 18. Element: delivery
 ```javascript
 "delivery": {
     "type": "parcel",
@@ -376,7 +392,7 @@ See type ‘Address’
   }
 ```
 
-| Property  | Description | Values |
+| Property | Description | Values |
 |---|---|---|
 |type|(DeliveryType)|PARCEL(0), <br>PALLET(1), <br>ENVELOPE(2);|
 |carrier|The name of the carrier (String)|DPD, 2MV, Mini Clipper etc.|
@@ -386,7 +402,7 @@ See type ‘Address’
 |cost|Cost of delivery (Double precision number)||
 |url|Points to a page where collection can be summoned and shipment labels printed. (String)||
 
-# 18. Element: File
+# 19. Element: File
 ```javascript
  {
       "type": 0,
@@ -397,7 +413,7 @@ See type ‘Address’
 }
 ```
 
-| Property  | Description | Values |
+| Property | Description | Values |
 |---|---|---|
 |type|Which component is associated with this file. (FileType)|ALL(0), <br>BODY(1), <br>COVER(2), <br>DUST_JACKET(3), <br>HEAD_TO_HEAD(4)|
 |name|Name of file (String)||
@@ -405,7 +421,7 @@ See type ‘Address’
 |checksum|MD5 checksum of this file. (String)||
 |sizeInBytes|Size of file (Long number)||
 
-# 19. Element: export
+# 20. Element: export
 Optional, applicable only when goods are shipped overseas.
  ```javascript
 "export": {
@@ -414,14 +430,14 @@ Optional, applicable only when goods are shipped overseas.
 }
 ```
 
-| Property  | Description | Values |
+| Property | Description | Values |
 |---|---|---|
 |customsValueSum|Value of the goods for custom evaluation. (Integer number)||
 |customsValueCurrency|Currency code  of the above value.|GBP, USD, CAD, AUD|
 
 > NOTE: ripped (digital) proof documents will not contain an `export` element.
 
-# 20. JSON Example
+# 21. JSON Example
 
 ```javascript
 {
@@ -577,7 +593,7 @@ Optional, applicable only when goods are shipped overseas.
 }
 ```
 
-# 21. XML Example
+# 22. XML Example
 
 ```xml
 <MxJdf4>
