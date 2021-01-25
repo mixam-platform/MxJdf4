@@ -32,7 +32,7 @@ using HTTPS or SFTP.
 | [Element: processing](#9-element-processing) | 9 |
 | [Element: binding](#10-element-binding) | 10 |
 | [Element: details](#11-element-details) | 11 |
-| [Element: proof](#12-element-proof) | 12 |
+| [Element: associatedProof](#12-element-associatedProof) | 12 |
 | [Element: shipment](#13-element-shipment) | 13 |
 | [Element: RecipientAddress](#14-element-recipientaddress) | 14 |
 | [Element: address](#15-element-address) | 15 |
@@ -84,6 +84,7 @@ The top level of the MxJdf document contains the following elements:
 |---|---|---|
 |article|The article describes the print requirements (map)|See bellow|
 |details|Contains some meta data regarding the number of copies, tax and alternative id. (map)|See bellow|
+|associatedProof|(Optional) Information about a previous proof job, if applicable|See below|
 |shipment|Contains addresses and delivery details|See bellow|
 
 
@@ -251,20 +252,22 @@ The top level of the MxJdf document contains the following elements:
 |assumedPrintType|The expect print technology|NONE(0), <br>LITHO(1), <br>DIGITAL(2), <br>INKJET(3)|
 |jobType|Classification of print job|PRIMARY_PRINT(0), <br>RIPPED_PROOF(1), <br>HARD_COPY_PROOF(2)|
 
-# 12. Element: proof
+# 12. Element: associatedProof
 ```javascript
-"proof": {
-    "referencedJobNumber": "532809",
-    "jobType": 1
+"associatedProof": {
+    "proofJobNumber": "532809",
+    "proofJobType": 1,
+    "proofDate": 1579177108174
 }
 ```
 
-> NOTE: jobs that did not have a previous proof will not include the `proof` element.
-
 | Property | Description | Values |
 |---|---|---|
-|referencedJobNumber|The associated proof order’s id in the Mixam system. (String)|   |
-|jobType|Print job classification of the proof|RIPPED_PROOF(1), <br>HARD_COPY_PROOF(2)|
+|proofJobNumber|The associated associatedProof order’s id in the Mixam system. (String)|   |
+|proofJobType|Print job classification of the associatedProof|RIPPED_PROOF(1), <br>HARD_COPY_PROOF(2)|
+|proofDate|The date the proof job was fulfilled|A Unix Timestamp of the date the document was fulfilled|
+
+> NOTE: jobs that did not have a proof previously will not include the `associatedProof` element.
 
 # 13. Element: shipment
 ```javascript
@@ -283,7 +286,7 @@ The top level of the MxJdf document contains the following elements:
 |Weight|The expected weight of the goods. (Double precision number)||
 |units|The units in which the weight is specified. KILOGRAM on metric system, LIBRA on imperial.|KILOGRAM(0), <br>LIBRA(1),|
 
-> NOTE: ripped (digital) proof jobs will not contain a `shipment` element. 
+> NOTE: ripped (digital) associatedProof jobs will not contain a `shipment` element.
 
 # 14. Element: RecipientAddress
 ```javascript
@@ -435,7 +438,7 @@ Optional, applicable only when goods are shipped overseas.
 |customsValueSum|Value of the goods for custom evaluation. (Integer number)||
 |customsValueCurrency|Currency code  of the above value.|GBP, USD, CAD, AUD|
 
-> NOTE: ripped (digital) proof documents will not contain an `export` element.
+> NOTE: ripped (digital) associatedProof documents will not contain an `export` element.
 
 # 21. JSON Example
 

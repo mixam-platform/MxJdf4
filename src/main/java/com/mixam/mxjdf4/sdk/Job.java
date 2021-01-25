@@ -10,7 +10,7 @@ public class Job {
 
     private Article article;
     private JobDetails details;
-    private Proof proof;
+    private AssociatedProof associatedProof;
     private Shipment shipment;
 
     public Article getArticle() {
@@ -29,12 +29,12 @@ public class Job {
         this.details = details;
     }
 
-    public Proof getProof() {
-        return proof;
+    public AssociatedProof getAssociatedProof() {
+        return associatedProof;
     }
 
-    public void setProof(Proof proof) {
-        this.proof = proof;
+    public void setAssociatedProof(AssociatedProof associatedProof) {
+        this.associatedProof = associatedProof;
     }
 
     public Shipment getShipment() {
