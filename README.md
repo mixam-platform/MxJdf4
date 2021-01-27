@@ -4,17 +4,17 @@
 
 ## API & SDK for ordering a print job
 
-The _Mixam Job Description Format_ describes the structure of a print job in an unambiguous way.
+The _Mixam Job Description Format_ (MxJdf) describes the structure of a print job in an unambiguous way.
 
 Although the Mixam Platform is capable of specifying a job in many formats (cXML, OneFlow, and
-vendor specific formats), the MXJDF (Mixam Job Description Format) is the most complete and useful,
-and also the recommended way to establish an automated connection with us.
+several vendor-specific formats), MxJdf is the most complete, the most useful, and the recommended 
+way to establish an automated connection with us.
 
-The MXJDF format is made of attributes and values and can be provided as an XML and/or JSON
+The MxJdf format is made of attributes and values and can be provided as an XML and/or JSON
 document. We also provide a Java implementation of the MXJDF format, but it can easily be
 implemented with other programing languages such as PHP or JavaScript.
 
-MXJDF documents can be attached to an email message or posted to the printer's preferred end-point
+MxJdf documents can be attached to an email message or posted to the printer's preferred end-point
 using HTTPS or SFTP.
 
 ## Table of Contents
@@ -66,7 +66,7 @@ The top level of the MxJdf document contains the following elements:
 |desc|Document description. (String)|Always "mixam.job.description"|
 |dateCreated|Epoch date of creation. (Long number)|A Unix Timestamp of the date the document was created|
 |author|The name of the person who created the document. (String)|   |
-|referencedJobNumber|The associated order’s id in the Mixam system. (String)|   |
+|referencedJobNumber|The `id` of the associated order in the Mixam system. (String)|   |
 |price|The pre-agreed cost price of the job (Double precision number)|   |
 |currencyCode|The currency in which the price is specified. (String)|“GBP”, “USD”, “CAD”, “AUD”|
 |job|A map of properties describing the job.|See bellow|
@@ -263,8 +263,8 @@ The top level of the MxJdf document contains the following elements:
 
 | Property | Description | Values |
 |---|---|---|
-|proofJobNumber|The associated associatedProof order’s id in the Mixam system. (String)|   |
-|proofJobType|Print job classification of the associatedProof|RIPPED_PROOF(1), <br>HARD_COPY_PROOF(2)|
+|proofJobNumber|The `id` of the associated proof order in the Mixam system. (String)|   |
+|proofJobType|Print job classification of the associated proof order|RIPPED_PROOF(1), <br>HARD_COPY_PROOF(2)|
 |proofDate|The date the proof job was fulfilled|A Unix Timestamp of the date the document was fulfilled|
 
 > NOTE: jobs that did not have a proof previously will not include the `associatedProof` element.
@@ -286,7 +286,7 @@ The top level of the MxJdf document contains the following elements:
 |Weight|The expected weight of the goods. (Double precision number)||
 |units|The units in which the weight is specified. KILOGRAM on metric system, LIBRA on imperial.|KILOGRAM(0), <br>LIBRA(1),|
 
-> NOTE: ripped (digital) associatedProof jobs will not contain a `shipment` element.
+> NOTE: ripped (digital) proof jobs will not contain a `shipment` element.
 
 # 14. Element: RecipientAddress
 ```javascript
@@ -438,7 +438,7 @@ Optional, applicable only when goods are shipped overseas.
 |customsValueSum|Value of the goods for custom evaluation. (Integer number)||
 |customsValueCurrency|Currency code  of the above value.|GBP, USD, CAD, AUD|
 
-> NOTE: ripped (digital) associatedProof documents will not contain an `export` element.
+> NOTE: ripped (digital) proof documents will not contain an `export` element.
 
 # 21. JSON Example
 
