@@ -240,7 +240,9 @@ The top level of the MxJdf document contains the following elements:
    "additionalProjectName": "370260/1",
    "completionType": 3,
    "assumedPrintType": 1,
-   "totalCirculation": 400 
+   "totalCirculation": 400,
+   "jobType": 0
+   "remark": "£15 bundle in 500's cost added to supplier cost total as discussed"
  }
 ```
 
@@ -251,6 +253,7 @@ The top level of the MxJdf document contains the following elements:
 |totalCirculation|The total number of copies (Integer)||
 |assumedPrintType|The expect print technology|NONE(0), <br>LITHO(1), <br>DIGITAL(2), <br>INKJET(3)|
 |jobType|Classification of print job|PRIMARY_PRINT(0), <br>RIPPED_PROOF(1), <br>HARD_COPY_PROOF(2)|
+|remark|Remarks for the supplier added by Mixam at fulfilment-time, if any (String)||
 
 # 12. Element: associatedProof
 ```javascript

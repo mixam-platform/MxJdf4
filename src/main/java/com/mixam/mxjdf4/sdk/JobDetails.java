@@ -13,6 +13,7 @@ public class JobDetails {
     private int totalCirculation;
     private AssumedPrintType assumedPrintType;
     private JobType jobType;
+    private String remark;
 
     /**
      * Alias of {@code additionalProjectName}.
@@ -66,6 +67,17 @@ public class JobDetails {
 
     public void setJobType(JobType jobType) {
         this.jobType = jobType;
+    }
+
+    /**
+     * Fulfilment-time remarks added by the Mixam admin, if any.
+     */
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 
 }
