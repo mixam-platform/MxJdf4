@@ -394,7 +394,8 @@ See type ‘Address’
     "serviceDescription": "By Friday, 17:00",
     "canonicalUri": "UPS_NEXTDAYAIR_2_XCR_Z",
     "cost": 6.50
-    "url": "https://mixam.co.uk/spedition/5e2842bc4ed2f62bd2375020"
+    "url": "https://mixam.co.uk/spedition/1234567890abcdefghijklmn",
+    "packagingType": 0
   }
 ```
 
@@ -407,13 +408,14 @@ See type ‘Address’
 |canonicalUri|A unique identifier of the service (String)||
 |cost|Cost of delivery (Double precision number)||
 |url|Points to a page where collection can be summoned and shipment labels printed. (String)||
+|packagingType|Type of packaging that should be used with this delivery|STANDARD(0), <br>PLAIN(1)|
 
 # 19. Element: File
 ```javascript
  {
       "type": 0,
-      "name": "job372825.pdf",
-      "url": "https://s3-eu-...83da8bb6fe8d858d2117/job372825.pdf",
+      "name": "job123456.pdf",
+      "url": "https://s3-eu-...1234567890abcdefghijklmn/job123456.pdf",
       "checksum": "90be4101398f7f9bc95abe8b1d0f7447",
       "sizeInBytes": 1865517
 }
@@ -485,8 +487,8 @@ Optional, applicable only when goods are shipped overseas.
           "files": [
             {
               "type": 2,
-              "name": "job484134-cover.pdf",
-              "url": "https://s3.wasabisys.com/files.mixam.com/76f1a499451752af04e37aa328718a86c0afb2f8/job484134-cover.pdf",
+              "name": "job123456-cover.pdf",
+              "url": "https://s3.wasabisys.com/files.mixam.com/1234567890abcdefghijklmnopqrstuvwxyz1234/job123456-cover.pdf",
               "checksum": "4e8dcebe35e8b00dbd6b7b72ecbcba38",
               "sizeInBytes": 13273803
             }
@@ -522,8 +524,8 @@ Optional, applicable only when goods are shipped overseas.
           "files": [
             {
               "type": 1,
-              "name": "job484134-body.pdf",
-              "url": "https://s3.wasabisys.com/files.mixam.com/76f1a499451752af04e37aa328718a86c0afb2f8/job484134-body.pdf",
+              "name": "job123456-body.pdf",
+              "url": "https://s3.wasabisys.com/files.mixam.com/1234567890abcdefghijklmnopqrstuvwxyz1234/job123456-body.pdf",
               "checksum": "05551af33a81f6f13802ca1858919414",
               "sizeInBytes": 256689704
             }
@@ -539,12 +541,12 @@ Optional, applicable only when goods are shipped overseas.
       "completionType": 4,
       "totalCirculation": 1,
       "assumedPrintType": 2,
-      "orderId": "5f7c9449a478e23e57444661"
+      "orderId": "1234567890abcdefghijklmn"
     },
     "shipment": {
       "deliveryAddresses": [
         {
-          "deliveryId": "a895ac12-9a6a-4551-a71e-58e03393353b",
+          "deliveryId": "12345678-abcd-1234-abcd-123456789012",
           "address": {
             "salutation": "Mr.",
             "firstName": "Sherlock",
@@ -567,7 +569,7 @@ Optional, applicable only when goods are shipped overseas.
             "serviceDescription": "DPD Next day",
             "canonicalUri": "DPD-DPD_NEXT_DAY-zxa-1",
             "cost": 6.5,
-            "url": "https://mixam.co.uk/spedition/5f88be4ef9936c52e6c93d86"
+            "url": "https://mixam.co.uk/spedition/1234567890abcdefghijklmn"
           },
           "dispatchDate": 1603234800000,
           "deliveryDate": 1603321200000
@@ -640,7 +642,7 @@ Optional, applicable only when goods are shipped overseas.
                     <files-list>
                         <files>
                             <type>1</type>
-                            <name>job376634.pdf</name>
+                            <name>job123456.pdf</name>
                             <url>https://s3.wasabisys.com/files.mixam.com/8472912a7dba3e57ddeb36131ae96726ff3cc5da/job376634.pdf</url>
                             <checksum>584f4618c4532fbacda1d36d8a0d8338</checksum>
                             <sizeInBytes>11437989</sizeInBytes>
@@ -657,12 +659,12 @@ Optional, applicable only when goods are shipped overseas.
             <completionType>2</completionType>
             <totalCirculation>250</totalCirculation>
             <assumedPrintType>3</assumedPrintType>
-            <orderId>5e31a3dc2f231530f33ef3a4</orderId>
+            <orderId>1234567890abcdefghijklmn</orderId>
         </details>
         <shipment>
             <deliveryAddresses-list>
                 <deliveryAddresses>
-                    <deliveryId>82dcdf2c-f5d9-46d3-b06f-a47e3fd41bf9</deliveryId>
+                    <deliveryId>12345678-abcd-1234-abcd-123456789012</deliveryId>
                     <address>
                         <salutation>Mr.</salutation>
                         <firstName>Sherlock</firstName>
