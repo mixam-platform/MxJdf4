@@ -391,7 +391,8 @@ See type ‘Address’
     "serviceDescription": "By Friday, 17:00",
     "canonicalUri": "UPS_NEXTDAYAIR_2_XCR_Z",
     "cost": 6.50
-    "url": "https://mixam.co.uk/spedition/5e2842bc4ed2f62bd2375020"
+    "url": "https://mixam.co.uk/spedition/5e2842bc4ed2f62bd2375020",
+    "packagingType": 0
   }
 ```
 
@@ -404,6 +405,7 @@ See type ‘Address’
 |canonicalUri|A unique identifier of the service (String)||
 |cost|Cost of delivery (Double precision number)||
 |url|Points to a page where collection can be summoned and shipment labels printed. (String)||
+|packagingType|Type of packaging that should be used with this delivery|STANDARD(0), <br>PLAIN(1)|
 
 # 19. Element: File
 ```javascript

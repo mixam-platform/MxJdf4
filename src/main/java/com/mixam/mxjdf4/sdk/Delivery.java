@@ -5,8 +5,9 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-
+@SuppressWarnings("unused")
 public class Delivery {
+
     private DeliveryType type;
     private String carrier;
     private String serviceType;
@@ -14,6 +15,7 @@ public class Delivery {
     private String canonicalUri;
     private double cost;
     private String url;
+    private PackagingType packagingType;
 
     public DeliveryType getType() {
         return type;
@@ -70,6 +72,15 @@ public class Delivery {
     public void setUrl(String url) {
         this.url = url;
     }
+
+    public PackagingType getPackagingType() {
+        return packagingType;
+    }
+
+    public void setPackagingType(PackagingType packagingType) {
+        this.packagingType = packagingType;
+    }
+
 }
 
 
