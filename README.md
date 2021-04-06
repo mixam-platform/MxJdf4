@@ -202,7 +202,9 @@ The top level of the MxJdf document contains the following elements:
     "headTailBand": 1,
     "ribbon": 0,
     "window": 0,
-    "feature": 0
+    "feature": 0,
+    "frameDepth": 0,
+    "borderType": 0
 }
 ```
 
@@ -215,6 +217,8 @@ The top level of the MxJdf document contains the following elements:
 |ribbon|Ratchford  (RibbonType)|NONE(0), <br>MAROON(1), <br>BLACK(2), <br>DARK_GREEN(3), <br>BRIGHT_RED(4), <br>IVORY(5), <br>WHITE(6), <br>GOLD(7), <br>PURPLE(8), <br>ORANGE(9), <br>PINK(10), <br>GREY(11), <br>BABY_BLUE(12), <br>BLUE(13),|
 |window|Envelope window (WindowType)|NONE(0), <br>LEFT(1), <br>RIGHT(2)|
 |feature|(FeatureType)|INVALID(0), <br>SUPPLY_FOLDED(1), <br>SUPPLY_NOT_FOLDED(2), <br>PERFORATED_ON_TOP(3), <br>PERFORATED_LEFT(4), <br>PEEL_AND_SEAL(5)|
+|frameDepth|Depth of frame (framed products only)|MM_18(1), <br>MM_38(2)|
+|borderType|Type of border (framed products only)|WRAP_AROUND(0), <br>EDGE_TO_EDGE(1), <br>PADDED(2)|
 
 # 10. Element: binding
 ```javascript
