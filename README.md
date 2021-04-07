@@ -101,7 +101,7 @@ The top level of the MxJdf document contains the following elements:
 |---|---|---|
 |components|A list of components (such as text, cover, dust jacket etc.) (List<component>)|See bellow|
 |type|Taxation type (VAT, GST etc.) (ArticleTaxType)|EXEMPT(0),<br> VAT(1),<br> GST(2),<br> USA_TAX(3);|
-|product|The product id (ProductGroupType)|INVALID(0),<br>PRODUCT_BRUCHURES(1),<br>PRODUCT_FLYERS(2),<br>PRODUCT_FOLDED(3),<br>PRODUCT_POSTERS(4),<br>   PRODUCT_LETTERHEADS(5),<br>PRODUCT_PHOTOBOOK(6),<br>PRODUCT_BOOK(7),<br>  PRODUCT_BUSINESS_CARD(8),<br>PRODUCT_POSTCARD(9),<br>PRODUCT_GREETING_CARD(10)<br>PRODUCT_NOTEPAD(11),<br> PRODUCT_COMPLIMENT_SLIPS(12),<br>PRODUCT_ENVELOPES(13),<br>PRODUCT_FOLDERS(14),<br>PRODUCT_LAYFLAT(15),<br>PRODUCT_WALL_CALENDARS(16),<br>PRODUCT_DESK_CALENDARS(17)<br> PRODUCT_VR_WALL_CALENDARS(18)<br> PRODUCT_VR_DESK_CALENDARS(19),<br>  PRODUCT_TRADITIONAL_BOOK(20);|
+|product|The product id (ProductGroupType)|INVALID(0),<br>PRODUCT_BRUCHURES(1),<br>PRODUCT_FLYERS(2),<br>PRODUCT_FOLDED(3),<br>PRODUCT_POSTERS(4),<br>   PRODUCT_LETTERHEADS(5),<br>PRODUCT_PHOTOBOOK(6),<br>PRODUCT_BOOK(7),<br>  PRODUCT_BUSINESS_CARD(8),<br>PRODUCT_POSTCARD(9),<br>PRODUCT_GREETING_CARD(10)<br>PRODUCT_NOTEPAD(11),<br> PRODUCT_COMPLIMENT_SLIPS(12),<br>PRODUCT_ENVELOPES(13),<br>PRODUCT_FOLDERS(14),<br>PRODUCT_LAYFLAT(15),<br>PRODUCT_WALL_CALENDARS(16),<br>PRODUCT_DESK_CALENDARS(17)<br> PRODUCT_VR_WALL_CALENDARS(18)<br> PRODUCT_VR_DESK_CALENDARS(19),<br> PRODUCT_TRADITIONAL_BOOK(20),<br> PRODUCT_CANVAS(21) ;|
 |subProduct|Fine classification of the product. (optional) (SubProductType)|PRODUCT_HARD_COVER_BOOKS(1)<br>PRODUCT_PAPERBACK_BOOKS(2)<br>PRODUCT_PERFECT_BOOKLETS(3)<br>PRODUCT_WIRO_BOOKLETS(4)<br>PRODUCT_LOOP_BOOKLETS(5)<br>PRODUCT_STAPLED_BOOKLETS(6)<br>PRODUCT_MAGAZINES(7)<br>PRODUCT_CATALOGS(8)<br>PRODUCT_BOOKLETS(9)<br>PRODUCT_ZINES(10)<br>PRODUCT_COMIC_BOOKS(11)<br> PRODUCT_ART_PRINTS(12)<br>PRODUCT_MANGA(13)<br>PRODUCT_WEDDING_BOOK(14)<br>PRODUCT_YEARBOOK(15)<br>PRODUCT_COOKBOOK(16)<br> PRODUCT_COLOURINGBOOK(17)<br> PRODUCT_ARTBOOK(18)<br> PRODUCT_GRAPHIC_NOVEL(19)<br> PRODUCT_LOOKBOOK(20);|
 
 
@@ -174,7 +174,7 @@ The top level of the MxJdf document contains the following elements:
 |glossiness|Paper glossiness (MaterialGlossinessType)|NONE(0),<br>MATT(1),<br>GLOSS(2),|
 |weight|The weight on one unit (Integer number)||
 |units|Units of weight (PaperWeightUnit)|INVALID(0),<br>GSM(1),<br>LIBRA_COVER(2),<br> LIBRA_TEXT(3),<br> LIBRA_CARD(4),|
-|type|(MaterialType) (SILK is known as SATIN in the US)|INVALID(0)<br>SILK(1)<br>GLOSS(2)<br>UNCOATED(3)<br>AFFICHE_PAPER(4)<br>OUTDOOR_PAPER(5)<br>ILLUSTRATION_PRINTING_PAPER(6)<br>PHOTOGRAPHIC_PRINTING_PAPER(7)<br>POSTCARD_BOARD(8)<br>RECYCLED_NATURAL_PAPER(9)<br>RECYCLED_SILK_PAPER(10)<br>MATT(11)<br>WEATHERPROOF_VINYL(12)<br>RECYCLED_UNCOATED_PAPER(13)|
+|type|(MaterialType) (SILK is known as SATIN in the US)|INVALID(0)<br>SILK(1)<br>GLOSS(2)<br>UNCOATED(3)<br>AFFICHE_PAPER(4)<br>OUTDOOR_PAPER(5)<br>ILLUSTRATION_PRINTING_PAPER(6)<br>PHOTOGRAPHIC_PRINTING_PAPER(7)<br>POSTCARD_BOARD(8)<br>RECYCLED_NATURAL_PAPER(9)<br>RECYCLED_SILK_PAPER(10)<br>MATT(11)<br>WEATHERPROOF_VINYL(12)<br>RECYCLED_UNCOATED_PAPER(13)<br>POLYESTER_CANVAS(14)|
 |refinings|List of refining of material such as lamination coating and UV coating. (MaterialRefining)|See below|
 |color|The colour of the material|WHITE (0),<br>YELLOW(1),<br>GREEN(2),<br>RED(3)|
 
@@ -202,7 +202,8 @@ The top level of the MxJdf document contains the following elements:
     "headTailBand": 1,
     "ribbon": 0,
     "window": 0,
-    "feature": 0
+    "feature": 0,
+    "frameDepth": 0
 }
 ```
 
@@ -215,6 +216,7 @@ The top level of the MxJdf document contains the following elements:
 |ribbon|Ratchford  (RibbonType)|NONE(0), <br>MAROON(1), <br>BLACK(2), <br>DARK_GREEN(3), <br>BRIGHT_RED(4), <br>IVORY(5), <br>WHITE(6), <br>GOLD(7), <br>PURPLE(8), <br>ORANGE(9), <br>PINK(10), <br>GREY(11), <br>BABY_BLUE(12), <br>BLUE(13),|
 |window|Envelope window (WindowType)|NONE(0), <br>LEFT(1), <br>RIGHT(2)|
 |feature|(FeatureType)|INVALID(0), <br>SUPPLY_FOLDED(1), <br>SUPPLY_NOT_FOLDED(2), <br>PERFORATED_ON_TOP(3), <br>PERFORATED_LEFT(4), <br>PEEL_AND_SEAL(5)|
+|frameDepth|Depth of frame (framed products only)|MM_18(1), <br>MM_38(2)|
 
 # 10. Element: binding
 ```javascript
@@ -226,6 +228,7 @@ The top level of the MxJdf document contains the following elements:
    "spineWidth": 7.5,
 }
 ```
+
 | Property | Description | Values |
 |---|---|---|
 |type|(BindingType)|NONE(0), <br>STAPLE_BINDING(1), <br>PERFECT_BINDING(2), <br>WIRO_BINDING(3), <br>LOOP_BINDING(4), <br>BOOK_BINDING(5), <br> SEW_BINDING(6), <br>CALENDAR_BINDING (7)|

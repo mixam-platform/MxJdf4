@@ -5,8 +5,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-
 public class Processing {
+
     private Binding binding;
     private CreasingType creasing;
     private FoldingType folding;
@@ -14,6 +14,7 @@ public class Processing {
     private WindowType window;
     private RibbonType ribbon;
     private FeatureType feature;
+    private FrameDepth frameDepth;
 
     public FeatureType getFeature() {
         return feature;
@@ -70,4 +71,13 @@ public class Processing {
     public void setWindow(WindowType window) {
         this.window = window;
     }
+
+    public FrameDepth getFrameDepth() {
+        return frameDepth;
+    }
+
+    public void setFrameDepth(FrameDepth frameDepth) {
+        this.frameDepth = frameDepth;
+    }
+
 }
