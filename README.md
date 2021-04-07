@@ -203,8 +203,7 @@ The top level of the MxJdf document contains the following elements:
     "ribbon": 0,
     "window": 0,
     "feature": 0,
-    "frameDepth": 0,
-    "borderType": 0
+    "frameDepth": 0
 }
 ```
 
@@ -218,7 +217,6 @@ The top level of the MxJdf document contains the following elements:
 |window|Envelope window (WindowType)|NONE(0), <br>LEFT(1), <br>RIGHT(2)|
 |feature|(FeatureType)|INVALID(0), <br>SUPPLY_FOLDED(1), <br>SUPPLY_NOT_FOLDED(2), <br>PERFORATED_ON_TOP(3), <br>PERFORATED_LEFT(4), <br>PEEL_AND_SEAL(5)|
 |frameDepth|Depth of frame (framed products only)|MM_18(1), <br>MM_38(2)|
-|borderType|Type of border (framed products only)|WRAP_AROUND(0), <br>EDGE_TO_EDGE(1), <br>PADDED(2)|
 
 # 10. Element: binding
 ```javascript
@@ -230,6 +228,7 @@ The top level of the MxJdf document contains the following elements:
    "spineWidth": 7.5,
 }
 ```
+
 | Property | Description | Values |
 |---|---|---|
 |type|(BindingType)|NONE(0), <br>STAPLE_BINDING(1), <br>PERFECT_BINDING(2), <br>WIRO_BINDING(3), <br>LOOP_BINDING(4), <br>BOOK_BINDING(5), <br> SEW_BINDING(6), <br>CALENDAR_BINDING (7)|

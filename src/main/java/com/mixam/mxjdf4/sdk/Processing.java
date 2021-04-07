@@ -15,7 +15,6 @@ public class Processing {
     private RibbonType ribbon;
     private FeatureType feature;
     private FrameDepth frameDepth;
-    private BorderType borderType;
 
     public FeatureType getFeature() {
         return feature;
@@ -79,14 +78,6 @@ public class Processing {
 
     public void setFrameDepth(FrameDepth frameDepth) {
         this.frameDepth = frameDepth;
-    }
-
-    public BorderType getBorderType() {
-        return borderType;
-    }
-
-    public void setBorderType(BorderType borderType) {
-        this.borderType = borderType;
     }
 
 }
