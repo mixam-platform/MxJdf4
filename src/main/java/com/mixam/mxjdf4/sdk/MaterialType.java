@@ -3,6 +3,7 @@ package com.mixam.mxjdf4.sdk;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum MaterialType {
+
     INVALID(0),
     SILK(1),
     GLOSS(2),
@@ -17,6 +18,7 @@ public enum MaterialType {
     FLUORESCENT(11),
     WEATHERPROOF_VINYL(12),
     RECYCLED_UNCOATED_PAPER(13),
+    POLYESTER_CANVAS(14),
     ;
 
     private final int value;
@@ -29,4 +31,5 @@ public enum MaterialType {
     public int getValue() {
         return value;
     }
+
 }
