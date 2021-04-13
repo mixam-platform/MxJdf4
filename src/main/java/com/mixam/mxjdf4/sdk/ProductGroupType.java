@@ -4,12 +4,12 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum ProductGroupType {
     INVALID(0),
-    PRODUCT_BRUCHURES(1),
+    PRODUCT_BROCHURES(1),
     PRODUCT_FLYERS(2),
     PRODUCT_FOLDED(3),
     PRODUCT_POSTERS(4),
     PRODUCT_LETTERHEADS(5),
-    PRODUCT_PHOTOBOOK(6),
+    PRODUCT_PHOTO_BOOK(6),
     PRODUCT_BOOK(7),
     PRODUCT_BUSINESS_CARD(8),
     PRODUCT_POSTCARD(9),
@@ -23,7 +23,9 @@ public enum ProductGroupType {
     PRODUCT_DESK_CALENDARS(17),
     PRODUCT_VR_WALL_CALENDARS(18),
     PRODUCT_VR_DESK_CALENDARS(19),
-    PRODUCT_TRADITIONAL_BOOK(20);
+    PRODUCT_TRADITIONAL_BOOK(20),
+    PRODUCT_CANVAS(21),
+    ;
 
     private final int value;
 
