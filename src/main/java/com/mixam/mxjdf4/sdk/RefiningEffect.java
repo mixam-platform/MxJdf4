@@ -10,6 +10,10 @@ public enum RefiningEffect {
     SOFT_TOUCH (4),
     GOLD (5),
     SILVER (6),
+    COPPER(7),
+    RED(8),
+    BLUE(9),
+    GREEN(10)
     ;
 
     private final int value;
