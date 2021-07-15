@@ -7,6 +7,7 @@ import java.util.Date;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
+@SuppressWarnings("unused")
 public class RecipientAddress {
     private String deliveryId;
 
@@ -16,6 +17,8 @@ public class RecipientAddress {
 
     private Date dispatchDate;
     private Date deliveryDate;
+
+    private String instructions;
 
     /**
      * Unique, Mixam-assigned, opaque identifier for the {@code Delivery} associated with this
@@ -68,4 +71,13 @@ public class RecipientAddress {
     public void setCirculation(int circulation) {
         this.circulation = circulation;
     }
+
+    public String getInstructions() {
+        return instructions;
+    }
+
+    public void setInstructions(String instructions) {
+        this.instructions = instructions;
+    }
+
 }

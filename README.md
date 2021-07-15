@@ -302,7 +302,8 @@ The top level of the MxJdf document contains the following elements:
   "circulation:  100,
   "delivery": {...},
   "dispatchDate": 1579693407751,
-  "deliveryDate": 1579695818930
+  "deliveryDate": 1579695818930,
+  "instructions": "Please leave parcels behind the bins"
 }
 ```
 
@@ -314,6 +315,7 @@ The top level of the MxJdf document contains the following elements:
 |delivery|Delivery details. (Delivery)|See bellow|
 |dispatchDate|Epoch date of dispatch (when the boxes are due to be collected by the carrier.) (Long number)|A Unix Timestamp|
 |deliveryDate|Epoch date of delivery (when the boxes are due to arrive at the customer address.) (Long number)|A Unix Timestamp|
+|instructions|Delivery instructions (String)||
 
 # 15. Element: address
 ```javascript

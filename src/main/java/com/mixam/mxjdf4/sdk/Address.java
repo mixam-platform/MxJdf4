@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-
+@SuppressWarnings("unused")
 public class Address {
     private SalutationType salutation;
     private String firstName;
@@ -133,4 +133,5 @@ public class Address {
     public void setCompany(String company) {
         this.company = company;
     }
+
 }
