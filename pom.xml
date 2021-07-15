@@ -3,13 +3,13 @@
 
     <groupId>com.mixam</groupId>
     <artifactId>mxjdf4</artifactId>
-    <version>4.1.11</version>
+    <version>4.1.11-SNAPSHOT</version>
     <name>Mixam Job Description Format</name>
     <packaging>jar</packaging>
 
     <scm>
-        <connection>scm:git:ssh://github.com/mixam-platform/MxJdf4.git</connection>
-        <developerConnection>scm:git:ssh://github.com/mixam-platform/MxJdf4.git</developerConnection>
+        <connection>scm:git:git@github.com:mixam-platform/MxJdf4.git</connection>
+        <developerConnection>scm:git:git@github.com:mixam-platform/MxJdf4.git</developerConnection>
         <url>https://github.com/mixam-platform/MxJdf4.git</url>
         <tag>mxjdf4-4.1.11</tag>
     </scm>
