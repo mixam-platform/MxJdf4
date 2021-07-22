@@ -13,6 +13,7 @@ public class MxJdf4 {
     private String version;
     private String desc;
     private String referencedJobNumber;
+    private String shopName;
     private String author;
     private Date dateCreated;
     private Job job;
@@ -90,5 +91,13 @@ public class MxJdf4 {
 
     public void setExport(Export export) {
         this.export = export;
+    }
+
+    public String getShopName() {
+        return shopName;
+    }
+
+    public void setShopName(String shopName) {
+        this.shopName = shopName;
     }
 }

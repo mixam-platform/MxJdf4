@@ -53,6 +53,7 @@ The top level of the MxJdf document contains the following elements:
   "dateCreated": 1579177108174,
   "author" : "Sherlock Holmes",
   "referencedJobNumber": 303171489,
+  "shopName" : "mixam",
   "price" : 105.31,
   “currencyCode”: “gbp”,
   "job": {...},
@@ -67,6 +68,7 @@ The top level of the MxJdf document contains the following elements:
 |dateCreated|Epoch date of creation. (Long number)|A Unix Timestamp of the date the document was created|
 |author|The name of the person who created the document. (String)|   |
 |referencedJobNumber|The `id` of the associated order in the Mixam system. (String)|   |
+|shopName|The name of the shop where the order originated from (String)|   |
 |price|The pre-agreed cost price of the job (Double precision number)|   |
 |currencyCode|The currency in which the price is specified. (String)|“GBP”, “USD”, “CAD”, “AUD”|
 |job|A map of properties describing the job.|See bellow|
