@@ -13,13 +13,13 @@ public class MxJdf4 {
     private String version;
     private String desc;
     private String referencedJobNumber;
+    private String shopName;
     private String author;
     private Date dateCreated;
     private Job job;
     private Export export;
     private Double price;
     private String currencyCode;
-    private String shopName;
 
     public Double getPrice() {
         return price;
