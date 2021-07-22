@@ -47,7 +47,7 @@ using HTTPS or SFTP.
 # 1. Top Level Element
 The top level of the MxJdf document contains the following elements:
 ```javascript
-{~~~~
+{
   "version": 4.01.05,
   "desc": "mixam.job.description",
   "dateCreated": 1579177108174,
