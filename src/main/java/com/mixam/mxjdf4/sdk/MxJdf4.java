@@ -19,6 +19,7 @@ public class MxJdf4 {
     private Export export;
     private Double price;
     private String currencyCode;
+    private String shopName;
 
     public Double getPrice() {
         return price;
@@ -90,5 +91,13 @@ public class MxJdf4 {
 
     public void setExport(Export export) {
         this.export = export;
+    }
+
+    public String getShopName() {
+        return shopName;
+    }
+
+    public void setShopName(String shopName) {
+        this.shopName = shopName;
     }
 }
