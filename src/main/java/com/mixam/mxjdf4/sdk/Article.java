@@ -9,13 +9,19 @@ import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-
 public class Article {
+
     @JacksonXmlElementWrapper(localName = "components-list")
     private List<Component> components;
+
     private ArticleTaxType type;
+
     private ProductGroupType product;
+
     private SubProductType subProduct;
+
+    @JacksonXmlElementWrapper(localName = "additional-files")
+    private List<File> additionalFiles;
 
     public List<Component> getComponents() {
         if (components == null) {
@@ -51,4 +57,19 @@ public class Article {
     public void setSubProduct(SubProductType subProduct) {
         this.subProduct = subProduct;
     }
+
+    /**
+     * Additional merged files that aren't specifically associated with a {@link Component}.
+     */
+    public List<File> getAdditionalFiles() {
+        if (additionalFiles == null) {
+            additionalFiles = new ArrayList<>();
+        }
+        return additionalFiles;
+    }
+
+    public void setAdditionalFiles(List<File> additionalFiles) {
+        this.additionalFiles = additionalFiles;
+    }
+
 }

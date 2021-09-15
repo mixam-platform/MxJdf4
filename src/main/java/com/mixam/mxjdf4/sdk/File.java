@@ -5,8 +5,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-
 public class File {
+
     private FileType type;
     private String name;
     private String url;
@@ -52,4 +52,5 @@ public class File {
     public void setSizeInBytes(long sizeInBytes) {
         this.sizeInBytes = sizeInBytes;
     }
+
 }
