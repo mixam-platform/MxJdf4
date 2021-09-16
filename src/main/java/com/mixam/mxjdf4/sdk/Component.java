@@ -9,8 +9,8 @@ import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-
 public class Component {
+
     private int pages;
     private Chromaticity chromaticity;
     private Format format;
@@ -89,4 +89,5 @@ public class Component {
     public void setType(ComponentType type) {
         this.type = type;
     }
+
 }
