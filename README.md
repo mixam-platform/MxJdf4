@@ -21,7 +21,7 @@ using HTTPS or SFTP.
 
 | Chapter | Number |
 |---|--:|
-| [Top Level Element](#1-top-level-element) | 1 |
+| [Root Element](#1-top-level-element) | 1 |
 | [Element: job](#2-element-job) | 2 |
 | [Element: article](#3-element-article) | 3 |
 | [Element: component](#4-element-component) | 4 |
@@ -36,13 +36,15 @@ using HTTPS or SFTP.
 | [Element: shipment](#13-element-shipment) | 13 |
 | [Element: RecipientAddress](#14-element-recipientaddress) | 14 |
 | [Element: address](#15-element-address) | 15 |
-| [Element: senderForLabel (Address)](#16-element-senderforlabel-address) | 16 |
+| [Element: senderForLabel (Address)](#16-element-senderForLabel-address) | 16 |
 | [Type: Address](#17-type-address) | 17 |
-| [Element: delivery](#18-element-delivery) | 18 |
+| [Element: Delivery](#18-element-delivery) | 18 |
 | [Element: File](#19-element-file) | 19 |
-| [Element: export](#20-element-export) | 20 |
-| [JSON Example](#21-json-example) | 21 |
-| [XML Example](#22-xml-example) | 22 |
+| [Element: fileFlags](#20-element-fileFlags) | 20 |
+| [Type: Dimensions](#21-type-dimensions) | 21 |
+| [Element: export](#22-element-export) | 22 |
+| [JSON Example](#23-json-example) | 23 |
+| [XML Example](#24-xml-example) | 24 |
  
 # 1. Top Level Element
 The top level of the MxJdf document contains the following elements:
@@ -146,11 +148,22 @@ The top level of the MxJdf document contains the following elements:
 |back|Colour space on back / inside. (ColorType)|INVALID (0),<br>HKS (1),<br>BLACK (2),<br>PROCESS (3);|
 
 # 6. Element: format
+
+Specifies the dimensions of the component in localised units (i.e. mm or inches). These are
+ordinarily the dimensions at which the article was sold; so in the case of an A5 hardcover book,
+both the body and the cover components would have 210 for the `longEdge` and 148 for the
+`shortEdge`. Also in the case of folded products, if the article was sold to the customer using flat
+sizes (US & Canada) these dimensions will match the flat size of the article; in other locales these
+dimensions will match the folded size.
+
+If the article contains a dust jacket component, by contrast, these dimensions on that component
+will match the trim box of the actual artwork for the just jacket.
+
 ```javascript
- "format" : {
-    "longEdge" : 210,
-    "orientation" : 1,
-    "shortEdge" : 99,
+ "format": {
+    "longEdge": 210,
+    "orientation": 1,
+    "shortEdge": 99,
     "units": 0
 }
 ```
@@ -164,11 +177,11 @@ The top level of the MxJdf document contains the following elements:
  
 # 7. Element: material
 ```javascript
-"material" : {
-    "glossiness" : 1,
-    “weight" : 170,
-    "units" : 1,
-    "type" : 4,
+"material": {
+    "glossiness": 1,
+    "weight": 170,
+    "units": 1,
+    "type": 4,
     "refinings": [{...}, {...}]
 }
 ````
@@ -419,14 +432,15 @@ See type ‘Address’
 |url|Points to a page where collection can be summoned and shipment labels printed. (String)||
 |packagingType|Type of packaging that should be used with this delivery|STANDARD(0), <br>PLAIN(1)|
 
-# 19. Element: File
+# 19. Element: file
 ```javascript
  {
     "type": 0,
     "name": "job123456.pdf",
     "url": "https://s3-eu-...1234567890abcdefghijklmn/job123456.pdf",
     "checksum": "90be4101398f7f9bc95abe8b1d0f7447",
-    "sizeInBytes": 1865517
+    "sizeInBytes": 1865517,
+    "trimBox": {...}
 }
 ```
 
@@ -438,8 +452,9 @@ See type ‘Address’
 |checksum|MD5 checksum of this file. (String)||
 |sizeInBytes|Size of file (Long number)||
 |flags|Helpful metadata that describes the content of the file. (FileFlags)|See below|
+|trimBox|Dimensions of the artwork file's _trim box_. (Dimensions)|See bellow|
 
-# 19. Element: FileFlags
+# 20. Element: fileFlags
 ```javascript
  {
     "headToHead": true,
@@ -467,7 +482,23 @@ See type ‘Address’
 |foilBlue|(Optional) the file contains a separation (guide) layer for blue foil|`true` or absent|
 |foilGreen|(Optional) the file contains a separation (guide) layer for green foil|`true` or absent|
 
-# 20. Element: export
+# 21. Type: Dimensions
+```javascript
+ "format": {
+    "longEdge": 210,
+    "shortEdge": 99,
+    "units": 0
+}
+```
+
+| Property | Description | Values |
+|---|---|---|
+|longEdge|Component long axis. (Double precision number) in shop’s units||
+|shortEdge|Component short axis. (Double precision number) in shop’s units ||
+|units|The units in which the edges are specified. mm on metric system, inch on imperial.|MM (0),<br>INCH(1),|
+
+
+# 22. Element: export
 Optional, applicable only when goods are shipped overseas.
  ```javascript
 "export": {
@@ -483,7 +514,7 @@ Optional, applicable only when goods are shipped overseas.
 
 > NOTE: ripped (digital) proof documents will not contain an `export` element.
 
-# 21. JSON Example
+# 23. JSON Example
 
 ```javascript
 {
@@ -639,7 +670,7 @@ Optional, applicable only when goods are shipped overseas.
 }
 ```
 
-# 22. XML Example
+# 24. XML Example
 
 ```xml
 <MxJdf4>
