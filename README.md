@@ -179,7 +179,7 @@ The top level of the MxJdf document contains the following elements:
 |weight|The weight on one unit (Integer number)||
 |units|Units of weight (PaperWeightUnit)|INVALID(0),<br>GSM(1),<br>LIBRA_COVER(2),<br> LIBRA_TEXT(3),<br> LIBRA_CARD(4),|
 |type|(MaterialType) (SILK is known as SATIN in the US)|INVALID(0)<br>SILK(1)<br>GLOSS(2)<br>UNCOATED(3)<br>AFFICHE_PAPER(4)<br>OUTDOOR_PAPER(5)<br>ILLUSTRATION_PRINTING_PAPER(6)<br>PHOTOGRAPHIC_PRINTING_PAPER(7)<br>POSTCARD_BOARD(8)<br>RECYCLED_NATURAL_PAPER(9)<br>RECYCLED_SILK_PAPER(10)<br>MATT(11)<br>WEATHERPROOF_VINYL(12)<br>RECYCLED_UNCOATED_PAPER(13)<br>POLYESTER_CANVAS(14)|
-|refinings|List of refining of material such as lamination coating and UV coating. (MaterialRefining)|See below|
+|refinings|List of refining options such as lamination, spot UV, etc. (MaterialRefining)|See below|
 |color|The colour of the material|WHITE (0),<br>YELLOW(1),<br>GREEN(2),<br>RED(3)|
 
 # 8. Element: refining
@@ -422,11 +422,11 @@ See type ‘Address’
 # 19. Element: File
 ```javascript
  {
-      "type": 0,
-      "name": "job123456.pdf",
-      "url": "https://s3-eu-...1234567890abcdefghijklmn/job123456.pdf",
-      "checksum": "90be4101398f7f9bc95abe8b1d0f7447",
-      "sizeInBytes": 1865517
+    "type": 0,
+    "name": "job123456.pdf",
+    "url": "https://s3-eu-...1234567890abcdefghijklmn/job123456.pdf",
+    "checksum": "90be4101398f7f9bc95abe8b1d0f7447",
+    "sizeInBytes": 1865517
 }
 ```
 
@@ -437,6 +437,35 @@ See type ‘Address’
 |url|Where to download this file (String)||
 |checksum|MD5 checksum of this file. (String)||
 |sizeInBytes|Size of file (Long number)||
+|flags|Helpful metadata that describes the content of the file. (FileFlags)|See below|
+
+# 19. Element: FileFlags
+```javascript
+ {
+    "headToHead": true,
+    "coverSingles": true,
+    "spotUv": true,
+    "foilGold": true,
+    "foilSilver": true,
+    "foilCopper": true,
+    "foilRed": true,
+    "foilBlue": true,
+    "foilGreen": true
+}
+```
+
+| Property | Description | Values |
+|---|---|---|
+|headToHead|(Optional) whether front and back sides are imposed head-to-head|`true` or absent|
+|coverSingles|(Optional) whether frond an back cover are imposed as separate pages|`true` or absent|
+|spotUv|(Optional) the file contains a separation (guide) layer for Spot UV|`true` or absent|
+|spotUv3d|(Optional) the file contains a separation (guide) layer for Spot UV 3D|`true` or absent|
+|foilGold|(Optional) the file contains a separation (guide) layer for gold foil|`true` or absent|
+|foilSilver|(Optional) the file contains a separation (guide) layer for silver foil|`true` or absent|
+|foilCopper|(Optional) the file contains a separation (guide) layer for copper foil|`true` or absent|
+|foilRed|(Optional) the file contains a separation (guide) layer for red foil|`true` or absent|
+|foilBlue|(Optional) the file contains a separation (guide) layer for blue foil|`true` or absent|
+|foilGreen|(Optional) the file contains a separation (guide) layer for green foil|`true` or absent|
 
 # 20. Element: export
 Optional, applicable only when goods are shipped overseas.

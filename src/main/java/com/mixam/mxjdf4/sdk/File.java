@@ -12,6 +12,7 @@ public class File {
     private String url;
     private String checksum;
     private long sizeInBytes;
+    private FileFlags flags;
 
     public FileType getType() {
         return type;
@@ -51,6 +52,14 @@ public class File {
 
     public void setSizeInBytes(long sizeInBytes) {
         this.sizeInBytes = sizeInBytes;
+    }
+
+    public FileFlags getFlags() {
+        return flags;
+    }
+
+    public void setFlags(FileFlags flags) {
+        this.flags = flags;
     }
 
 }
