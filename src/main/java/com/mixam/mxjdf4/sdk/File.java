@@ -13,6 +13,7 @@ public class File {
     private String checksum;
     private long sizeInBytes;
     private FileFlags flags;
+    private Dimensions trimBox;
 
     public FileType getType() {
         return type;
@@ -60,6 +61,14 @@ public class File {
 
     public void setFlags(FileFlags flags) {
         this.flags = flags;
+    }
+
+    public Dimensions getTrimBox() {
+        return trimBox;
+    }
+
+    public void setTrimBox(Dimensions trimBox) {
+        this.trimBox = trimBox;
     }
 
 }
