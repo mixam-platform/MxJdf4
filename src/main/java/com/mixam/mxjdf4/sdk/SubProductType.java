@@ -23,7 +23,8 @@ public enum SubProductType {
     PRODUCT_COLOURINGBOOK(17),
     PRODUCT_ARTBOOK(18),
     PRODUCT_GRAPHIC_NOVEL(19),
-    PRODUCT_LOOKBOOK(20);
+    PRODUCT_LOOKBOOK(20),
+    PRODUCT_DIARIES(21);
 
 
     private final int value;
