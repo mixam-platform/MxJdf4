@@ -8,10 +8,9 @@
     <packaging>jar</packaging>
 
     <scm>
-        <connection>scm:git:git@github.com:mixam-platform/MxJdf4.git</connection>
+        <connection>scm:git:https://github.com/mixam-platform/MxJdf4.git</connection>
         <developerConnection>scm:git:git@github.com:mixam-platform/MxJdf4.git</developerConnection>
         <url>https://github.com/mixam-platform/MxJdf4.git</url>
-        <tag>mxjdf4-4.1.11</tag>
     </scm>
 
     <distributionManagement>
