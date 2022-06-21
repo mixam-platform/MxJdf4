@@ -36,7 +36,17 @@ https://{mixam.domain}/api/webhooks/{supplier.token}/shipment
   - `mixam.domain`: the domain associated with your supplier account (`mixam.co.uk`, `mixam.com`, `mixam.ca`, or `mixam.com.au`)
   - `supplier.token`: a short, unique string assigned to your supplier account by the Mixam team
 
-Webhook endpoints accept only HTTP `POST` requests with `Content-Type: application/json`.
+### HTTP Request Headers
+
+Please pass **all** of the following HTTP headers on each Webhook request:
+
+  - `Authorization: Bearer {access.token}`
+  - `Content-Type: application/json`
+  - `Accept: application/json`
+
+### HTTP POST
+
+Webhook endpoints accept only HTTP `POST` requests.
 
 ## Webhook Payload
 
