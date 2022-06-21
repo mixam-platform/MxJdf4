@@ -4,6 +4,25 @@ Mixam can provide a _Webhook_ ("post back") API through which Suppliers can noti
 to the status of orders fulfilled with them. Please contact Mixam to have the Webhook API enabled 
 for your supplier account.
 
+## Authentication
+
+The Webhook API expects a standard `Bearer` token — use the (standard) `Authorization`
+HTTP header and pass the following value: `Bearer {access.token}`.
+
+You can obtain a valid `{access.token}` programmatically from the Mixam security token endpoint:
+
+```shell
+https://{mixam.domain}/api/user/token
+```
+
+Where `mixam.domain` is the domain associated with your supplier account (`mixam.co.uk`,
+`mixam.com`, `mixam.ca`, or `mixam.com.au`).
+
+The token endpoint supports [HTTP BASIC authentication](). (Most modern development platforms and
+frameworks include a very simple way to include BASIC authentication when sending an HTTP request.)
+Use the username & password of the registered Mixam account associated with the Mixam supplier
+record. A valid `{access.token}` expires after 30 minutes.
+
 ## Webhook Endpoint (API URL)
 
 Webhook endpoints take the following form:
@@ -40,8 +59,10 @@ The body of the Webhook HTTP `POST` request must be valid JSON containing the fo
 {
   "ExternalOrderId": "11/111111001",
   "orderStatus": "SHIPPED",
-  “DeliveryId”: “ed642885-226a-4416-8b70-22d415866244”,
-  “TrackingCode”: “5672345678”,
+  "DeliveryId": "ed642885-226a-4416-8b70-22d415866244",
+  "TrackingCode": "5672345678",
   "sourceShipmentId": 123456
 }
 ```
+
+[HTTP BASIC authentication]:https://en.wikipedia.org/wiki/Basic_access_authentication
