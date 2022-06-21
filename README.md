@@ -2,6 +2,15 @@
 
 # Mixam Job Description Format, v. 4
 
+## Mixam Webhooks
+
+This document outlines the process and format through which Mixam sends printed item fulfilment 
+instructions in MxJdf4. Suppliers that integrate with Mixam also have the option to use _Webhooks_
+(instead of the Mixam web portal) to accept orders, mark orders as labeled, and notify Mixam of 
+dispatch delays.
+
+[Mixam Webhooks Documentation](WEBHOOKS.md)
+
 ## API & SDK for ordering a print job
 
 The _Mixam Job Description Format_ (MxJdf) describes the structure of a print job in an unambiguous way.
@@ -789,6 +798,4 @@ Optional, applicable only when goods are shipped overseas.
 
 ## License
 The Mixam Job Description Format is an Open Source software released under the
- [Apache 2.0 license](https://www.apache.org/licenses/LICENSE-2.0.html).
- 
-
+[Apache 2.0 license](https://www.apache.org/licenses/LICENSE-2.0.html).
