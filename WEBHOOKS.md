@@ -56,7 +56,7 @@ The body of the Webhook HTTP `POST` request must be valid JSON containing the fo
 |---|---|---|---|
 | `ExternalOrderId` | All | `String` (Required) | Mixam's reference number for the item (e.g. `11/111111001`) |
 | `orderStatus` | All | `String` | One of the following:<br>`ACCEPTED`<br>`REJECTED`<br>`DELAYED`<br>`SHIPPED`<br>`CANCELLED`<br>If status is `DELAYED`, `UpdateDispatchDate` must be specified. |
-| `UpdateDispatchDate` | `DELAYED` | `Long` | The new estimated dispatch date  |
+| `UpdateDispatchDate` | `DELAYED` | `Long` | The new estimated dispatch date given in [Unix Epoch Time] (e.g. `1655897807`) |
 | `deliveryId` | `SHIPPED` | `String` | (Required for Split Delivery items) Mixam's reference number for the delivery (e.g. `ed642885-226a-4416-8b70-22d415866244`) |
 | `TrackingCode` | `SHIPPED` | `String` | The tracking number/code as provided by the carrier |
 | `SourceShipmentId` | `SHIPPED` | `Long` | Integer id assigned to the shipment by the carrier |
@@ -75,4 +75,25 @@ The body of the Webhook HTTP `POST` request must be valid JSON containing the fo
 }
 ```
 
+## Webhook Response
+
+A successful (200-series) response to a Webhook HTTP `POST` request will be valid JSON containing the following properties:
+
+| Property | Applies To | Java Type | Description |
+|---|---|---|---|
+| `status` | All | `String` | `SUCCESS` or `FAILURE` |
+| `id` | API Successes | `String` | A unique, random identifier assigned to the response |
+| `error` | API Failures | `String` | Short description of the error condition |
+
+### Example Response
+
+```json
+{
+    "id": null,
+    "status": "FAILURE",
+    "error": "Order 538277 is not found"
+}
+```
+
 [HTTP BASIC authentication]:https://en.wikipedia.org/wiki/Basic_access_authentication
+[Unix Epoch Time]:https://www.epoch101.com/
