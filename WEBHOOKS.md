@@ -52,25 +52,25 @@ Webhook endpoints accept only HTTP `POST` requests.
 
 The body of the Webhook HTTP `POST` request must be valid JSON containing the following properties:
 
-| Property | Applicable Status(es) | Java Type | Description |
-|---|---|---|---|
-| `ExternalOrderId` | All | `String` (Required) | Mixam's reference number for the item (e.g. `11/111111001`) |
-| `orderStatus` | All | `String` | One of the following:<br>`ACCEPTED`<br>`REJECTED`<br>`DELAYED`<br>`SHIPPED`<br>`CANCELLED`<br>If status is `DELAYED`, `UpdateDispatchDate` must be specified. |
-| `UpdateDispatchDate` | `DELAYED` | `Long` | The new estimated dispatch date given in [Unix Epoch Time] (e.g. `1655897807`) |
-| `deliveryId` | `SHIPPED` | `String` | (Required for Split Delivery items) Mixam's reference number for the delivery (e.g. `ed642885-226a-4416-8b70-22d415866244`) |
-| `TrackingCode` | `SHIPPED` | `String` | The tracking number/code as provided by the carrier |
-| `SourceShipmentId` | `SHIPPED` | `Long` | Integer id assigned to the shipment by the carrier |
-| `NumberOfItems` | `SHIPPED` | `Long` | (Optional) Number of copies shipped; if omitted, Mixam assumes all copies in the delivery |
-| `Reason` | `REJECTED`<br>`DELAYED`<br>`CANCELLED` | `String` | (Optional) Additional details |
+| Property             | Applicable Status(es) | Java Type | Description |
+|----------------------|---|---|---|
+| `externalOrderId`    | All | `String` (Required) | Mixam's reference number for the item (e.g. `11/111111001`) |
+| `orderStatus`        | All | `String` | One of the following:<br>`ACCEPTED`<br>`REJECTED`<br>`DELAYED`<br>`SHIPPED`<br>`CANCELLED`<br>If status is `DELAYED`, `UpdateDispatchDate` must be specified. |
+| `updateDispatchDate` | `DELAYED` | `Long` | The new estimated dispatch date given in [Unix Epoch Time] (e.g. `1655897807`) |
+| `deliveryId`         | `SHIPPED` | `String` | (Required for Split Delivery items) Mixam's reference number for the delivery (e.g. `ed642885-226a-4416-8b70-22d415866244`) |
+| `trackingCode`       | `SHIPPED` | `String` | The tracking number/code as provided by the carrier |
+| `sourceShipmentId`   | `SHIPPED` | `Long` | Integer id assigned to the shipment by the carrier |
+| `numberOfItems`      | `SHIPPED` | `Long` | (Optional) Number of copies shipped; if omitted, Mixam assumes all copies in the delivery |
+| `reason`             | `REJECTED`<br>`DELAYED`<br>`CANCELLED` | `String` | (Optional) Additional details |
 
 ### Example Payload
 
 ```json
 {
-  "ExternalOrderId": "11/111111001",
+  "externalOrderId": "11/111111001",
   "orderStatus": "SHIPPED",
-  "DeliveryId": "ed642885-226a-4416-8b70-22d415866244",
-  "TrackingCode": "5672345678",
+  "deliveryId": "ed642885-226a-4416-8b70-22d415866244",
+  "trackingCode": "5672345678",
   "sourceShipmentId": 123456
 }
 ```
