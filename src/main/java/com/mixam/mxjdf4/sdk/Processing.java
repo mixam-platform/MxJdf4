@@ -15,6 +15,7 @@ public class Processing {
     private RibbonType ribbon;
     private FeatureType feature;
     private FrameDepth frameDepth;
+    private SubstrateDesign substrateDesign;
 
     public FeatureType getFeature() {
         return feature;
@@ -80,4 +81,11 @@ public class Processing {
         this.frameDepth = frameDepth;
     }
 
+    public SubstrateDesign getSubstrateDesign() {
+        return substrateDesign;
+    }
+
+    public void setSubstrateDesign(SubstrateDesign substrateDesign) {
+        this.substrateDesign = substrateDesign;
+    }
 }
