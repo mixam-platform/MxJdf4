@@ -257,7 +257,7 @@ will match the trim box of the actual artwork for the just jacket.
 }
 ```
 
-| Property  | Description | Values |
+| Property | Description | Values |
 |---|---|---|
 |type|(BindingType)|NONE(0), <br>SADDLE_STITCH(1), <br>PUR(2), <br>WIRO(3), <br>LOOP(4), <br>CASE_BOUND(5), <br> CASE_BOUND_WITH_SEWING(6), <br>CALENDAR (7), <br>PUR_WITH_SEWING (8)|
 |color|Wiro spiral colour (BindingColorType)|NONE (0), <br>BLACK (1), <br>SILVER (2), <br>WHITE (3),|
