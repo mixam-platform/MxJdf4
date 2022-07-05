@@ -4,13 +4,13 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum BindingType {
     INVALID(0),
-    SADDLE_STITCH(1),
+    STAPLED(1),
     PUR(2),
     WIRO(3),
     LOOP(4),
-    CASE_BOUND(5),
+    CASE(5),
     CASE_BOUND_WITH_SEWING(6),
-    CALENDAR(7),
+    CALENDAR_WIRO(7),
     PUR_WITH_SEWING(8)
     ;
 
