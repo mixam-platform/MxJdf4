@@ -12,6 +12,7 @@ public class Binding {
     private LoopsType loops;
     private EndPaperColorType endPaperColor;
     private Double spineWidth;
+    private boolean sewn;
 
     public Double getSpineWidth() {
         return spineWidth;
@@ -51,5 +52,13 @@ public class Binding {
 
     public void setLoops(LoopsType loops) {
         this.loops = loops;
+    }
+
+    public boolean isSewn() {
+        return sewn;
+    }
+
+    public void setSewn(boolean sewn) {
+        this.sewn = sewn;
     }
 }
