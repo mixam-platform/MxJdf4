@@ -9,10 +9,6 @@ public enum BindingType {
     WIRO(3),
     LOOP(4),
     CASE(5),
-    /**
-     * @deprecated Use case bound with the sewing boolean on the {@link Binding} object set to true
-     */
-    @Deprecated
     CASE_BOUND_WITH_SEWING(6),
     CALENDAR_WIRO(7)
     ;
