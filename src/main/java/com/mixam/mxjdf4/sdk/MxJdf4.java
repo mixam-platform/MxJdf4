@@ -19,7 +19,7 @@ public class MxJdf4 {
     private Job job;
     private Export export;
     private Double price;
-    private Double setPackagingCost;
+    private Double packagingCost;
     private String currencyCode;
 
     public Double getPrice() {
@@ -102,11 +102,11 @@ public class MxJdf4 {
         this.shopName = shopName;
     }
 
-    public Double getSetPackagingCost() {
-        return setPackagingCost;
+    public Double getPackagingCost() {
+        return packagingCost;
     }
 
-    public void setSetPackagingCost(Double setPackagingCost) {
-        this.setPackagingCost = setPackagingCost;
+    public void setPackagingCost(Double packagingCost) {
+        this.packagingCost = packagingCost;
     }
 }
