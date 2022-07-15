@@ -66,7 +66,8 @@ The top level of the MxJdf document contains the following elements:
   "referencedJobNumber": 303171489,
   "shopName" : "mixam",
   "price" : 105.31,
-  “currencyCode”: “gbp”,
+  "packagingCost" : 2.50,
+  "currencyCode": "gbp",
   "job": {...},
   "export": {...}
 }
@@ -81,6 +82,7 @@ The top level of the MxJdf document contains the following elements:
 |referencedJobNumber|The `id` of the associated order in the Mixam system. (String)|   |
 |shopName|The name of the shop where the order originated from (String)|   |
 |price|The pre-agreed cost price of the job (Double precision number)|   |
+|packagingCost|Cost attributed towards packaging (Double precision number)|   |
 |currencyCode|The currency in which the price is specified. (String)|“GBP”, “USD”, “CAD”, “AUD”|
 |job|A map of properties describing the job.|See bellow|
 |export|A map of properties describing the export value of the goods. (Map). Applicable only when goods are shipped overseas.| See bellow.|
