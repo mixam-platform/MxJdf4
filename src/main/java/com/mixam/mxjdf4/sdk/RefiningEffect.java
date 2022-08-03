@@ -13,7 +13,8 @@ public enum RefiningEffect {
     COPPER(7),
     RED(8),
     BLUE(9),
-    GREEN(10)
+    GREEN(10),
+    MATT_ANTI_SCUFF(11)
     ;
 
     private final int value;
