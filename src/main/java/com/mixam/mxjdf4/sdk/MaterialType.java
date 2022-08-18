@@ -19,6 +19,8 @@ public enum MaterialType {
     WEATHERPROOF_VINYL(12),
     RECYCLED_UNCOATED_PAPER(13),
     POLYESTER_CANVAS(14),
+    PREMIUM_WHITE(15),
+    CREME(16)
     ;
 
     private final int value;
