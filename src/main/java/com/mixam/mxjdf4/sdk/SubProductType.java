@@ -32,8 +32,6 @@ public enum SubProductType {
     PRODUCT_FAMILY_HISTORY_BOOKS(26)
     ;
 
-    <br> PRODUCT_MENUS(23)<br> PRODUCT_CLASSIC_BOOKS(24)<br> PRODUCT_CLASSIC_PAPERBACK_BOOKS(25)<br> PRODUCT_FAMILY_HISTORY_BOOKS(26)
-
     private final int value;
 
     SubProductType(int value) {
