@@ -407,7 +407,7 @@ See type ‘Address’
 
 | Property | Description | Values |
 |---|---|---|
-|salutation|(SalutationType)|MX("Mx."), <br>MS("Ms."), <br>MR("Mr."), <br>DR("Dr."), <br>MRS("Mrs"), <br>PROF("Prof"),|
+|salutation|(SalutationType)|MX("Mx."), <br>MS("Ms."), <br>MR("Mr."), <br>DR("Dr."), <br>MRS("Mrs"), <br>PROF("Prof"), <br>PROF("Prof"), <br>NOT_APPLICABLE("")|
 |companyName|(String)||
 |firstName|(String)||
 |surName|(String)||
