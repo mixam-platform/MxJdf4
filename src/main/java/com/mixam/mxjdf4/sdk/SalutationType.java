@@ -9,6 +9,7 @@ public enum SalutationType {
     DR("Dr."),
     MRS("Mrs"),
     PROF("Prof"),
+    NOT_APPLICABLE(""),
     ;
 
     private final String value;

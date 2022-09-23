@@ -405,9 +405,9 @@ See type ‘Address’
 }
 ```
 
-| Property | Description | Values |
-|---|---|---|
-|salutation|(SalutationType)|MX("Mx."), <br>MS("Ms."), <br>MR("Mr."), <br>DR("Dr."), <br>MRS("Mrs"), <br>PROF("Prof"),|
+| Property | Description | Values                                                                                                                                     |
+|---|---|--------------------------------------------------------------------------------------------------------------------------------------------|
+|salutation|(SalutationType)| MX("Mx."), <br>MS("Ms."), <br>MR("Mr."), <br>DR("Dr."), <br>MRS("Mrs"), <br>PROF("Prof"), <br>NOT_APPLICABLE("")                       |
 |companyName|(String)||
 |firstName|(String)||
 |surName|(String)||
@@ -417,10 +417,10 @@ See type ‘Address’
 |county|Usually county name. State in the US. (String)||
 |postalCode|Postcode in the UK, zip in US. (String)||
 |city|(String)||
-|country|(String)|“GB”, “US”, “CA” or “AU”|
+|country|(String)| “GB”, “US”, “CA” or “AU”                                                                                                                   |
 |telephoneNumber|(String)||
 |email|(String)||
-|locationType|(AddressLocationType)|RESIDENTIAL(0), <br>BUSINESS_DOCK(1), <br>BUSINESS_NO_DOCK(2), <br>LIMITED_ACCESS(3), <br>TRADE_SHOW(4), <br>CONSTRUCTION(5), <br>FARM(6),|
+|locationType|(AddressLocationType)| RESIDENTIAL(0), <br>BUSINESS_DOCK(1), <br>BUSINESS_NO_DOCK(2), <br>LIMITED_ACCESS(3), <br>TRADE_SHOW(4), <br>CONSTRUCTION(5), <br>FARM(6), |
  
 # 18. Element: delivery
 ```javascript
