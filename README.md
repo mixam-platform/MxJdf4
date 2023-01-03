@@ -290,7 +290,7 @@ will match the trim box of the actual artwork for the just jacket.
 |assumedPrintType|The expect print technology|NONE(0), <br>LITHO(1), <br>DIGITAL(2), <br>INKJET(3)|
 |jobType|Classification of print job|PRIMARY_PRINT(0), <br>RIPPED_PROOF(1), <br>HARD_COPY_PROOF(2)|
 |remark|Remarks for the supplier added by Mixam at fulfilment-time, if any (String)||
-|machineName|The name of the machine that the item was sent to (String)||
+|machineName|The name of the recommended machine for this job identified by our pricing engine (String)||
 
 # 12. Element: associatedProof
 ```javascript
