@@ -276,7 +276,7 @@ will match the trim box of the actual artwork for the just jacket.
    "completionType": 3,
    "assumedPrintType": 1,
    "totalCirculation": 400,
-   "jobType": 0
+   "jobType": 0,
    "remark": "£15 bundle in 500's cost added to supplier cost total as discussed",
    "machineName": "B3D-Z"
  }
