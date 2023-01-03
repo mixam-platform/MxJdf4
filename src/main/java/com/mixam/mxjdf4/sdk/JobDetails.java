@@ -14,6 +14,7 @@ public class JobDetails {
     private AssumedPrintType assumedPrintType;
     private JobType jobType;
     private String remark;
+    private String machineName;
 
     /**
      * Alias of {@code additionalProjectName}.
@@ -80,4 +81,11 @@ public class JobDetails {
         this.remark = remark;
     }
 
+    public String getMachineName() {
+        return machineName;
+    }
+
+    public void setMachineName(String machineName) {
+        this.machineName = machineName;
+    }
 }
