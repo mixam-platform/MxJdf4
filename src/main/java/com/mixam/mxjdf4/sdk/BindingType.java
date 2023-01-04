@@ -10,7 +10,8 @@ public enum BindingType {
     LOOP(4),
     CASE(5),
     CASE_BOUND_WITH_SEWING(6),
-    CALENDAR_WIRO(7)
+    CALENDAR_WIRO(7),
+    COIL(8),
     ;
 
     private final int value;
