@@ -22,6 +22,8 @@ public class Article {
 
     private boolean rightToLeft;
 
+    private int productionDays;
+
     @JacksonXmlElementWrapper(localName = "additional-files")
     private List<File> additionalFiles;
 
@@ -66,6 +68,14 @@ public class Article {
 
     public void setRightToLeft(boolean rightToLeft) {
         this.rightToLeft = rightToLeft;
+    }
+
+    public int getProductionDays() {
+        return productionDays;
+    }
+
+    public void setProductionDays(int productionDays) {
+        this.productionDays = productionDays;
     }
 
     /**

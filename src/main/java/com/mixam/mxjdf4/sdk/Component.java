@@ -17,7 +17,6 @@ public class Component {
     private Material material;
     private Processing processing;
     private ComponentType type;
-    private int productionDays;
     @JacksonXmlElementWrapper(localName = "files-list")
     private List<File> files;
 
@@ -91,11 +90,4 @@ public class Component {
         this.type = type;
     }
 
-    public int getProductionDays() {
-        return productionDays;
-    }
-
-    public void setProductionDays(int productionDays) {
-        this.productionDays = productionDays;
-    }
 }
