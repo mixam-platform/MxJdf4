@@ -109,17 +109,19 @@ The top level of the MxJdf document contains the following elements:
   "components": [...],
   "type": 0,
   "product": 1,
-  "subProduct": 1,
+  "subProduct": 1, 
+  "rightToLeft": false,
   "additionalFiles": [...]
  }
 ````
-| Property | Description | Values |
-|---|---|---|
-|components|A list of components (such as text, cover, dust jacket etc.) (List<component>)|See bellow|
-|type|Taxation type (VAT, GST etc.) (ArticleTaxType)|EXEMPT(0),<br> VAT(1),<br> GST(2),<br> USA_TAX(3);|
-|product|The product id (ProductGroupType)|INVALID(0),<br>PRODUCT_BROCHURES(1),<br>PRODUCT_FLYERS(2),<br>PRODUCT_FOLDED(3),<br>PRODUCT_POSTERS(4),<br>   PRODUCT_LETTERHEADS(5),<br>PRODUCT_PHOTO_BOOK(6),<br>PRODUCT_BOOK(7),<br>  PRODUCT_BUSINESS_CARD(8),<br>PRODUCT_POSTCARD(9),<br>PRODUCT_GREETING_CARD(10)<br>PRODUCT_NOTE_BOOK(11),<br> PRODUCT_COMPLIMENT_SLIPS(12),<br>PRODUCT_ENVELOPES(13),<br>PRODUCT_FOLDERS(14),<br>PRODUCT_LAYFLAT(15),<br>PRODUCT_WALL_CALENDARS(16),<br>PRODUCT_DESK_CALENDARS(17)<br> PRODUCT_VR_WALL_CALENDARS(18)<br> PRODUCT_VR_DESK_CALENDARS(19),<br> PRODUCT_TRADITIONAL_BOOK(20),<br> PRODUCT_CANVAS(21) ;|
-|subProduct|Fine classification of the product. (optional) (SubProductType)|PRODUCT_HARD_COVER_BOOKS(1)<br>PRODUCT_PAPERBACK_BOOKS(2)<br>PRODUCT_PERFECT_BOOKLETS(3)<br>PRODUCT_WIRO_BOOKLETS(4)<br>PRODUCT_LOOP_BOOKLETS(5)<br>PRODUCT_STAPLED_BOOKLETS(6)<br>PRODUCT_MAGAZINES(7)<br>PRODUCT_CATALOGS(8)<br>PRODUCT_BOOKLETS(9)<br>PRODUCT_ZINES(10)<br>PRODUCT_COMIC_BOOKS(11)<br> PRODUCT_ART_PRINTS(12)<br>PRODUCT_MANGA(13)<br>PRODUCT_WEDDING_BOOK(14)<br>PRODUCT_YEARBOOK(15)<br>PRODUCT_COOKBOOK(16)<br> PRODUCT_COLOURINGBOOK(17)<br> PRODUCT_ARTBOOK(18)<br> PRODUCT_GRAPHIC_NOVEL(19)<br> PRODUCT_LOOKBOOK(20)<br> PRODUCT_DIARIES(21)<br> PRODUCT_JOURNALS(22)<br> PRODUCT_MENUS(23)<br> PRODUCT_CLASSIC_BOOKS(24)<br> PRODUCT_CLASSIC_PAPERBACK_BOOKS(25)<br> PRODUCT_FAMILY_HISTORY_BOOKS(26) ;|
-|additionalFiles|A list of additional artwork files that aren't associated with a specific component. (List<File>)|See bellow|
+| Property        | Description                                                                                       | Values                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+|-----------------|---------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| components      | A list of components (such as text, cover, dust jacket etc.) (List<component>)                    | See bellow                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| type            | Taxation type (VAT, GST etc.) (ArticleTaxType)                                                    | EXEMPT(0),<br> VAT(1),<br> GST(2),<br> USA_TAX(3);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| product         | The product id (ProductGroupType)                                                                 | INVALID(0),<br>PRODUCT_BROCHURES(1),<br>PRODUCT_FLYERS(2),<br>PRODUCT_FOLDED(3),<br>PRODUCT_POSTERS(4),<br>   PRODUCT_LETTERHEADS(5),<br>PRODUCT_PHOTO_BOOK(6),<br>PRODUCT_BOOK(7),<br>  PRODUCT_BUSINESS_CARD(8),<br>PRODUCT_POSTCARD(9),<br>PRODUCT_GREETING_CARD(10)<br>PRODUCT_NOTE_BOOK(11),<br> PRODUCT_COMPLIMENT_SLIPS(12),<br>PRODUCT_ENVELOPES(13),<br>PRODUCT_FOLDERS(14),<br>PRODUCT_LAYFLAT(15),<br>PRODUCT_WALL_CALENDARS(16),<br>PRODUCT_DESK_CALENDARS(17)<br> PRODUCT_VR_WALL_CALENDARS(18)<br> PRODUCT_VR_DESK_CALENDARS(19),<br> PRODUCT_TRADITIONAL_BOOK(20),<br> PRODUCT_CANVAS(21) ;                                                                                                                         |
+| subProduct      | Fine classification of the product. (optional) (SubProductType)                                   | PRODUCT_HARD_COVER_BOOKS(1)<br>PRODUCT_PAPERBACK_BOOKS(2)<br>PRODUCT_PERFECT_BOOKLETS(3)<br>PRODUCT_WIRO_BOOKLETS(4)<br>PRODUCT_LOOP_BOOKLETS(5)<br>PRODUCT_STAPLED_BOOKLETS(6)<br>PRODUCT_MAGAZINES(7)<br>PRODUCT_CATALOGS(8)<br>PRODUCT_BOOKLETS(9)<br>PRODUCT_ZINES(10)<br>PRODUCT_COMIC_BOOKS(11)<br> PRODUCT_ART_PRINTS(12)<br>PRODUCT_MANGA(13)<br>PRODUCT_WEDDING_BOOK(14)<br>PRODUCT_YEARBOOK(15)<br>PRODUCT_COOKBOOK(16)<br> PRODUCT_COLOURINGBOOK(17)<br> PRODUCT_ARTBOOK(18)<br> PRODUCT_GRAPHIC_NOVEL(19)<br> PRODUCT_LOOKBOOK(20)<br> PRODUCT_DIARIES(21)<br> PRODUCT_JOURNALS(22)<br> PRODUCT_MENUS(23)<br> PRODUCT_CLASSIC_BOOKS(24)<br> PRODUCT_CLASSIC_PAPERBACK_BOOKS(25)<br> PRODUCT_FAMILY_HISTORY_BOOKS(26) ; |
+| rightToLeft     | Field to describe if the item was written left to right(by default) or right to left              | true or false                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| additionalFiles | A list of additional artwork files that aren't associated with a specific component. (List<File>) | See bellow                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 
 
 # 4. Element: component
@@ -131,19 +133,21 @@ The top level of the MxJdf document contains the following elements:
   "material": {...},
   "processing": {...},
   "files": [...],
-  "type": 2
+  "type": 2,
+  "productionDays": 3      
 }
 ```` 
 
-| Property | Description | Values |
-|---|---|---|
-|pages|Number of pages in the component (Integer number)|4, 8, 32, to name a few|
-|chromaticity|Chromaticity element which specify the colour space on the front and back|See below|
-|format|Format element which specify the component measurements|See below|
-|material|Material element which specify the component paper stock.|See below|
-|processing|Processing element which specify additional processing such as binding.|See below|
-|files|A list of artwork files associated with the component. (List<File>)|See bellow|
-|type|ComponentType|INVALID(0),<br>CONTENT(1),<br>COVER(2),<br>JACKET(3),<br>BOOKMARK(4),<br>ENVELOPE (5)|
+| Property       | Description                                                               | Values                                                                                |
+|----------------|---------------------------------------------------------------------------|---------------------------------------------------------------------------------------|
+| pages          | Number of pages in the component (Integer number)                         | 4, 8, 32, to name a few                                                               |
+| chromaticity   | Chromaticity element which specify the colour space on the front and back | See below                                                                             |
+| format         | Format element which specify the component measurements                   | See below                                                                             |
+| material       | Material element which specify the component paper stock.                 | See below                                                                             |
+| processing     | Processing element which specify additional processing such as binding.   | See below                                                                             |
+| files          | A list of artwork files associated with the component. (List<File>)       | See bellow                                                                            |
+| type           | ComponentType                                                             | INVALID(0),<br>CONTENT(1),<br>COVER(2),<br>JACKET(3),<br>BOOKMARK(4),<br>ENVELOPE (5) |
+| productionDays | Number of days that the supplier needs to produce the item                | 1, 2, 3...100                                                                         |
 
 # 5. Element: chromaticity
 ```javascript
@@ -570,6 +574,7 @@ Optional, applicable only when goods are shipped overseas.
           },
           "processing": {},
           "type": 2,
+          "productionDays": 3,  
           "files": [
             {
               "type": 2,
@@ -620,7 +625,8 @@ Optional, applicable only when goods are shipped overseas.
       ],
       "type": 0,
       "product": 7,
-      "subProduct": 0
+      "subProduct": 0,
+      "rightToLeft": false
     },
     "details": {
       "additionalProjectName": "5f7c9449a478e23e57444661",
@@ -725,6 +731,7 @@ Optional, applicable only when goods are shipped overseas.
                         </binding>
                     </processing>
                     <type>1</type>
+                    <productionDays>3</productionDays>
                     <files-list>
                         <files>
                             <type>1</type>
@@ -739,6 +746,7 @@ Optional, applicable only when goods are shipped overseas.
             <type>0</type>
             <product>1</product>
             <subProduct>0</subProduct>
+            <rightToLeft>false</rightToLeft>
         </article>
         <details>
             <additionalProjectName>5e31a3dc2f231530f33ef3a4</additionalProjectName>
