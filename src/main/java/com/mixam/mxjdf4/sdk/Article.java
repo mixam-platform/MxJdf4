@@ -20,6 +20,8 @@ public class Article {
 
     private SubProductType subProduct;
 
+    private boolean rightToLeft;
+
     @JacksonXmlElementWrapper(localName = "additional-files")
     private List<File> additionalFiles;
 
@@ -56,6 +58,14 @@ public class Article {
 
     public void setSubProduct(SubProductType subProduct) {
         this.subProduct = subProduct;
+    }
+
+    public boolean isRightToLeft() {
+        return rightToLeft;
+    }
+
+    public void setRightToLeft(boolean rightToLeft) {
+        this.rightToLeft = rightToLeft;
     }
 
     /**
