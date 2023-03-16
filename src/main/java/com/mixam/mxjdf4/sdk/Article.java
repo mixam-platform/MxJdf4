@@ -20,6 +20,10 @@ public class Article {
 
     private SubProductType subProduct;
 
+    private boolean rightToLeft;
+
+    private int productionDays;
+
     @JacksonXmlElementWrapper(localName = "additional-files")
     private List<File> additionalFiles;
 
@@ -56,6 +60,22 @@ public class Article {
 
     public void setSubProduct(SubProductType subProduct) {
         this.subProduct = subProduct;
+    }
+
+    public boolean isRightToLeft() {
+        return rightToLeft;
+    }
+
+    public void setRightToLeft(boolean rightToLeft) {
+        this.rightToLeft = rightToLeft;
+    }
+
+    public int getProductionDays() {
+        return productionDays;
+    }
+
+    public void setProductionDays(int productionDays) {
+        this.productionDays = productionDays;
     }
 
     /**
