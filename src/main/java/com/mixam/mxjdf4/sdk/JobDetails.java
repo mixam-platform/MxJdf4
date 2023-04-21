@@ -88,5 +88,4 @@ public class JobDetails {
     public void setMachineName(String machineName) {
         this.machineName = machineName;
     }
-
 }
