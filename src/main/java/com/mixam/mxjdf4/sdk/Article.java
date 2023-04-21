@@ -24,6 +24,8 @@ public class Article {
 
     private int productionDays;
 
+    private Bundling bundling;
+
     @JacksonXmlElementWrapper(localName = "additional-files")
     private List<File> additionalFiles;
 
@@ -92,4 +94,11 @@ public class Article {
         this.additionalFiles = additionalFiles;
     }
 
+    public Bundling getBundling() {
+        return bundling;
+    }
+
+    public void setBundling(Bundling bundling) {
+        this.bundling = bundling;
+    }
 }

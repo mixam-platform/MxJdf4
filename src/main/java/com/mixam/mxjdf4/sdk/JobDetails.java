@@ -15,7 +15,6 @@ public class JobDetails {
     private JobType jobType;
     private String remark;
     private String machineName;
-    private Bundling bundling;
 
     /**
      * Alias of {@code additionalProjectName}.
@@ -90,11 +89,4 @@ public class JobDetails {
         this.machineName = machineName;
     }
 
-    public Bundling getBundling() {
-        return bundling;
-    }
-
-    public void setBundling(Bundling bundling) {
-        this.bundling = bundling;
-    }
 }
