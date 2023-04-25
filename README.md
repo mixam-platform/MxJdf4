@@ -43,17 +43,18 @@ using HTTPS or SFTP.
 | [Element: details](#11-element-details) | 11 |
 | [Element: associatedProof](#12-element-associatedProof) | 12 |
 | [Element: shipment](#13-element-shipment) | 13 |
-| [Element: RecipientAddress](#14-element-recipientaddress) | 14 |
-| [Element: address](#15-element-address) | 15 |
-| [Element: senderForLabel (Address)](#16-element-senderForLabel-address) | 16 |
-| [Type: Address](#17-type-address) | 17 |
-| [Element: Delivery](#18-element-delivery) | 18 |
-| [Element: File](#19-element-file) | 19 |
-| [Element: fileFlags](#20-element-fileFlags) | 20 |
-| [Type: Dimensions](#21-type-dimensions) | 21 |
-| [Element: export](#22-element-export) | 22 |
-| [JSON Example](#23-json-example) | 23 |
-| [XML Example](#24-xml-example) | 24 |
+| [Element: bundling](#14-element-bundling) | 14 |
+| [Element: RecipientAddress](#15-element-recipientaddress) | 15 |
+| [Element: address](#16-element-address) | 16 |
+| [Element: senderForLabel (Address)](#17-element-senderForLabel-address) | 17 |
+| [Type: Address](#18-type-address) | 18 |
+| [Element: Delivery](#19-element-delivery) | 19 |
+| [Element: File](#20-element-file) | 20 |
+| [Element: fileFlags](#21-element-fileFlags) | 21 |
+| [Type: Dimensions](#22-type-dimensions) | 22 |
+| [Element: export](#23-element-export) | 23 |
+| [JSON Example](#24-json-example) | 24 |
+| [XML Example](#25-xml-example) | 25 |
  
 # 1. Top Level Element
 The top level of the MxJdf document contains the following elements:
@@ -111,7 +112,8 @@ The top level of the MxJdf document contains the following elements:
   "product": 1,
   "subProduct": 1, 
   "rightToLeft": false,
-  "productionDays": 3,      
+  "productionDays": 3,
+  "bundling": {...},     
   "additionalFiles": [...]
  }
 ````
@@ -123,6 +125,7 @@ The top level of the MxJdf document contains the following elements:
 |subProduct|Fine classification of the product. (optional) (SubProductType)|PRODUCT_HARD_COVER_BOOKS(1)<br>PRODUCT_PAPERBACK_BOOKS(2)<br>PRODUCT_PERFECT_BOOKLETS(3)<br>PRODUCT_WIRO_BOOKLETS(4)<br>PRODUCT_LOOP_BOOKLETS(5)<br>PRODUCT_STAPLED_BOOKLETS(6)<br>PRODUCT_MAGAZINES(7)<br>PRODUCT_CATALOGS(8)<br>PRODUCT_BOOKLETS(9)<br>PRODUCT_ZINES(10)<br>PRODUCT_COMIC_BOOKS(11)<br> PRODUCT_ART_PRINTS(12)<br>PRODUCT_MANGA(13)<br>PRODUCT_WEDDING_BOOK(14)<br>PRODUCT_YEARBOOK(15)<br>PRODUCT_COOKBOOK(16)<br> PRODUCT_COLOURINGBOOK(17)<br> PRODUCT_ARTBOOK(18)<br> PRODUCT_GRAPHIC_NOVEL(19)<br> PRODUCT_LOOKBOOK(20)<br> PRODUCT_DIARIES(21)<br> PRODUCT_JOURNALS(22)<br> PRODUCT_MENUS(23)<br> PRODUCT_CLASSIC_BOOKS(24)<br> PRODUCT_CLASSIC_PAPERBACK_BOOKS(25)<br> PRODUCT_FAMILY_HISTORY_BOOKS(26) ;|
 |rightToLeft|Field to indicates if the item is right to left|true or false|
 |productionDays|Number of calculated production days for the item|1, 2, 3,…100|
+|bundling|Bundling element describing any bundling requirements for the order|See bellow|
 |additionalFiles|A list of additional artwork files that aren't associated with a specific component. (List<File>)|See bellow|
 
 
@@ -331,8 +334,21 @@ will match the trim box of the actual artwork for the just jacket.
 |units|The units in which the weight is specified. KILOGRAM on metric system, LIBRA on imperial.|KILOGRAM(0), <br>LIBRA(1),|
 
 > NOTE: ripped (digital) proof jobs will not contain a `shipment` element.
+> 
+> # 14. Element: bundling
+```javascript
+"bundling": {
+   "bundlingType": {...},
+   "bundleSize": 10
+}
+```
 
-# 14. Element: RecipientAddress
+| Property | Description | Values |
+|---|---|---|
+|bundlingType|The type of bundling|SHRINK_WRAP(1)|
+|bundleSize|Number of items in each bundle||
+
+# 15. Element: RecipientAddress
 ```javascript
 {
   "deliveryId": "abc123456",
@@ -355,7 +371,7 @@ will match the trim box of the actual artwork for the just jacket.
 |deliveryDate|Epoch date of delivery (when the boxes are due to arrive at the customer address.) (Long number)|A Unix Timestamp|
 |instructions|Delivery instructions (String)||
 
-# 15. Element: address
+# 16. Element: address
 ```javascript
 "address": {
       "salutation": "Mr.",
@@ -373,7 +389,7 @@ will match the trim box of the actual artwork for the just jacket.
 
 See type ‘Address’
 
-# 16. Element: senderForLabel (Address)
+# 17. Element: senderForLabel (Address)
 ```javascript
 "senderForLabel": {
     "salutation": "Mr.",
@@ -392,7 +408,7 @@ See type ‘Address’
 ```
 See type ‘Address’
 
-# 17. Type: Address
+# 18. Type: Address
 ```javascript
 {
     "salutation": "Mr.",
@@ -428,7 +444,7 @@ See type ‘Address’
 |email|(String)||
 |locationType|(AddressLocationType)|RESIDENTIAL(0), <br>BUSINESS_DOCK(1), <br>BUSINESS_NO_DOCK(2), <br>LIMITED_ACCESS(3), <br>TRADE_SHOW(4), <br>CONSTRUCTION(5), <br>FARM(6),|
  
-# 18. Element: delivery
+# 19. Element: delivery
 ```javascript
 "delivery": {
     "type": "parcel",
@@ -453,7 +469,7 @@ See type ‘Address’
 |url|Points to a page where collection can be summoned and shipment labels printed. (String)||
 |packagingType|Type of packaging that should be used with this delivery|STANDARD(0), <br>PLAIN(1)|
 
-# 19. Element: file
+# 20. Element: file
 ```javascript
  {
     "type": 0,
@@ -475,7 +491,7 @@ See type ‘Address’
 |flags|Helpful metadata that describes the content of the file. (FileFlags)|See below|
 |trimBox|Dimensions of the artwork file's _trim box_. (Dimensions)|See bellow|
 
-# 20. Element: fileFlags
+# 21. Element: fileFlags
 ```javascript
  {
     "headToHead": true,
@@ -503,7 +519,7 @@ See type ‘Address’
 |foilBlue|(Optional) the file contains a separation (guide) layer for blue foil|`true` or absent|
 |foilGreen|(Optional) the file contains a separation (guide) layer for green foil|`true` or absent|
 
-# 21. Type: Dimensions
+# 22. Type: Dimensions
 ```javascript
  "format": {
     "longEdge": 210,
@@ -519,7 +535,7 @@ See type ‘Address’
 |units|The units in which the edges are specified. mm on metric system, inch on imperial.|MM (0),<br>INCH(1),|
 
 
-# 22. Element: export
+# 23. Element: export
 Optional, applicable only when goods are shipped overseas.
  ```javascript
 "export": {
@@ -535,7 +551,7 @@ Optional, applicable only when goods are shipped overseas.
 
 > NOTE: ripped (digital) proof documents will not contain an `export` element.
 
-# 23. JSON Example
+# 24. JSON Example
 
 ```javascript
 {
@@ -693,7 +709,7 @@ Optional, applicable only when goods are shipped overseas.
 }
 ```
 
-# 24. XML Example
+# 25. XML Example
 
 ```xml
 <MxJdf4>
