@@ -20,7 +20,12 @@ public enum MaterialType {
     RECYCLED_UNCOATED_PAPER(13),
     POLYESTER_CANVAS(14),
     PREMIUM_WHITE(15),
-    CREME(16)
+    CREME(16),
+    E_PHOTO_PAPER(17),
+    E_PHOTO_SILK_LUSTRE(18),
+    ARCHIVAL_MATT(19),
+    ARCHIVAL_UNCOATED(20),
+    ARCHIVAL_TEXTURED_MATT(21)
     ;
 
     private final int value;
