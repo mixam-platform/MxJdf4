@@ -25,7 +25,8 @@ public enum MaterialType {
     E_PHOTO_SILK_LUSTRE(18),
     ARCHIVAL_MATT(19),
     ARCHIVAL_UNCOATED(20),
-    ARCHIVAL_TEXTURED_MATT(21)
+    ARCHIVAL_TEXTURED_MATT(21),
+    PHOTO_LUSTRE(22)
     ;
 
     private final int value;
