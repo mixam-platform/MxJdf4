@@ -17,6 +17,7 @@ public class Shipment {
 
     private double weight;
     private WeightUnitType units;
+    private double splitDeliveryAdditionalCharge;
 
     public double getWeight() {
         return weight;
@@ -34,7 +35,13 @@ public class Shipment {
         this.units = units;
     }
 
+    public double getSplitDeliveryAdditionalCharge() {
+        return splitDeliveryAdditionalCharge;
+    }
 
+    public void setSplitDeliveryAdditionalCharge(double splitDeliveryAdditionalCharge) {
+        this.splitDeliveryAdditionalCharge = splitDeliveryAdditionalCharge;
+    }
 
     public List<RecipientAddress> getDeliveryAddresses() {
         if (deliveryAddresses == null) {

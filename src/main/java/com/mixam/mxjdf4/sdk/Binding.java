@@ -13,6 +13,7 @@ public class Binding {
     private EndPaperColorType endPaperColor;
     private Double spineWidth;
     private boolean sewn;
+    private BindingEdge edge;
 
     public Double getSpineWidth() {
         return spineWidth;
@@ -60,5 +61,13 @@ public class Binding {
 
     public void setSewn(boolean sewn) {
         this.sewn = sewn;
+    }
+
+    public BindingEdge getEdge() {
+        return edge;
+    }
+
+    public void setEdge(BindingEdge edge) {
+        this.edge = edge;
     }
 }

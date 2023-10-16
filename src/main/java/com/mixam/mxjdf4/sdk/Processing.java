@@ -16,6 +16,7 @@ public class Processing {
     private FeatureType feature;
     private FrameDepth frameDepth;
     private SubstrateDesign substrateDesign;
+    private PreDrilledHoles preDrilledHoles;
 
     public FeatureType getFeature() {
         return feature;
@@ -87,5 +88,13 @@ public class Processing {
 
     public void setSubstrateDesign(SubstrateDesign substrateDesign) {
         this.substrateDesign = substrateDesign;
+    }
+
+    public PreDrilledHoles getPreDrilledHoles() {
+        return preDrilledHoles;
+    }
+
+    public void setPreDrilledHoles(PreDrilledHoles preDrilledHoles) {
+        this.preDrilledHoles = preDrilledHoles;
     }
 }

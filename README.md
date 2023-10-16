@@ -122,7 +122,7 @@ The top level of the MxJdf document contains the following elements:
 |components|A list of components (such as text, cover, dust jacket etc.) (List<component>)|See bellow|
 |type|Taxation type (VAT, GST etc.) (ArticleTaxType)|EXEMPT(0),<br> VAT(1),<br> GST(2),<br> USA_TAX(3);|
 |product|The product id (ProductGroupType)|INVALID(0),<br>PRODUCT_BROCHURES(1),<br>PRODUCT_FLYERS(2),<br>PRODUCT_FOLDED(3),<br>PRODUCT_POSTERS(4),<br>   PRODUCT_LETTERHEADS(5),<br>PRODUCT_PHOTO_BOOK(6),<br>PRODUCT_BOOK(7),<br>  PRODUCT_BUSINESS_CARD(8),<br>PRODUCT_POSTCARD(9),<br>PRODUCT_GREETING_CARD(10)<br>PRODUCT_NOTE_BOOK(11),<br> PRODUCT_COMPLIMENT_SLIPS(12),<br>PRODUCT_ENVELOPES(13),<br>PRODUCT_FOLDERS(14),<br>PRODUCT_LAYFLAT(15),<br>PRODUCT_WALL_CALENDARS(16),<br>PRODUCT_DESK_CALENDARS(17)<br> PRODUCT_VR_WALL_CALENDARS(18)<br> PRODUCT_VR_DESK_CALENDARS(19),<br> PRODUCT_TRADITIONAL_BOOK(20),<br> PRODUCT_CANVAS(21) ;|
-|subProduct|Fine classification of the product. (optional) (SubProductType)|PRODUCT_HARD_COVER_BOOKS(1)<br>PRODUCT_PAPERBACK_BOOKS(2)<br>PRODUCT_PERFECT_BOOKLETS(3)<br>PRODUCT_WIRO_BOOKLETS(4)<br>PRODUCT_LOOP_BOOKLETS(5)<br>PRODUCT_STAPLED_BOOKLETS(6)<br>PRODUCT_MAGAZINES(7)<br>PRODUCT_CATALOGS(8)<br>PRODUCT_BOOKLETS(9)<br>PRODUCT_ZINES(10)<br>PRODUCT_COMIC_BOOKS(11)<br> PRODUCT_ART_PRINTS(12)<br>PRODUCT_MANGA(13)<br>PRODUCT_WEDDING_BOOK(14)<br>PRODUCT_YEARBOOK(15)<br>PRODUCT_COOKBOOK(16)<br> PRODUCT_COLOURINGBOOK(17)<br> PRODUCT_ARTBOOK(18)<br> PRODUCT_GRAPHIC_NOVEL(19)<br> PRODUCT_LOOKBOOK(20)<br> PRODUCT_DIARIES(21)<br> PRODUCT_JOURNALS(22)<br> PRODUCT_MENUS(23)<br> PRODUCT_CLASSIC_BOOKS(24)<br> PRODUCT_CLASSIC_PAPERBACK_BOOKS(25)<br> PRODUCT_FAMILY_HISTORY_BOOKS(26)<br> PRODUCT_ACTIVITY_BOOKS(27)<br> PRODUCT_MEMOIRS(28)<br> PRODUCT_CHILDRENS_BOOKS(29)<br> PRODUCT_WORKBOOKS(30)<br> PRODUCT_PHOTO_BOOKS(31)<br> PRODUCT_PHOTOGRAPHY_BOOKS(32)<br> PRODUCT_COFFEE_TABLE_BOOKS(33)<br> PRODUCT_MANUALS(34)<br> PRODUCT_BABY_BOOKS(35)<br> PRODUCT_BIOGRAPHY(36)<br> PRODUCT_NOVELS(37)<br> PRODUCT_POETRY_BOOKS(38)<br> PRODUCT_SPIRAL_BOOKLETS(39)<br> PRODUCT_GICLEE_ART_PRINTS_SMALL_FORMAT(40)<br> PRODUCT_GICLEE_ART_PRINTS_LARGE_FORMAT(41) ;|
+|subProduct|Fine classification of the product. (optional) (SubProductType)|PRODUCT_HARD_COVER_BOOKS(1)<br>PRODUCT_PAPERBACK_BOOKS(2)<br>PRODUCT_PERFECT_BOOKLETS(3)<br>PRODUCT_WIRO_BOOKLETS(4)<br>PRODUCT_LOOP_BOOKLETS(5)<br>PRODUCT_STAPLED_BOOKLETS(6)<br>PRODUCT_MAGAZINES(7)<br>PRODUCT_CATALOGS(8)<br>PRODUCT_BOOKLETS(9)<br>PRODUCT_ZINES(10)<br>PRODUCT_COMIC_BOOKS(11)<br> PRODUCT_ART_PRINTS(12)<br>PRODUCT_MANGA(13)<br>PRODUCT_WEDDING_BOOK(14)<br>PRODUCT_YEARBOOK(15)<br>PRODUCT_COOKBOOK(16)<br> PRODUCT_COLOURINGBOOK(17)<br> PRODUCT_ARTBOOK(18)<br> PRODUCT_GRAPHIC_NOVEL(19)<br> PRODUCT_LOOKBOOK(20)<br> PRODUCT_DIARIES(21)<br> PRODUCT_JOURNALS(22)<br> PRODUCT_MENUS(23)<br> PRODUCT_CLASSIC_BOOKS(24)<br> PRODUCT_CLASSIC_PAPERBACK_BOOKS(25)<br> PRODUCT_FAMILY_HISTORY_BOOKS(26)<br> PRODUCT_ACTIVITY_BOOKS(27)<br> PRODUCT_MEMOIRS(28)<br> PRODUCT_CHILDRENS_BOOKS(29)<br> PRODUCT_WORKBOOKS(30)<br> PRODUCT_PHOTO_BOOKS(31)<br> PRODUCT_PHOTOGRAPHY_BOOKS(32)<br> PRODUCT_COFFEE_TABLE_BOOKS(33)<br> PRODUCT_MANUALS(34)<br> PRODUCT_BABY_BOOKS(35)<br> PRODUCT_BIOGRAPHY(36)<br> PRODUCT_NOVELS(37)<br> PRODUCT_POETRY_BOOKS(38)<br> PRODUCT_SPIRAL_BOOKLETS(39)<br> PRODUCT_GICLEE_ART_PRINTS_SMALL_FORMAT(40)<br> PRODUCT_GICLEE_ART_PRINTS_LARGE_FORMAT(41)<br> PRODUCT_STAPLED_CALENDAR(42)<br> PRODUCT_NOTEBOOKS(43)<br> PRODUCT_BOOKMARKS(44)<br> PRODUCT_WIRO_CALENDAR(45);|
 |rightToLeft|Field to indicates if the item is right to left|true or false|
 |productionDays|Number of calculated production days for the item|1, 2, 3,…100|
 |bundling|Bundling element describing any bundling requirements for the order|See bellow|
@@ -239,7 +239,8 @@ will match the trim box of the actual artwork for the just jacket.
     "window": 0,
     "feature": 0,
     "frameDepth": 0,
-    "substrateDesign": 0
+    "substrateDesign": 0,
+    "preDrilledHoles": 0
 }
 ```
 
@@ -253,7 +254,8 @@ will match the trim box of the actual artwork for the just jacket.
 | window          | Envelope window (WindowType)          | NONE(0), <br>LEFT(1), <br>RIGHT(2)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | feature         | (FeatureType)                         | INVALID(0), <br>SUPPLY_FOLDED(1), <br>SUPPLY_NOT_FOLDED(2), <br>PERFORATED_ON_TOP(3), <br>PERFORATED_LEFT(4), <br>PEEL_AND_SEAL(5)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | frameDepth      | Depth of frame (framed products only) | MM_18(1), <br>MM_38(2)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| substrateDesign | Supplier supplied pre-printed design  | NONE(0), <br>LINED(1)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| substrateDesign | Supplier supplied pre-printed design  | NONE(0), <br>LINED(1<br/>)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| preDrilledHoles | Hole Drilling                         | NONE(0) <br>ONE_HOLE_OPPOSITE_BINDING_CENTER(1) <br>ONE_HOLE_TOP_CENTER(2)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 
 # 10. Element: binding
 ```javascript
@@ -262,8 +264,9 @@ will match the trim box of the actual artwork for the just jacket.
    "color": 0,
    "loops": 0,
    "endPaperColor": 0,
-   "spineWidth": 7.5, 
-   "sewn": false
+   "spineWidth": 7.5,
+    "sewn": false,
+    "edge": 0
 }
 ```
 
@@ -275,6 +278,7 @@ will match the trim box of the actual artwork for the just jacket.
 |endPaperColor|(EndPaperColorType)|NONE(0), <br>WHITE(1), <br>BLACK(2); <br>COLORPLAN_ADRIATIC(10)<br>COLORPLAN_AMETHYST(11)<br>COLORPLAN_AZURE_BLUE(12) <br>COLORPLAN_BAGHDAD_BROWN(13) <br>COLORPLAN_BITTER_CHOCOLATE(14) <br>COLORPLAN_BRIGHT_RED(15) <br>COLORPLAN_BRIGHT_WHITE(16) <br>COLORPLAN_CANDY_PINK(17) <br>COLORPLAN_CHINA_WHITE(18) <br>COLORPLAN_CITRINE(19) <br>COLORPLAN_CLARET(20) <br>COLORPLAN_COBALT(21) <br>COLORPLAN_COOL_BLUE(22) <br>COLORPLAN_COOL_GREY(23) <br>COLORPLAN_DARK_GREY(24) <br>COLORPLAN_EBONY(25) <br>COLORPLAN_EMERALD(26) <br>COLORPLAN_FACTORY_YELLOW(27) <br>COLORPLAN_FOREST(28) <br>COLORPLAN_FUSCHIA_PINK(29) <br>COLORPLAN_HARVEST(30) <br>COLORPLAN_HOT_PINK(31) <br>COLORPLAN_ICE_WHITE(32) <br>COLORPLAN_IMPERIAL_BLUE(33) <br>COLORPLAN_LAVENDAR(34) <br>COLORPLAN_LOCKWOOD_GREEN(35) <br>COLORPLAN_MANDARIN(36) <br>COLORPLAN_MARRS_GREEN(37) <br>COLORPLAN_MID_GREEN(38) <br>COLORPLAN_MIST(39) <br>COLORPLAN_NATURAL(40) <br>COLORPLAN_NEW_BLUE(41) <br>COLORPLAN_NUBUCK_BROWN(42) <br>COLORPLAN_PALE_GREY(43) <br>COLORPLAN_PARK_GREEN(44) <br>COLORPLAN_PISTACHIO(45) <br>COLORPLAN_POWDER_GREEN(46) <br>COLORPLAN_PRISTINE_WHITE(47) <br>COLORPLAN_PURPLE(48) <br>COLORPLAN_RACING_GREEN(49) <br>COLORPLAN_REAL_GREY(50) <br>COLORPLAN_ROYAL_BLUE(51) <br>COLORPLAN_SAPPHIRE(52) <br>COLORPLAN_SCARLET(53) <br>COLORPLAN_SMOKE(54) <br>COLORPLAN_SORBET_YELLOW(55) <br>COLORPLAN_STONE(56) <br>COLORPLAN_TABRIZ_BLUE(57) <br>COLORPLAN_TURQUOISE(58) <br>COLORPLAN_VELLUM_WHITE(59) <br>COLORPLAN_VERMILLION(60) <br>COLORPLAN_WHITE_FROST(61)|
 |spineWidth|(Double precision number)|In shops units (mm in the UK, inch in the US)|
 |sewn|Indicates if the sections are sewn|FALSE, <br>TRUE|
+|edge|Indicates which edge the item is bound upon|LEFT_RIGHT(0), <br>TOP_BOTTOM(1)|
 
 # 11. Element: details
 ```javascript
@@ -322,7 +326,8 @@ will match the trim box of the actual artwork for the just jacket.
    "deliveryAddresses": [...],
    "senderForLabel": {...},
    "weight": 1.2
-   "units": 1
+   "units": 1,
+    "splitDeliveryAdditionalCharge": 0
 }
 ```
 
@@ -332,6 +337,7 @@ will match the trim box of the actual artwork for the just jacket.
 |senderForLabel|The sender address. (Address)|See bellow|
 |Weight|The expected weight of the goods. (Double precision number)||
 |units|The units in which the weight is specified. KILOGRAM on metric system, LIBRA on imperial.|KILOGRAM(0), <br>LIBRA(1),|
+|splitDeliveryAdditionalCharge|Additional charge for split shipments||
 
 > NOTE: ripped (digital) proof jobs will not contain a `shipment` element.
 > 
