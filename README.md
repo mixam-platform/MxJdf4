@@ -4,9 +4,9 @@
 
 ## Mixam Webhooks
 
-This document outlines the process and format through which Mixam sends printed item fulfilment 
+This document outlines the process and format through which Mixam sends printed item fulfilment
 instructions in MxJdf4. Suppliers that integrate with Mixam also have the option to use _Webhooks_
-(instead of the Mixam web portal) to accept orders, mark orders as labeled, and notify Mixam of 
+(instead of the Mixam web portal) to accept orders, mark orders as labeled, and notify Mixam of
 dispatch delays.
 
 [Mixam Webhooks Documentation](WEBHOOKS.md)
@@ -16,7 +16,7 @@ dispatch delays.
 The _Mixam Job Description Format_ (MxJdf) describes the structure of a print job in an unambiguous way.
 
 Although the Mixam Platform is capable of specifying a job in many formats (cXML, OneFlow, and
-several vendor-specific formats), MxJdf is the most complete, the most useful, and the recommended 
+several vendor-specific formats), MxJdf is the most complete, the most useful, and the recommended
 way to establish an automated connection with us.
 
 The MxJdf format is made of attributes and values and can be provided as an XML and/or JSON
@@ -55,7 +55,7 @@ using HTTPS or SFTP.
 | [Element: export](#23-element-export) | 23 |
 | [JSON Example](#24-json-example) | 24 |
 | [XML Example](#25-xml-example) | 25 |
- 
+
 # 1. Top Level Element
 The top level of the MxJdf document contains the following elements:
 ```javascript
@@ -110,7 +110,7 @@ The top level of the MxJdf document contains the following elements:
   "components": [...],
   "type": 0,
   "product": 1,
-  "subProduct": 1, 
+  "subProduct": 1,
   "rightToLeft": false,
   "productionDays": 3,
   "bundling": {...},     
@@ -140,7 +140,7 @@ The top level of the MxJdf document contains the following elements:
   "files": [...],
   "type": 2
 }
-```` 
+````
 
 | Property | Description | Values |
 |---|---|---|
@@ -192,7 +192,7 @@ will match the trim box of the actual artwork for the just jacket.
 |shortEdge|Component short axis. (Double precision number) in shop’s units ||
 |orientation|(OrientationType)|PORTRAIT(0),<br>LANDSCAPE(1);|
 |units|The units in which the edges are specified. mm on metric system, inch on imperial.|MM (0),<br>INCH(1),|
- 
+
 # 7. Element: material
 ```javascript
 "material": {
@@ -288,6 +288,7 @@ will match the trim box of the actual artwork for the just jacket.
    "assumedPrintType": 1,
    "totalCirculation": 400,
    "jobType": 0,
+   "partnership": 0,
    "remark": "£15 bundle in 500's cost added to supplier cost total as discussed",
    "machineName": "B3D-Z"
  }
@@ -295,13 +296,14 @@ will match the trim box of the actual artwork for the just jacket.
 
 | Property | Description | Values |
 |---|---|---|
-|additionalProjectName||Additional Order number. Reference number. (String)||
-|completionType|Urgency of the job. Default value is 4 (Standard)|INVALID(0), <br>SAME_DAY(1), <br>EXPRESS(2), <br>OVERNIGHT(3), <br>STANDARD(4), <br>SAVER(5);|
-|totalCirculation|The total number of copies (Integer)||
-|assumedPrintType|The expect print technology|NONE(0), <br>LITHO(1), <br>DIGITAL(2), <br>INKJET(3)|
-|jobType|Classification of print job|PRIMARY_PRINT(0), <br>RIPPED_PROOF(1), <br>HARD_COPY_PROOF(2)|
-|remark|Remarks for the supplier added by Mixam at fulfilment-time, if any (String)||
-|machineName|The name of the recommended machine for this job identified by our pricing engine (String)||
+|additionalProjectName| | Additional Order number. Reference number. (String)                                         ||
+|completionType| Urgency of the job. Default value is 4 (Standard) | INVALID(0), <br>SAME_DAY(1), <br>EXPRESS(2), <br>OVERNIGHT(3), <br>STANDARD(4), <br>SAVER(5); |
+|totalCirculation| The total number of copies (Integer) | |
+|assumedPrintType| The expected print technology | NONE(0), <br>LITHO(1), <br>DIGITAL(2), <br>INKJET(3) |
+|jobType| Classification of print job | PRIMARY_PRINT(0), <br>RIPPED_PROOF(1), <br>HARD_COPY_PROOF(2) |
+|jobType| Associated partnership agreement, if applicable | NONE(0), <br>FOURTHWALL(1) |
+|remark| Remarks for the supplier added by Mixam at fulfilment-time, if any (String) | |
+|machineName| The name of the recommended machine for this job identified by our pricing engine (String) | |
 
 # 12. Element: associatedProof
 ```javascript
@@ -340,7 +342,7 @@ will match the trim box of the actual artwork for the just jacket.
 |splitDeliveryAdditionalCharge|Additional charge for split shipments||
 
 > NOTE: ripped (digital) proof jobs will not contain a `shipment` element.
-> 
+>
 > # 14. Element: bundling
 ```javascript
 "bundling": {
@@ -449,7 +451,7 @@ See type ‘Address’
 |telephoneNumber|(String)||
 |email|(String)||
 |locationType|(AddressLocationType)|RESIDENTIAL(0), <br>BUSINESS_DOCK(1), <br>BUSINESS_NO_DOCK(2), <br>LIMITED_ACCESS(3), <br>TRADE_SHOW(4), <br>CONSTRUCTION(5), <br>FARM(6),|
- 
+
 # 19. Element: delivery
 ```javascript
 "delivery": {

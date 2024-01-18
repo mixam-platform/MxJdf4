@@ -3,6 +3,8 @@ package com.mixam.mxjdf4.sdk;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
+import java.util.Objects;
+
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @SuppressWarnings("unused")
@@ -13,6 +15,7 @@ public class JobDetails {
     private int totalCirculation;
     private AssumedPrintType assumedPrintType;
     private JobType jobType;
+    private Partnership partnership = Partnership.NONE; // default
     private String remark;
     private String machineName;
 
@@ -68,6 +71,14 @@ public class JobDetails {
 
     public void setJobType(JobType jobType) {
         this.jobType = jobType;
+    }
+
+    public Partnership getPartnership() {
+        return partnership;
+    }
+
+    public void setPartnership(Partnership partnership) {
+        this.partnership = Objects.requireNonNull(partnership);
     }
 
     /**
