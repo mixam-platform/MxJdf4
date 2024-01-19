@@ -2,15 +2,15 @@ package com.mixam.mxjdf4.sdk;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 
-public enum Partnership {
+public enum OrderType {
 
-    NONE(0),
+    STANDARD(0),
     FOURTHWALL(1),
     ;
 
     private final int value;
 
-    Partnership(int value) {
+    OrderType(int value) {
         this.value = value;
     }
 

@@ -15,7 +15,7 @@ public class JobDetails {
     private int totalCirculation;
     private AssumedPrintType assumedPrintType;
     private JobType jobType;
-    private Partnership partnership = Partnership.NONE; // default
+    private OrderType orderType = OrderType.STANDARD; // default
     private String remark;
     private String machineName;
 
@@ -73,12 +73,12 @@ public class JobDetails {
         this.jobType = jobType;
     }
 
-    public Partnership getPartnership() {
-        return partnership;
+    public OrderType getOrderType() {
+        return orderType;
     }
 
-    public void setPartnership(Partnership partnership) {
-        this.partnership = Objects.requireNonNull(partnership);
+    public void setOrderType(OrderType orderType) {
+        this.orderType = Objects.requireNonNull(orderType);
     }
 
     /**

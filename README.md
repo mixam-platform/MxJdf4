@@ -288,7 +288,7 @@ will match the trim box of the actual artwork for the just jacket.
    "assumedPrintType": 1,
    "totalCirculation": 400,
    "jobType": 0,
-   "partnership": 0,
+   "orderType": 0,
    "remark": "£15 bundle in 500's cost added to supplier cost total as discussed",
    "machineName": "B3D-Z"
  }
@@ -301,7 +301,7 @@ will match the trim box of the actual artwork for the just jacket.
 |totalCirculation| The total number of copies (Integer) | |
 |assumedPrintType| The expected print technology | NONE(0), <br>LITHO(1), <br>DIGITAL(2), <br>INKJET(3) |
 |jobType| Classification of print job | PRIMARY_PRINT(0), <br>RIPPED_PROOF(1), <br>HARD_COPY_PROOF(2) |
-|jobType| Associated partnership agreement, if applicable | NONE(0), <br>FOURTHWALL(1) |
+|orderType| Classification of order, if applicable | STANDARD(0), <br>FOURTHWALL(1) |
 |remark| Remarks for the supplier added by Mixam at fulfilment-time, if any (String) | |
 |machineName| The name of the recommended machine for this job identified by our pricing engine (String) | |
 
