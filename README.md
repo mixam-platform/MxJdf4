@@ -301,7 +301,7 @@ will match the trim box of the actual artwork for the just jacket.
 |totalCirculation| The total number of copies (Integer) | |
 |assumedPrintType| The expected print technology | NONE(0), <br>LITHO(1), <br>DIGITAL(2), <br>INKJET(3) |
 |jobType| Classification of print job | PRIMARY_PRINT(0), <br>RIPPED_PROOF(1), <br>HARD_COPY_PROOF(2) |
-|orderType| Classification of order, if applicable | STANDARD(0), <br>FOURTHWALL(1) |
+|orderType| Classification of order, if applicable | STANDARD(0), PRINT_ON_DEMAND(1), <br>FOURTHWALL(2) |
 |remark| Remarks for the supplier added by Mixam at fulfilment-time, if any (String) | |
 |machineName| The name of the recommended machine for this job identified by our pricing engine (String) | |
 

@@ -5,7 +5,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 public enum OrderType {
 
     STANDARD(0),
-    FOURTHWALL(1),
+    PRINT_ON_DEMAND(1),
+    FOURTHWALL(2),
     ;
 
     private final int value;
