@@ -3,7 +3,9 @@ package com.mixam.mxjdf4.sdk;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -21,6 +23,7 @@ public class MxJdf4 {
     private Double price;
     private Double packagingCost;
     private String currencyCode;
+    private List<Attribute> attributes;
 
     public Double getPrice() {
         return price;
@@ -108,5 +111,16 @@ public class MxJdf4 {
 
     public void setPackagingCost(Double packagingCost) {
         this.packagingCost = packagingCost;
+    }
+
+    public List<Attribute> getAttributes() {
+        if (attributes == null) {
+            this.attributes = new ArrayList<>();
+        }
+        return attributes;
+    }
+
+    public void setAttributes(List<Attribute> attributes) {
+        this.attributes = attributes;
     }
 }
