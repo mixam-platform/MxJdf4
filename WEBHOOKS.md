@@ -33,7 +33,7 @@ https://{mixam.domain}/api/webhooks/{supplier.token}/shipment
 
 ### Path Tokens
 
-  - `mixam.domain`: the domain associated with your supplier account (`mixam.co.uk`, `mixam.com`, `mixam.ca`, or `mixam.com.au`)
+  - `mixam.domain`: the domain associated with your supplier account (`mixam.co.uk`, `mixam.com`, `mixam.ca`, `mixam.de` or `mixam.com.au`)
   - `supplier.token`: a short, unique string assigned to your supplier account by the Mixam team
 
 ### HTTP Request Headers
