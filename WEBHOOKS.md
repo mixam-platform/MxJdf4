@@ -16,7 +16,7 @@ https://{mixam.domain}/api/user/token
 ```
 
 Where `mixam.domain` is the domain associated with your supplier account (`mixam.co.uk`,
-`mixam.com`, `mixam.ca`, or `mixam.com.au`).
+`mixam.com`, `mixam.ca`, `mixam.de`, or `mixam.com.au`).
 
 The token endpoint supports [HTTP BASIC authentication](). (Most modern development platforms and
 frameworks include a very simple way to include BASIC authentication when sending an HTTP request.)
