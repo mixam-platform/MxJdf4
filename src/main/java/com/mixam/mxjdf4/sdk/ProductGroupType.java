@@ -25,6 +25,7 @@ public enum ProductGroupType {
     PRODUCT_VR_DESK_CALENDARS(19),
     PRODUCT_TRADITIONAL_BOOK(20),
     PRODUCT_CANVAS(21),
+    DUST_JACKETS(36),
     ;
 
     private final int value;
