@@ -8,6 +8,7 @@ public enum PaperWeightUnit {
     LIBRA_COVER(2),
     LIBRA_TEXT(3),
     LIBRA_CARD(4),
+    SHIROKU_BAN(5)
     ;
 
     private final int value;
