@@ -12,6 +12,7 @@ public enum BindingType {
     CASE_BOUND_WITH_SEWING(6),
     CALENDAR_WIRO(7),
     COIL(8),
+    PUR_WITH_SEWING(9)
     ;
 
     private final int value;
