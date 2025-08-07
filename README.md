@@ -292,7 +292,8 @@ will match the trim box of the actual artwork for the just jacket.
    "jobType": 0,
    "orderType": 0,
    "remark": "£15 bundle in 500's cost added to supplier cost total as discussed",
-   "machineName": "B3D-Z"
+   "machineName": "B3D-Z",
+   "publicationId": "5f7c9449a478e23e57444661" 
  }
 ```
 
@@ -306,6 +307,7 @@ will match the trim box of the actual artwork for the just jacket.
 |orderType| Classification of order, if applicable | STANDARD(0), PRINT_ON_DEMAND(1), <br>FOURTHWALL(2) |
 |remark| Remarks for the supplier added by Mixam at fulfilment-time, if any (String) | |
 |machineName| The name of the recommended machine for this job identified by our pricing engine (String) | |
+|publicationId| The ID of the original publication for POD PrintLink orders (String) | |
 
 # 12. Element: associatedProof
 ```javascript
