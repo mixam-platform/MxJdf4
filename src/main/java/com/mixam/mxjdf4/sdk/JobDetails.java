@@ -18,6 +18,7 @@ public class JobDetails {
     private OrderType orderType = OrderType.STANDARD; // default
     private String remark;
     private String machineName;
+    private String publicationId;
 
     /**
      * Alias of {@code additionalProjectName}.
@@ -98,5 +99,13 @@ public class JobDetails {
 
     public void setMachineName(String machineName) {
         this.machineName = machineName;
+    }
+
+    public String getPublicationId() {
+        return publicationId;
+    }
+
+    public void setPublicationId(String publicationId) {
+        this.publicationId = publicationId;
     }
 }
