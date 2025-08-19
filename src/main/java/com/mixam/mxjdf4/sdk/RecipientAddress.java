@@ -28,7 +28,7 @@ public class RecipientAddress {
         return deliveryId;
     }
 
-    public void setDeliveryId(String deliveryId) {
+    public RecipientAddress(String deliveryId) {
         this.deliveryId = deliveryId;
     }
 
@@ -36,48 +36,54 @@ public class RecipientAddress {
         return delivery;
     }
 
-    public void setDelivery(Delivery delivery) {
+    public RecipientAddress setDelivery(Delivery delivery) {
         this.delivery = delivery;
+        return this;
     }
 
     public Date getDeliveryDate() {
         return deliveryDate;
     }
 
-    public void setDeliveryDate(Date deliveryDate) {
+    public RecipientAddress setDeliveryDate(Date deliveryDate) {
         this.deliveryDate = deliveryDate;
+        return this;
     }
 
     public Date getDispatchDate() {
         return dispatchDate;
     }
 
-    public void setDispatchDate(Date dispatchDate) {
+    public RecipientAddress setDispatchDate(Date dispatchDate) {
         this.dispatchDate = dispatchDate;
+        return this;
     }
 
     public Address getAddress() {
         return address;
     }
 
-    public void setAddress(Address address) {
+    public RecipientAddress setAddress(Address address) {
         this.address = address;
+        return this;
     }
 
     public int getCirculation() {
         return circulation;
     }
 
-    public void setCirculation(int circulation) {
+    public RecipientAddress setCirculation(int circulation) {
         this.circulation = circulation;
+        return this;
     }
 
     public String getInstructions() {
         return instructions;
     }
 
-    public void setInstructions(String instructions) {
+    public RecipientAddress setInstructions(String instructions) {
         this.instructions = instructions;
+        return this;
     }
 
 }

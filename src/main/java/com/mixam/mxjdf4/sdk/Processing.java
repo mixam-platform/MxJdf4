@@ -22,79 +22,89 @@ public class Processing {
         return feature;
     }
 
-    public void setFeature(FeatureType feature) {
+    public Processing setFeature(FeatureType feature) {
         this.feature = feature;
+        return this;
     }
 
     public RibbonType getRibbon() {
         return ribbon;
     }
 
-    public void setRibbon(RibbonType ribbon) {
+    public Processing setRibbon(RibbonType ribbon) {
         this.ribbon = ribbon;
+        return this;
     }
 
     public Binding getBinding() {
         return binding;
     }
 
-    public void setBinding(Binding binding) {
+    public Processing setBinding(Binding binding) {
         this.binding = binding;
+        return this;
     }
 
     public CreasingType getCreasing() {
         return creasing;
     }
 
-    public void setCreasing(CreasingType creasing) {
+    public Processing setCreasing(CreasingType creasing) {
         this.creasing = creasing;
+        return this;
     }
 
     public FoldingType getFolding() {
         return folding;
     }
 
-    public void setFolding(FoldingType folding) {
+    public Processing setFolding(FoldingType folding) {
         this.folding = folding;
+        return this;
     }
 
     public BandType getHeadTailBand() {
         return headTailBand;
     }
 
-    public void setHeadTailBand(BandType headTailBand) {
+    public Processing setHeadTailBand(BandType headTailBand) {
         this.headTailBand = headTailBand;
+        return this;
     }
 
     public WindowType getWindow() {
         return window;
     }
 
-    public void setWindow(WindowType window) {
+    public Processing setWindow(WindowType window) {
         this.window = window;
+        return this;
     }
 
     public FrameDepth getFrameDepth() {
         return frameDepth;
     }
 
-    public void setFrameDepth(FrameDepth frameDepth) {
+    public Processing setFrameDepth(FrameDepth frameDepth) {
         this.frameDepth = frameDepth;
+        return this;
     }
 
     public SubstrateDesign getSubstrateDesign() {
         return substrateDesign;
     }
 
-    public void setSubstrateDesign(SubstrateDesign substrateDesign) {
+    public Processing setSubstrateDesign(SubstrateDesign substrateDesign) {
         this.substrateDesign = substrateDesign;
+        return this;
     }
 
     public PreDrilledHoles getPreDrilledHoles() {
         return preDrilledHoles;
     }
 
-    public void setPreDrilledHoles(PreDrilledHoles preDrilledHoles) {
+    public Processing setPreDrilledHoles(PreDrilledHoles preDrilledHoles) {
         this.preDrilledHoles = preDrilledHoles;
+        return this;
     }
 }

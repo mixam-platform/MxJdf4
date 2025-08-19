@@ -15,24 +15,27 @@ public class Dimensions {
         return longEdge;
     }
 
-    public void setLongEdge(double longEdge) {
+    public Dimensions setLongEdge(double longEdge) {
         this.longEdge = longEdge;
+        return this;
     }
 
     public double getShortEdge() {
         return shortEdge;
     }
 
-    public void setShortEdge(double shortEdge) {
+    public Dimensions setShortEdge(double shortEdge) {
         this.shortEdge = shortEdge;
+        return this;
     }
 
     public LengthUnitType getUnits() {
         return units;
     }
 
-    public void setUnits(LengthUnitType units) {
+    public Dimensions setUnits(LengthUnitType units) {
         this.units = units;
+        return this;
     }
 
 }

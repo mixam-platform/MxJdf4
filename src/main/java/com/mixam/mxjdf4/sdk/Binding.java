@@ -19,55 +19,62 @@ public class Binding {
         return spineWidth;
     }
 
-    public void setSpineWidth(Double spineWidth) {
+    public Binding setSpineWidth(Double spineWidth) {
         this.spineWidth = spineWidth;
+        return this;
     }
 
     public EndPaperColorType getEndPaperColor() {
         return endPaperColor;
     }
 
-    public void setEndPaperColor(EndPaperColorType endPaperColor) {
+    public Binding setEndPaperColor(EndPaperColorType endPaperColor) {
         this.endPaperColor = endPaperColor;
+        return this;
     }
 
     public BindingType getType() {
         return type;
     }
 
-    public void setType(BindingType type) {
+    public Binding setType(BindingType type) {
         this.type = type;
+        return this;
     }
 
     public BindingColorType getColor() {
         return color;
     }
 
-    public void setColor(BindingColorType color) {
+    public Binding setColor(BindingColorType color) {
         this.color = color;
+        return this;
     }
 
     public LoopsType getLoops() {
         return loops;
     }
 
-    public void setLoops(LoopsType loops) {
+    public Binding setLoops(LoopsType loops) {
         this.loops = loops;
+        return this;
     }
 
     public boolean isSewn() {
         return sewn;
     }
 
-    public void setSewn(boolean sewn) {
+    public Binding setSewn(boolean sewn) {
         this.sewn = sewn;
+        return this;
     }
 
     public BindingEdge getEdge() {
         return edge;
     }
 
-    public void setEdge(BindingEdge edge) {
+    public Binding setEdge(BindingEdge edge) {
         this.edge = edge;
+        return this;
     }
 }

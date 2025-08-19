@@ -8,15 +8,17 @@ public class Bundling {
         return type;
     }
 
-    public void setType(BundlingType type) {
+    public Bundling setType(BundlingType type) {
         this.type = type;
+        return this;
     }
 
     public int getBundleSize() {
         return bundleSize;
     }
 
-    public void setBundleSize(int bundleSize) {
+    public Bundling setBundleSize(int bundleSize) {
         this.bundleSize = bundleSize;
+        return this;
     }
 }

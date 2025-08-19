@@ -29,88 +29,99 @@ public class MxJdf4 {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public MxJdf4 setPrice(Double price) {
         this.price = price;
+        return this;
     }
 
     public String getCurrencyCode() {
         return currencyCode;
     }
 
-    public void setCurrencyCode(String currencyCode) {
+    public MxJdf4 setCurrencyCode(String currencyCode) {
         this.currencyCode = currencyCode;
+        return this;
     }
 
     public String getVersion() {
         return version;
     }
 
-    public void setVersion(String version) {
+    public MxJdf4 setVersion(String version) {
         this.version = version;
+        return this;
     }
 
     public String getDesc() {
         return desc;
     }
 
-    public void setDesc(String desc) {
+    public MxJdf4 setDesc(String desc) {
         this.desc = desc;
+        return this;
     }
 
     public String getReferencedJobNumber() {
         return referencedJobNumber;
     }
 
-    public void setReferencedJobNumber(String referencedJobNumber) {
+    public MxJdf4 setReferencedJobNumber(String referencedJobNumber) {
         this.referencedJobNumber = referencedJobNumber;
+        return this;
     }
 
     public String getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
+    public MxJdf4 setAuthor(String author) {
         this.author = author;
+        return this;
     }
 
     public Date getDateCreated() {
         return dateCreated;
     }
 
-    public void setDateCreated(Date dateCreated) {
+    public MxJdf4 setDateCreated(Date dateCreated) {
         this.dateCreated = dateCreated;
+        return this;
     }
 
     public Job getJob() {
         return job;
     }
 
-    public void setJob(Job job) {
+    public MxJdf4 setJob(Job job) {
         this.job = job;
+        return this;
     }
 
     public Export getExport() {
         return export;
     }
 
-    public void setExport(Export export) {
+    public MxJdf4 setExport(Export export) {
         this.export = export;
+        return this;
     }
 
     public String getShopName() {
         return shopName;
     }
 
-    public void setShopName(String shopName) {
+    public MxJdf4 setShopName(String shopName) {
         this.shopName = shopName;
+        return this;
     }
 
     public Double getPackagingCost() {
         return packagingCost;
     }
 
-    public void setPackagingCost(Double packagingCost) {
+    public MxJdf4 setPackagingCost(Double packagingCost) {
         this.packagingCost = packagingCost;
+        return this;
     }
 
     public List<Attribute> getAttributes() {
@@ -120,7 +131,8 @@ public class MxJdf4 {
         return attributes;
     }
 
-    public void setAttributes(List<Attribute> attributes) {
+    public MxJdf4 setAttributes(List<Attribute> attributes) {
         this.attributes = attributes;
+        return this;
     }
 }

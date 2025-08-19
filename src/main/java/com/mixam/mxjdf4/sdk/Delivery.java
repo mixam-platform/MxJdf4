@@ -21,64 +21,72 @@ public class Delivery {
         return type;
     }
 
-    public void setType(DeliveryType type) {
+    public Delivery setType(DeliveryType type) {
         this.type = type;
+        return this;
     }
 
     public String getCarrier() {
         return carrier;
     }
 
-    public void setCarrier(String carrier) {
+    public Delivery setCarrier(String carrier) {
         this.carrier = carrier;
+        return this;
     }
 
     public String getServiceType() {
         return serviceType;
     }
 
-    public void setServiceType(String serviceType) {
+    public Delivery setServiceType(String serviceType) {
         this.serviceType = serviceType;
+        return this;
     }
 
     public String getServiceDescription() {
         return serviceDescription;
     }
 
-    public void setServiceDescription(String serviceDescription) {
+    public Delivery setServiceDescription(String serviceDescription) {
         this.serviceDescription = serviceDescription;
+        return this;
     }
 
     public String getCanonicalUri() {
         return canonicalUri;
     }
 
-    public void setCanonicalUri(String canonicalUri) {
+    public Delivery setCanonicalUri(String canonicalUri) {
         this.canonicalUri = canonicalUri;
+        return this;
     }
 
     public double getCost() {
         return cost;
     }
 
-    public void setCost(double cost) {
+    public Delivery setCost(double cost) {
         this.cost = cost;
+        return this;
     }
 
     public String getUrl() {
         return url;
     }
 
-    public void setUrl(String url) {
+    public Delivery setUrl(String url) {
         this.url = url;
+        return this;
     }
 
     public PackagingType getPackagingType() {
         return packagingType;
     }
 
-    public void setPackagingType(PackagingType packagingType) {
+    public Delivery setPackagingType(PackagingType packagingType) {
         this.packagingType = packagingType;
+        return this;
     }
 
 }

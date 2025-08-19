@@ -15,23 +15,26 @@ public class MaterialRefining {
         return effect;
     }
 
-    public void setEffect(RefiningEffect effect) {
+    public MaterialRefining setEffect(RefiningEffect effect) {
         this.effect = effect;
+        return this;
     }
 
     public RefiningSideType getSide() {
         return side;
     }
 
-    public void setSide(RefiningSideType side) {
+    public MaterialRefining setSide(RefiningSideType side) {
         this.side = side;
+        return this;
     }
 
     public RefiningType getType() {
         return type;
     }
 
-    public void setType(RefiningType type) {
+    public MaterialRefining setType(RefiningType type) {
         this.type = type;
+        return this;
     }
 }
