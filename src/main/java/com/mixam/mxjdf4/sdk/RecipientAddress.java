@@ -28,8 +28,9 @@ public class RecipientAddress {
         return deliveryId;
     }
 
-    public RecipientAddress(String deliveryId) {
+    public RecipientAddress setDeliveryId(String deliveryId) {
         this.deliveryId = deliveryId;
+        return this;
     }
 
     public Delivery getDelivery() {
