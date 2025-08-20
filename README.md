@@ -294,6 +294,7 @@ will match the trim box of the actual artwork for the just jacket.
    "remark": "£15 bundle in 500's cost added to supplier cost total as discussed",
    "machineName": "B3D-Z",
    "publicationId": "5f7c9449a478e23e57444661" 
+    "misbn": "8235938273652"
  }
 ```
 
