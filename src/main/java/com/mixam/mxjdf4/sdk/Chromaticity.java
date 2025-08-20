@@ -14,15 +14,17 @@ public class Chromaticity {
         return front;
     }
 
-    public void setFront(ColorType front) {
+    public Chromaticity setFront(ColorType front) {
         this.front = front;
+        return this;
     }
 
     public ColorType getBack() {
         return back;
     }
 
-    public void setBack(ColorType back) {
+    public Chromaticity setBack(ColorType back) {
         this.back = back;
+        return this;
     }
 }

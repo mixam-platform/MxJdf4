@@ -36,48 +36,54 @@ public class Article {
         return components;
     }
 
-    public void setComponents(List<Component> components) {
+    public Article setComponents(List<Component> components) {
         this.components = components;
+        return this;
     }
 
     public ArticleTaxType getType() {
         return type;
     }
 
-    public void setType(ArticleTaxType type) {
+    public Article setType(ArticleTaxType type) {
         this.type = type;
+        return this;
     }
 
     public ProductGroupType getProduct() {
         return product;
     }
 
-    public void setProduct(ProductGroupType product) {
+    public Article setProduct(ProductGroupType product) {
         this.product = product;
+        return this;
     }
 
     public SubProductType getSubProduct() {
         return subProduct;
     }
 
-    public void setSubProduct(SubProductType subProduct) {
+    public Article setSubProduct(SubProductType subProduct) {
         this.subProduct = subProduct;
+        return this;
     }
 
     public boolean isRightToLeft() {
         return rightToLeft;
     }
 
-    public void setRightToLeft(boolean rightToLeft) {
+    public Article setRightToLeft(boolean rightToLeft) {
         this.rightToLeft = rightToLeft;
+        return this;
     }
 
     public int getProductionDays() {
         return productionDays;
     }
 
-    public void setProductionDays(int productionDays) {
+    public Article setProductionDays(int productionDays) {
         this.productionDays = productionDays;
+        return this;
     }
 
     /**
@@ -90,15 +96,17 @@ public class Article {
         return additionalFiles;
     }
 
-    public void setAdditionalFiles(List<File> additionalFiles) {
+    public Article setAdditionalFiles(List<File> additionalFiles) {
         this.additionalFiles = additionalFiles;
+        return this;
     }
 
     public Bundling getBundling() {
         return bundling;
     }
 
-    public void setBundling(Bundling bundling) {
+    public Article setBundling(Bundling bundling) {
         this.bundling = bundling;
+        return this;
     }
 }

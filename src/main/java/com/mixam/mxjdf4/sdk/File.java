@@ -19,56 +19,63 @@ public class File {
         return type;
     }
 
-    public void setType(FileType type) {
+    public File setType(FileType type) {
         this.type = type;
+        return this;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public File setName(String name) {
         this.name = name;
+        return this;
     }
 
     public String getUrl() {
         return url;
     }
 
-    public void setUrl(String url) {
+    public File setUrl(String url) {
         this.url = url;
+        return this;
     }
 
     public String getChecksum() {
         return checksum;
     }
 
-    public void setChecksum(String checksum) {
+    public File setChecksum(String checksum) {
         this.checksum = checksum;
+        return this;
     }
 
     public long getSizeInBytes() {
         return sizeInBytes;
     }
 
-    public void setSizeInBytes(long sizeInBytes) {
+    public File setSizeInBytes(long sizeInBytes) {
         this.sizeInBytes = sizeInBytes;
+        return this;
     }
 
     public FileFlags getFlags() {
         return flags;
     }
 
-    public void setFlags(FileFlags flags) {
+    public File setFlags(FileFlags flags) {
         this.flags = flags;
+        return this;
     }
 
     public Dimensions getTrimBox() {
         return trimBox;
     }
 
-    public void setTrimBox(Dimensions trimBox) {
+    public File setTrimBox(Dimensions trimBox) {
         this.trimBox = trimBox;
+        return this;
     }
 
 }

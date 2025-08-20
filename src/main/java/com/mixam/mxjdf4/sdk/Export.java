@@ -14,15 +14,17 @@ public class Export {
         return customsValueSum;
     }
 
-    public void setCustomsValueSum(double customsValueSum) {
+    public Export setCustomsValueSum(double customsValueSum) {
         this.customsValueSum = customsValueSum;
+        return this;
     }
 
     public String getCustomsValueCurrency() {
         return customsValueCurrency;
     }
 
-    public void setCustomsValueCurrency(String customsValueCurrency) {
+    public Export setCustomsValueCurrency(String customsValueCurrency) {
         this.customsValueCurrency = customsValueCurrency;
+        return this;
     }
 }

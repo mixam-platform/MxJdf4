@@ -23,24 +23,27 @@ public class Shipment {
         return weight;
     }
 
-    public void setWeight(double weight) {
+    public Shipment setWeight(double weight) {
         this.weight = weight;
+        return this;
     }
 
     public WeightUnitType getUnits() {
         return units;
     }
 
-    public void setUnits(WeightUnitType units) {
+    public Shipment setUnits(WeightUnitType units) {
         this.units = units;
+        return this;
     }
 
     public double getSplitDeliveryAdditionalCharge() {
         return splitDeliveryAdditionalCharge;
     }
 
-    public void setSplitDeliveryAdditionalCharge(double splitDeliveryAdditionalCharge) {
+    public Shipment setSplitDeliveryAdditionalCharge(double splitDeliveryAdditionalCharge) {
         this.splitDeliveryAdditionalCharge = splitDeliveryAdditionalCharge;
+        return this;
     }
 
     public List<RecipientAddress> getDeliveryAddresses() {
@@ -50,15 +53,17 @@ public class Shipment {
         return deliveryAddresses;
     }
 
-    public void setDeliveryAddresses(List<RecipientAddress> deliveryAddresses) {
+    public Shipment setDeliveryAddresses(List<RecipientAddress> deliveryAddresses) {
         this.deliveryAddresses = deliveryAddresses;
+        return this;
     }
 
     public Address getSenderForLabel() {
         return senderForLabel;
     }
 
-    public void setSenderForLabel(Address senderForLabel) {
+    public Shipment setSenderForLabel(Address senderForLabel) {
         this.senderForLabel = senderForLabel;
+        return this;
     }
 }

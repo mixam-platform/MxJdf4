@@ -21,24 +21,27 @@ public class Material {
         return color;
     }
 
-    public void setColor(MaterialColor color) {
+    public Material setColor(MaterialColor color) {
         this.color = color;
+        return this;
     }
 
     public int getWeight() {
         return weight;
     }
 
-    public void setWeight(int weight) {
+    public Material setWeight(int weight) {
         this.weight = weight;
+        return this;
     }
 
     public PaperWeightUnit getUnits() {
         return units;
     }
 
-    public void setUnits(PaperWeightUnit units) {
+    public Material setUnits(PaperWeightUnit units) {
         this.units = units;
+        return this;
     }
 
     public List<MaterialRefining> getRefinings() {
@@ -48,15 +51,17 @@ public class Material {
         return refinings;
     }
 
-    public void setRefinings(List<MaterialRefining> refinings) {
+    public Material setRefinings(List<MaterialRefining> refinings) {
         this.refinings = refinings;
+        return this;
     }
 
     public MaterialType getType() {
         return type;
     }
 
-    public void setType(MaterialType type) {
+    public Material setType(MaterialType type) {
         this.type = type;
+        return this;
     }
 }

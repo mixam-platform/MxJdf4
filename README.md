@@ -294,6 +294,7 @@ will match the trim box of the actual artwork for the just jacket.
    "remark": "£15 bundle in 500's cost added to supplier cost total as discussed",
    "machineName": "B3D-Z",
    "publicationId": "5f7c9449a478e23e57444661" 
+    "misbn": "8235938273652"
  }
 ```
 
@@ -308,6 +309,7 @@ will match the trim box of the actual artwork for the just jacket.
 |remark| Remarks for the supplier added by Mixam at fulfilment-time, if any (String) | |
 |machineName| The name of the recommended machine for this job identified by our pricing engine (String) | |
 |publicationId| The ID of the original publication for POD PrintLink orders (String) | |
+|misbn| Mixam International Standard Book Number: Fake ISBN number encompassing an order or publication and version of artwork (String) | |
 
 # 12. Element: associatedProof
 ```javascript

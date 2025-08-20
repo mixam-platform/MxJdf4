@@ -23,24 +23,27 @@ public class AssociatedProof {
         return proofJobNumber;
     }
 
-    public void setProofJobNumber(String proofJobNumber) {
+    public AssociatedProof setProofJobNumber(String proofJobNumber) {
         this.proofJobNumber = proofJobNumber;
+        return this;
     }
 
     public JobType getProofJobType() {
         return proofJobType;
     }
 
-    public void setProofJobType(JobType proofJobType) {
+    public AssociatedProof setProofJobType(JobType proofJobType) {
         this.proofJobType = proofJobType;
+        return this;
     }
 
     public Date getProofDate() {
         return proofDate;
     }
 
-    public void setProofDate(Date proofDate) {
+    public AssociatedProof setProofDate(Date proofDate) {
         this.proofDate = proofDate;
+        return this;
     }
 
 }

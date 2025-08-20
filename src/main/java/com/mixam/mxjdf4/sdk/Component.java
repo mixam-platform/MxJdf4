@@ -27,15 +27,18 @@ public class Component {
         return files;
     }
 
-    public void setFiles(List<File> files) {
+    public Component setFiles(List<File> files) {
         this.files = files;
+        return this;
     }
+
     public int getPages() {
         return pages;
     }
 
-    public void setPages(int pages) {
+    public Component setPages(int pages) {
         this.pages = pages;
+        return this;
     }
 
     public Chromaticity getChromaticity() {
@@ -45,8 +48,9 @@ public class Component {
         return chromaticity;
     }
 
-    public void setChromaticity(Chromaticity chromaticity) {
+    public Component setChromaticity(Chromaticity chromaticity) {
         this.chromaticity = chromaticity;
+        return this;
     }
 
     public Format getFormat() {
@@ -56,8 +60,9 @@ public class Component {
         return format;
     }
 
-    public void setFormat(Format format) {
+    public Component setFormat(Format format) {
         this.format = format;
+        return this;
     }
 
     public Material getMaterial() {
@@ -67,8 +72,9 @@ public class Component {
         return material;
     }
 
-    public void setMaterial(Material material) {
+    public Component setMaterial(Material material) {
         this.material = material;
+        return this;
     }
 
     public Processing getProcessing() {
@@ -78,16 +84,18 @@ public class Component {
         return processing;
     }
 
-    public void setProcessing(Processing processing) {
+    public Component setProcessing(Processing processing) {
         this.processing = processing;
+        return this;
     }
 
     public ComponentType getType() {
         return type;
     }
 
-    public void setType(ComponentType type) {
+    public Component setType(ComponentType type) {
         this.type = type;
+        return this;
     }
 
 }

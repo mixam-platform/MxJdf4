@@ -17,32 +17,36 @@ public class Job {
         return article;
     }
 
-    public void setArticle(Article article) {
+    public Job setArticle(Article article) {
         this.article = article;
+        return this;
     }
 
     public JobDetails getDetails() {
         return details;
     }
 
-    public void setDetails(JobDetails details) {
+    public Job setDetails(JobDetails details) {
         this.details = details;
+        return this;
     }
 
     public AssociatedProof getAssociatedProof() {
         return associatedProof;
     }
 
-    public void setAssociatedProof(AssociatedProof associatedProof) {
+    public Job setAssociatedProof(AssociatedProof associatedProof) {
         this.associatedProof = associatedProof;
+        return this;
     }
 
     public Shipment getShipment() {
         return shipment;
     }
 
-    public void setShipment(Shipment shipment) {
+    public Job setShipment(Shipment shipment) {
         this.shipment = shipment;
+        return this;
     }
 
 }

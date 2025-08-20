@@ -19,6 +19,8 @@ public class JobDetails {
     private String remark;
     private String machineName;
     private String publicationId;
+    // Mixam International Standard Book Number (Fake ISBN)
+    private String misbn;
 
     /**
      * Alias of {@code additionalProjectName}.
@@ -30,56 +32,63 @@ public class JobDetails {
     /**
      * Alias of {@code additionalProjectName}.
      */
-    public void setOrderId(String orderId) {
+    public JobDetails setOrderId(String orderId) {
         this.additionalProjectName = orderId;
+        return this;
     }
 
     public AssumedPrintType getAssumedPrintType() {
         return assumedPrintType;
     }
 
-    public void setAssumedPrintType(AssumedPrintType assumedPrintType) {
+    public JobDetails setAssumedPrintType(AssumedPrintType assumedPrintType) {
         this.assumedPrintType = assumedPrintType;
+        return this;
     }
 
     public String getAdditionalProjectName() {
         return additionalProjectName;
     }
 
-    public void setAdditionalProjectName(String additionalProjectName) {
+    public JobDetails setAdditionalProjectName(String additionalProjectName) {
         this.additionalProjectName = additionalProjectName;
+        return this;
     }
 
     public CompletionType getCompletionType() {
         return completionType;
     }
 
-    public void setCompletionType(CompletionType completionType) {
+    public JobDetails setCompletionType(CompletionType completionType) {
         this.completionType = completionType;
+        return this;
     }
 
     public int getTotalCirculation() {
         return totalCirculation;
     }
 
-    public void setTotalCirculation(int totalCirculation) {
+    public JobDetails setTotalCirculation(int totalCirculation) {
         this.totalCirculation = totalCirculation;
+        return this;
     }
 
     public JobType getJobType() {
         return jobType;
     }
 
-    public void setJobType(JobType jobType) {
+    public JobDetails setJobType(JobType jobType) {
         this.jobType = jobType;
+        return this;
     }
 
     public OrderType getOrderType() {
         return orderType;
     }
 
-    public void setOrderType(OrderType orderType) {
+    public JobDetails setOrderType(OrderType orderType) {
         this.orderType = Objects.requireNonNull(orderType);
+        return this;
     }
 
     /**
@@ -89,23 +98,35 @@ public class JobDetails {
         return remark;
     }
 
-    public void setRemark(String remark) {
+    public JobDetails setRemark(String remark) {
         this.remark = remark;
+        return this;
     }
 
     public String getMachineName() {
         return machineName;
     }
 
-    public void setMachineName(String machineName) {
+    public JobDetails setMachineName(String machineName) {
         this.machineName = machineName;
+        return this;
     }
 
     public String getPublicationId() {
         return publicationId;
     }
 
-    public void setPublicationId(String publicationId) {
+    public JobDetails setPublicationId(String publicationId) {
         this.publicationId = publicationId;
+        return this;
+    }
+
+    public String getMisbn() {
+        return misbn;
+    }
+
+    public JobDetails setMisbn(String misbn) {
+        this.misbn = misbn;
+        return this;
     }
 }
