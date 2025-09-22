@@ -45,7 +45,7 @@ public enum MaterialType {
     MATTE_PAPER(40),
     POLYFILL_BAG(41),
     LAID(42),
-    AQUERELLO(43),
+    ACQUERELLO(43),
     NETTUNO(44),
     LUX_LAYERED_KRAFT_WHITE(45),
     LUX_LAYERED_WHITE_KRAFT(46),
