@@ -28,35 +28,35 @@ using HTTPS or SFTP.
 
 ## Table of Contents
 
-| Chapter                                                                 | Number |
-|-------------------------------------------------------------------------|-------:|
-| [Root Element](#1-top-level-element)                                    |      1 |
-| [Element: job](#2-element-job)                                          |      2 |
-| [Element: article](#3-element-article)                                  |      3 |
-| [Element: component](#4-element-component)                              |      4 |
-| [Element: chromaticity](#5-element-chromaticity)                        |      5 |
-| [Element: format](#6-element-format)                                    |      6 |
-| [Element: material](#7-element-material)                                |      7 |
-| [Element: refining](#8-element-refining)                                |      8 |
-| [Element: processing](#9-element-processing)                            |      9 |
-| [Element: binding](#10-element-binding)                                 |     10 |
-| [Element: details](#11-element-details)                                 |     11 |
-| [Element: associatedProof](#12-element-associatedProof)                 |     12 |
-| [Element: shipment](#13-element-shipment)                               |     13 |
-| [Element: bundling](#14-element-bundling)                               |     14 |
-| [Element: RecipientAddress](#15-element-recipientaddress)               |     15 |
-| [Element: address](#16-element-address)                                 |     16 |
-| [Element: senderForLabel (Address)](#17-element-senderForLabel-address) |     17 |
-| [Type: Address](#18-type-address)                                       |     18 |
-| [Element: Delivery](#19-element-delivery)                               |     19 |
-| [Element: File](#20-element-file)                                       |     20 |
-| [Element: fileFlags](#21-element-fileFlags)                             |     21 |
-| [Type: Dimensions](#22-type-dimensions)                                 |     22 |
-| [Element: export](#23-element-export)                                   |     23 |
-| [Type: Attribute](#24-type-attribute)                                   |     24 |
-| [JSON Example](#25-json-example)                                        |     25 |
-| [XML Example](#26-xml-example)                                          |     26 |
-
+| Chapter                                                                      | Number |
+|------------------------------------------------------------------------------|-------:|
+| [Root Element](#1-top-level-element)                                         |      1 |
+| [Element: job](#2-element-job)                                               |      2 |
+| [Element: article](#3-element-article)                                       |      3 |
+| [Element: component](#4-element-component)                                   |      4 |
+| [Element: chromaticity](#5-element-chromaticity)                             |      5 |
+| [Element: format](#6-element-format)                                         |      6 |
+| [Element: material](#7-element-material)                                     |      7 |
+| [Element: refining](#8-element-refining)                                     |      8 |
+| [Element: processing](#9-element-processing)                                 |      9 |
+| [Element: binding](#10-element-binding)                                      |     10 |
+| [Element: details](#11-element-details)                                      |     11 |
+| [Element: associatedProof](#12-element-associatedProof)                      |     12 |
+| [Element: shipment](#13-element-shipment)                                    |     13 |
+| [Element: bundling](#14-element-bundling)                                    |     14 |
+| [Element: RecipientAddress](#15-element-recipientaddress)                    |     15 |
+| [Element: address](#16-element-address)                                      |     16 |
+| [Element: senderForLabel (Address)](#17-element-senderForLabel-address)      |     17 |
+| [Type: Address](#18-type-address)                                            |     18 |
+| [Element: Delivery](#19-element-delivery)                                    |     19 |
+| [Element: File](#20-element-file)                                            |     20 |
+| [Element: fileFlags](#21-element-fileFlags)                                  |     21 |
+| [Type: Dimensions](#22-type-dimensions)                                      |     22 |
+| [Element: export](#23-element-export)                                        |     23 |
+| [Type: Attribute](#24-type-attribute)                                        |     24 |
+| [JSON Example](#25-json-example)                                             |     25 |
+| [XML Example](#26-xml-example)                                               |     26 |
+| [Multi-Item Orders and Payloads FAQ](#27-multi-item-orders-and-payloads-faq) |     27 |
 # 1. Top Level Element
 The top level of the MxJdf document contains the following elements:
 ```javascript
@@ -862,6 +862,53 @@ Flexible, open-ended model for including additional metadata with an MxJdf4 docu
     <currencyCode>GBP</currencyCode>
 </MxJdf4>
 ```
+
+# 27. Multi-Item Orders and Payloads FAQ
+### **Overview**
+
+The Mixam JDF (MXJDF) integration sends **one order payload per item**.\
+Even when an order contains multiple items for the same supplier, Mixam will **not combine them** into a single JDF submission.
+
+### **Single Item Payloads**
+
+-   Each payload corresponds to a **single item** in the customer's order.
+
+-   Mixam's internal fulfilment process operates at the **item level** --- once an item is ready, it **triggers its own submission**.
+
+-   This ensures production workflows are consistent with Mixam's per-item fulfilment model.
+
+### **Multi-Item Orders**
+
+-   When a customer places a multi-item order (e.g., a book and a poster), Mixam creates multiple internal items.
+
+-   Each item results in **a separate order payload** being posted to the supplier.
+
+-   The **first part of the order numbers will match** across these items, but each item will have a **unique order number**.\
+    For example:
+
+    `123456-1`<br>
+    `123456-2`<br>
+    `123456-3`
+
+### **Supplier Consolidation**
+
+-   Some suppliers choose to **wait 30--60 minutes** to receive all related item payloads.
+
+-   Once all items for a shared customer order have been received, suppliers may **consolidate them internally** before moving into production.
+
+-   Mixam's API does not coordinate this consolidation --- it's managed entirely by the supplier's system.
+
+### **Example Workflow**
+
+1.  Customer places an order with 3 items to the same supplier.
+
+2.  Mixam processes each item independently.
+
+3.  Each item triggers an order payload (e.g., 123456-1, 123456-2, 123456-3).
+
+4.  Supplier receives each payload separately.
+
+5.  Supplier optionally waits (e.g., 30--60 minutes) to collect all items and combine them into a single job.
 
 ## License
 The Mixam Job Description Format is an Open Source software released under the
