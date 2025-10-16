@@ -28,35 +28,35 @@ using HTTPS or SFTP.
 
 ## Table of Contents
 
-| Chapter                                                                 | Number |
-|-------------------------------------------------------------------------|-------:|
-| [Root Element](#1-top-level-element)                                    |      1 |
-| [Element: job](#2-element-job)                                          |      2 |
-| [Element: article](#3-element-article)                                  |      3 |
-| [Element: component](#4-element-component)                              |      4 |
-| [Element: chromaticity](#5-element-chromaticity)                        |      5 |
-| [Element: format](#6-element-format)                                    |      6 |
-| [Element: material](#7-element-material)                                |      7 |
-| [Element: refining](#8-element-refining)                                |      8 |
-| [Element: processing](#9-element-processing)                            |      9 |
-| [Element: binding](#10-element-binding)                                 |     10 |
-| [Element: details](#11-element-details)                                 |     11 |
-| [Element: associatedProof](#12-element-associatedProof)                 |     12 |
-| [Element: shipment](#13-element-shipment)                               |     13 |
-| [Element: bundling](#14-element-bundling)                               |     14 |
-| [Element: RecipientAddress](#15-element-recipientaddress)               |     15 |
-| [Element: address](#16-element-address)                                 |     16 |
-| [Element: senderForLabel (Address)](#17-element-senderForLabel-address) |     17 |
-| [Type: Address](#18-type-address)                                       |     18 |
-| [Element: Delivery](#19-element-delivery)                               |     19 |
-| [Element: File](#20-element-file)                                       |     20 |
-| [Element: fileFlags](#21-element-fileFlags)                             |     21 |
-| [Type: Dimensions](#22-type-dimensions)                                 |     22 |
-| [Element: export](#23-element-export)                                   |     23 |
-| [Type: Attribute](#24-type-attribute)                                   |     24 |
-| [JSON Example](#25-json-example)                                        |     25 |
-| [XML Example](#26-xml-example)                                          |     26 |
-| [Multi-Item Orders and Payloads FAQ](#27-single-item-payloads)          |     27 |
+| Chapter                                                                      | Number |
+|------------------------------------------------------------------------------|-------:|
+| [Root Element](#1-top-level-element)                                         |      1 |
+| [Element: job](#2-element-job)                                               |      2 |
+| [Element: article](#3-element-article)                                       |      3 |
+| [Element: component](#4-element-component)                                   |      4 |
+| [Element: chromaticity](#5-element-chromaticity)                             |      5 |
+| [Element: format](#6-element-format)                                         |      6 |
+| [Element: material](#7-element-material)                                     |      7 |
+| [Element: refining](#8-element-refining)                                     |      8 |
+| [Element: processing](#9-element-processing)                                 |      9 |
+| [Element: binding](#10-element-binding)                                      |     10 |
+| [Element: details](#11-element-details)                                      |     11 |
+| [Element: associatedProof](#12-element-associatedProof)                      |     12 |
+| [Element: shipment](#13-element-shipment)                                    |     13 |
+| [Element: bundling](#14-element-bundling)                                    |     14 |
+| [Element: RecipientAddress](#15-element-recipientaddress)                    |     15 |
+| [Element: address](#16-element-address)                                      |     16 |
+| [Element: senderForLabel (Address)](#17-element-senderForLabel-address)      |     17 |
+| [Type: Address](#18-type-address)                                            |     18 |
+| [Element: Delivery](#19-element-delivery)                                    |     19 |
+| [Element: File](#20-element-file)                                            |     20 |
+| [Element: fileFlags](#21-element-fileFlags)                                  |     21 |
+| [Type: Dimensions](#22-type-dimensions)                                      |     22 |
+| [Element: export](#23-element-export)                                        |     23 |
+| [Type: Attribute](#24-type-attribute)                                        |     24 |
+| [JSON Example](#25-json-example)                                             |     25 |
+| [XML Example](#26-xml-example)                                               |     26 |
+| [Multi-Item Orders and Payloads FAQ](#27-multi-item-orders-and-payloads-faq) |     27 |
 # 1. Top Level Element
 The top level of the MxJdf document contains the following elements:
 ```javascript
