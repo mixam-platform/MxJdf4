@@ -51,6 +51,9 @@ public enum MaterialType {
     LUX_LAYERED_WHITE_KRAFT(46),
     ETCHING(47),
     RAG_PEARL(48),
+    MATT_VINYL(49),
+    GLOSS_VINYL(50),
+    TRANSPARENT_VINYL(51)
     ;
 
     private final int value;
