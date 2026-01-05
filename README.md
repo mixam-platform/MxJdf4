@@ -448,22 +448,22 @@ See type ‘Address’
 }
 ```
 
-| Property | Description | Values |
-|---|---|---|
-|salutation|(SalutationType)|MX("Mx."), <br>MS("Ms."), <br>MR("Mr."), <br>DR("Dr."), <br>MRS("Mrs"), <br>PROF("Prof"), <br>PROF("Prof"), <br>NOT_APPLICABLE("")|
-|companyName|(String)||
-|firstName|(String)||
-|surName|(String)||
-|street1|(String)||
-|street2|Optional (String) ||
-|street3|Optional (String) ||
-|county|Usually county name. State in the US. (String)||
-|postalCode|Postcode in the UK, zip in US. (String)||
-|city|(String)||
-|country|(String)|“GB”, “US”, “CA” or “AU”|
-|telephoneNumber|(String)||
-|email|(String)||
-|locationType|(AddressLocationType)|RESIDENTIAL(0), <br>BUSINESS_DOCK(1), <br>BUSINESS_NO_DOCK(2), <br>LIMITED_ACCESS(3), <br>TRADE_SHOW(4), <br>CONSTRUCTION(5), <br>FARM(6),|
+| Property | Description | Values                                                                                                                                                    |
+|---|---|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
+|salutation|(SalutationType)| MX("Mx."), <br>MS("Ms."), <br>MR("Mr."), <br>DR("Dr."), <br>MRS("Mrs"), <br>PROF("Prof"), <br>PROF("Prof"), <br>NOT_APPLICABLE("")                        |
+|companyName|(String)|                                                                                                                                                           |
+|firstName|(String)|                                                                                                                                                           |
+|surName|(String)|                                                                                                                                                           |
+|street1|(String)|                                                                                                                                                           |
+|street2|Optional (String) |                                                                                                                                                           |
+|street3|Optional (String) |                                                                                                                                                           |
+|county|Usually county name. State in the US. (String)|                                                                                                                                                           |
+|postalCode|Postcode in the UK, zip in US. (String)|                                                                                                                                                           |
+|city|(String)|                                                                                                                                                           |
+|country|(String)| “GB”, “US”, “CA” or “AU”                                                                                                                                  |
+|telephoneNumber|(String)|                                                                                                                                                           |
+|email|(String)|                                                                                                                                                           |
+|locationType|(AddressLocationType)| RESIDENTIAL(0), <br>BUSINESS_DOCK(1), <br>BUSINESS_NO_DOCK(2), <br>LIMITED_ACCESS(3), <br>TRADE_SHOW(4), <br>CONSTRUCTION(5), <br>FARM(6), <br>LOCKER(7), |
 
 # 19. Element: delivery
 ```javascript
