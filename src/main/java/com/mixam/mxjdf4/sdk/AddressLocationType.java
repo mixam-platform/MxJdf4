@@ -10,6 +10,7 @@ public enum AddressLocationType {
     TRADE_SHOW(4),
     CONSTRUCTION(5),
     FARM(6),
+    LOCKER(7)
     ;
 
     private final int value;
