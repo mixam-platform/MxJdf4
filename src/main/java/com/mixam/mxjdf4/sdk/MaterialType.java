@@ -53,7 +53,8 @@ public enum MaterialType {
     RAG_PEARL(48),
     MATT_VINYL(49),
     GLOSS_VINYL(50),
-    TRANSPARENT_VINYL(51)
+    TRANSPARENT_VINYL(51),
+    SILK_SINGLE_COAT(52)
     ;
 
     private final int value;
