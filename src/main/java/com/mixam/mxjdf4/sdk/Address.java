@@ -21,6 +21,7 @@ public class Address {
     private String email;
     private String company;
     private AddressLocationType locationType;
+    private String carrierLocationId;
 
     public AddressLocationType getLocationType() {
         return locationType;
@@ -145,6 +146,15 @@ public class Address {
 
     public Address setCompany(String company) {
         this.company = company;
+        return this;
+    }
+
+    public String getCarrierLocationId() {
+        return carrierLocationId;
+    }
+
+    public Address setCarrierLocationId(String carrierLocationId) {
+        this.carrierLocationId = carrierLocationId;
         return this;
     }
 
