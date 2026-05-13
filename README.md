@@ -418,7 +418,7 @@ See type ‘Address’
     "firstName": "Arthur",
     "surName": "Conan Doyle",
     "street1": "6 Hercules Way",
-    "street2": "Building 1"
+    "street2": "Building 1",
     "county": "Hertfordshire",
     "postalCode": "WD25 7GS",
     "city": "Watford",
@@ -444,7 +444,8 @@ See type ‘Address’
     "country": "GB",
     "telephoneNumber": "01923 594 040",
     "locationType": 0,
-    "email": "info@mixam.co.uk"
+    "email": "info@mixam.co.uk",
+    "carrierLocationId": "UKLON00040"
 }
 ```
 
@@ -464,6 +465,7 @@ See type ‘Address’
 |telephoneNumber|(String)|                                                                                                                                                           |
 |email|(String)|                                                                                                                                                           |
 |locationType|(AddressLocationType)| RESIDENTIAL(0), <br>BUSINESS_DOCK(1), <br>BUSINESS_NO_DOCK(2), <br>LIMITED_ACCESS(3), <br>TRADE_SHOW(4), <br>CONSTRUCTION(5), <br>FARM(6), <br>LOCKER(7), |
+|carrierLocationId|Identifier of a carrier pickup point/locker used when a non-standard delivery location is selected. Format is defined by the carrier. | |
 
 # 19. Element: delivery
 ```javascript
