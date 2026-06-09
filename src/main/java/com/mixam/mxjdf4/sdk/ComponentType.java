@@ -9,6 +9,7 @@ public enum ComponentType {
     JACKET(3),
     BOOKMARK(4),
     ENVELOPE(5),
+    ENDPAPER(6),
     ;
 
     private final int value;
