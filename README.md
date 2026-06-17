@@ -152,7 +152,7 @@ The top level of the MxJdf document contains the following elements:
 |material|Material element which specify the component paper stock.|See below|
 |processing|Processing element which specify additional processing such as binding.|See below|
 |files|A list of artwork files associated with the component. (List<File>)|See bellow|
-|type|ComponentType|INVALID(0),<br>CONTENT(1),<br>COVER(2),<br>JACKET(3),<br>BOOKMARK(4),<br>ENVELOPE (5)|
+|type|ComponentType|INVALID(0),<br>CONTENT(1),<br>COVER(2),<br>JACKET(3),<br>BOOKMARK(4),<br>ENVELOPE (5),<br>ENDPAPER(6)|
 
 # 5. Element: chromaticity
 ```javascript
@@ -506,7 +506,7 @@ See type ‘Address’
 
 | Property | Description | Values |
 |---|---|---|
-|type|Which component is associated with this file. (FileType)|ALL(0), <br>BODY(1), <br>COVER(2), <br>DUST_JACKET(3), <br>HEAD_TO_HEAD(4)|
+|type|Which component is associated with this file. (FileType)|ALL(0), <br>BODY(1), <br>COVER(2), <br>DUST_JACKET(3), <br>HEAD_TO_HEAD(4), <br>FRONT_ENDPAPERS(5), <br>BACK_ENDPAPERS(6)|
 |name|Name of file (String)||
 |url|Where to download this file (String)||
 |checksum|MD5 checksum of this file. (String)||

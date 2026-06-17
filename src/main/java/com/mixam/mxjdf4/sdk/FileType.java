@@ -18,7 +18,9 @@ public enum FileType {
      * @deprecated Because it's not really a component (it's more like an 'imposition').
      */
     @Deprecated
-    HEAD_TO_HEAD(4);
+    HEAD_TO_HEAD(4),
+    FRONT_ENDPAPERS(5),
+    BACK_ENDPAPERS(6);
 
     private final int value;
 
