@@ -377,7 +377,9 @@ will match the trim box of the actual artwork for the just jacket.
   "circulation:  100,
   "delivery": {...},
   "dispatchDate": 1579693407751,
+  "dispatchDateIso8601": "2020-01-22T11:43:27Z",
   "deliveryDate": 1579695818930,
+  "deliveryDateIso8601": "2020-01-22T12:23:38Z",
   "instructions": "Please leave parcels behind the bins"
 }
 ```
@@ -389,7 +391,9 @@ will match the trim box of the actual artwork for the just jacket.
 |circulation|How many copies to this specific address. (Integer number)||
 |delivery|Delivery details. (Delivery)|See bellow|
 |dispatchDate|Epoch date of dispatch (when the boxes are due to be collected by the carrier.) (Long number)|A Unix Timestamp|
+|dispatchDateIso8601|ISO 8601 date format of the `dispatchDate`|Examples:<br/>GMT: `2024-01-01T12:00:00Z`<br/>BST: `2024-06-01T12:00:00+01:00`<br/>EST: `2024-01-01T12:00:00-05:00`|
 |deliveryDate|Epoch date of delivery (when the boxes are due to arrive at the customer address.) (Long number)|A Unix Timestamp|
+|deliveryDateIso8601|ISO 8601 date format of the `deliveryDate`|Examples:<br/>GMT: `2024-01-02T12:00:00Z`<br/>BST: `2024-06-02T12:00:00+01:00`<br/>EST: `2024-01-02T12:00:00-05:00`|
 |instructions|Delivery instructions (String)||
 
 # 16. Element: address
@@ -717,7 +721,9 @@ Flexible, open-ended model for including additional metadata with an MxJdf4 docu
             "url": "https://mixam.co.uk/spedition/1234567890abcdefghijklmn"
           },
           "dispatchDate": 1603234800000,
-          "deliveryDate": 1603321200000
+          "dispatchDateIso8601": "2020-10-21T00:00:00+01:00",
+          "deliveryDate": 1603321200000,
+          "deliveryDateIso8601": "2020-10-22T00:00:00+01:00"
         }
       ],
       "senderForLabel": {
@@ -836,7 +842,9 @@ Flexible, open-ended model for including additional metadata with an MxJdf4 docu
                         <cost>8.39</cost>
                     </delivery>
                     <dispatchDate>1580428800000</dispatchDate>
+                    <dispatchDateIso8601>2020-01-31T00:00:00Z</dispatchDateIso8601>
                     <deliveryDate>1580688000000</deliveryDate>
+                    <deliveryDateIso8601>2020-02-03T00:00:00Z</deliveryDateIso8601>
                 </deliveryAddresses>
             </deliveryAddresses-list>
             <senderForLabel>

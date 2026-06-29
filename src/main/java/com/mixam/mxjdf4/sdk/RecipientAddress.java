@@ -18,6 +18,16 @@ public class RecipientAddress {
     private Date dispatchDate;
     private Date deliveryDate;
 
+    /**
+     * ISO 8601 date format of the {@link #dispatchDate} to make it clear the timezone we are dealing with
+     */
+    private String dispatchDateIso8601;
+
+    /**
+     * ISO 8601 date format of the {@link #deliveryDate} to make it clear the timezone we are dealing with
+     */
+    private String deliveryDateIso8601;
+
     private String instructions;
 
     /**
@@ -87,4 +97,21 @@ public class RecipientAddress {
         return this;
     }
 
+    public String getDispatchDateIso8601() {
+        return dispatchDateIso8601;
+    }
+
+    public RecipientAddress setDispatchDateIso8601(String dispatchDateIso8601) {
+        this.dispatchDateIso8601 = dispatchDateIso8601;
+        return this;
+    }
+
+    public String getDeliveryDateIso8601() {
+        return deliveryDateIso8601;
+    }
+
+    public RecipientAddress setDeliveryDateIso8601(String deliveryDateIso8601) {
+        this.deliveryDateIso8601 = deliveryDateIso8601;
+        return this;
+    }
 }
