@@ -390,10 +390,10 @@ will match the trim box of the actual artwork for the just jacket.
 |address|Address of recipient (Address)|See bellow|
 |circulation|How many copies to this specific address. (Integer number)||
 |delivery|Delivery details. (Delivery)|See bellow|
-|dispatchDate|Epoch date of dispatch (when the boxes are due to be collected by the carrier.) (Long number)|A Unix Timestamp|
-|dispatchDateIso8601|ISO 8601 date format of the `dispatchDate`|Examples:<br/>GMT: `2024-01-01T12:00:00Z`<br/>BST: `2024-06-01T12:00:00+01:00`<br/>EST: `2024-01-01T12:00:00-05:00`|
-|deliveryDate|Epoch date of delivery (when the boxes are due to arrive at the customer address.) (Long number)|A Unix Timestamp|
-|deliveryDateIso8601|ISO 8601 date format of the `deliveryDate`|Examples:<br/>GMT: `2024-01-02T12:00:00Z`<br/>BST: `2024-06-02T12:00:00+01:00`<br/>EST: `2024-01-02T12:00:00-05:00`|
+|dispatchDate|Epoch date of dispatch (when the boxes are due to be collected by the carrier.) (Long number)|A Unix Timestamp. Timestamps are in UTC. Systems must convert this to local date and time in the relevant timezone to ensure alignment.|
+|dispatchDateIso8601|ISO 8601 date format of the `dispatchDate`|ISO 8601 date format. All date fields must be converted to local date and time in the relevant timezone to ensure alignment.<br/>Examples:<br/>GMT: `2024-01-01T12:00:00Z`<br/>BST: `2024-06-01T12:00:00+01:00`<br/>EST: `2024-01-01T12:00:00-05:00`|
+|deliveryDate|Epoch date of delivery (when the boxes are due to arrive at the customer address.) (Long number)|A Unix Timestamp. Timestamps are in UTC. Systems must convert this to local date and time in the relevant timezone to ensure alignment.|
+|deliveryDateIso8601|ISO 8601 date format of the `deliveryDate`|ISO 8601 date format. All date fields must be converted to local date and time in the relevant timezone to ensure alignment.<br/>Examples:<br/>GMT: `2024-01-02T12:00:00Z`<br/>BST: `2024-06-02T12:00:00+01:00`<br/>EST: `2024-01-02T12:00:00-05:00`|
 |instructions|Delivery instructions (String)||
 
 # 16. Element: address
