@@ -300,8 +300,9 @@ will match the trim box of the actual artwork for the just jacket.
    "orderType": 0,
    "remark": "£15 bundle in 500's cost added to supplier cost total as discussed",
    "machineName": "B3D-Z",
-   "publicationId": "5f7c9449a478e23e57444661" 
-    "misbn": "8235938273652"
+   "publicationId": "5f7c9449a478e23e57444661",
+   "misbn": "8235938273652",
+   "contentRating": 0
  }
 ```
 
@@ -317,6 +318,17 @@ will match the trim box of the actual artwork for the just jacket.
 |machineName| The name of the recommended machine for this job identified by our pricing engine (String) | |
 |publicationId| The ID of the original publication for POD PrintLink orders (String) | |
 |misbn| Mixam International Standard Book Number: Fake ISBN number encompassing an order or publication and version of artwork (String) | |
+
+### NsfwLevel (Content Rating) Values
+| Value | Description |
+|---|---|
+| UNIVERSALLY_ACCEPTABLE (0) | No rating means the content is universally acceptable. |
+| MILDLY_SENSITIVE (1) | Level 1 - Mildly sensitive to some audiences. Generally safe for most audiences but may be unsuitable for children. May include mild profanity, references to alcohol, gambling or substance use, suggestive themes or light innuendos, or satirical, historical or educational themes which out of context would be considered controversial or offensive. |
+| MATURE (2) | Level 2 - Mature content but not overly graphic. Produced by consenting adults and intended for mature audiences. May include partial artistic nudity, alcohol, gambling or substance use, adult themed jokes or potentially offensive humour, moderate gore, horror or violence, or moderate profanity. |
+| HIGHLY_EXPLICIT (3) | Level 3 - Highly explicit, violent or offensive. Intended for mature audiences, adults only. May include full or partial provocative or artistic nudity, implied but non graphic sexual acts, realistic violence, blood, gore, horror or serious injuries, graphic substance abuse, or heavy profanity. |
+| EXTREMELY_EXPLICIT (4) | Level 4 - Extremely explicit, violent or offensive. The highest level of explicit content whilst remaining legal. May include full/partial or invasive nudity, explicitly graphic pornography or sexual acts, bestiality or fetish content, graphic violence, torture, mutilation, dismemberment, wound detail or excessive gore, or pervasive profanity. |
+
+Content rated beyond level 4 is perceived to include illegal content and will be refused.
 
 # 12. Element: associatedProof
 ```javascript

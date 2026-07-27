@@ -21,6 +21,7 @@ public class JobDetails {
     private String publicationId;
     // Mixam International Standard Book Number (Fake ISBN)
     private String misbn;
+    private NsfwLevel contentRating;
 
     /**
      * Alias of {@code additionalProjectName}.
@@ -127,6 +128,18 @@ public class JobDetails {
 
     public JobDetails setMisbn(String misbn) {
         this.misbn = misbn;
+        return this;
+    }
+
+    /**
+     * The content rating for this job.
+     */
+    public NsfwLevel getContentRating() {
+        return contentRating;
+    }
+
+    public JobDetails setContentRating(NsfwLevel contentRating) {
+        this.contentRating = contentRating;
         return this;
     }
 }
