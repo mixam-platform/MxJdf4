@@ -62,8 +62,8 @@ The body of the Webhook HTTP `POST` request must be valid JSON containing the fo
 | `sourceShipmentId`   | `SHIPPED` | `Long` | Integer id assigned to the shipment by the carrier |
 | `numberOfItems`      | `SHIPPED` | `Long` | (Optional) Number of copies shipped; if omitted, Mixam assumes all copies in the delivery |
 | `reason`             | `REJECTED`<br>`DELAYED`<br>`CANCELLED` | `String` | (Optional) Additional details |
-| `carrier`              |   | `Carrier` (Optional) | Carrier information. Contains the `carrier` field and, when applicable, `otherCarrier`.                                              |
-| `carrier.carrier`      | `AMAZON`<br>`AUSTRALIA_POST`<br>`DHL`<br>`DPD`<br>`DX`<br>`FEDEX`<br>`FREIGHT_VIEW`<br>`INPOST`<br>`OTHER`<br>`ROYAL_MAIL`<br>`TPN`<br>`TRANSGLOBAL`<br>`UPS`<br>`UPS_MAIL_INNOVATIONS`<br>`USPS`<br>`SAGAWA`<br>`YAMATO` | `String` (Required) | The carrier used for the shipment. If the value is `OTHER`, `carrier.otherCarrier` **must** be provided.                             |
+| `carrier`              |   | `Carrier` (Optional) | Carrier information. Contains the `carrier` field and, when applicable, `otherCarrier`. |
+| `carrier.carrier`      | `AMAZON`<br>`AUSTRALIA_POST`<br>`DHL`<br>`DPD`<br>`DX`<br>`FEDEX`<br>`FREIGHT_VIEW`<br>`INPOST`<br>`OTHER`<br>`ROYAL_MAIL`<br>`TPN`<br>`TRANSGLOBAL`<br>`UPS`<br>`UPS_MAIL_INNOVATIONS`<br>`USPS`<br>`SAGAWA`<br>`YAMATO` | `String` (Required) | The carrier used for the shipment. If the value is `OTHER`, `carrier.otherCarrier` **must** be provided. |
 | `carrier.otherCarrier` | All | `String` (Conditional) | Required only when `carrier.carrier` is `OTHER`. Specifies the carrier name. Must be omitted for all other `carrier.carrier` values. |
 
 ### Example Payload
