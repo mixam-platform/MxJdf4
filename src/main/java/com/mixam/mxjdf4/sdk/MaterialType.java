@@ -54,7 +54,20 @@ public enum MaterialType {
     MATT_VINYL(49),
     GLOSS_VINYL(50),
     TRANSPARENT_VINYL(51),
-    SILK_SINGLE_COAT(52)
+    SILK_SINGLE_COAT(52),
+    PVC(53),
+    MDF_CORK_BASE(54),
+    NEOPRENE(55),
+    FOAMEX(56),
+    KAPA_PLAST(57),
+    KAPA_TEX(58),
+    SMART_X(59),
+    CORREX(60),
+    DI_BOND(61),
+    PREMIUM_CARDBOARD(62),
+    COMPACT_PRESSBOARD(63),
+    DOUBLEWALL_EE_FLUTE(64),
+    HONEYCOMB_CARDBOARD(65)
     ;
 
     private final int value;
