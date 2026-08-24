@@ -67,7 +67,10 @@ public enum MaterialType {
     PREMIUM_CARDBOARD(62),
     COMPACT_PRESSBOARD(63),
     DOUBLEWALL_EE_FLUTE(64),
-    HONEYCOMB_CARDBOARD(65)
+    HONEYCOMB_CARDBOARD(65),
+    LEATHER(66),
+    SILVER_HALIDE_LUSTRE(67),
+    SILVER_HALIDE_PEARL(68)
     ;
 
     private final int value;
