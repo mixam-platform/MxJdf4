@@ -309,7 +309,7 @@ will match the trim box of the actual artwork for the just jacket.
 | Property | Description | Values |
 |---|---|---|
 |additionalProjectName| | Additional Order number. Reference number. (String)                                         ||
-|completionType| Urgency of the job. Default value is 4 (Standard) | INVALID(0), <br>SAME_DAY(1), <br>EXPRESS(2), <br>OVERNIGHT(3), <br>STANDARD(4), <br>SAVER(5); |
+|completionType| Indicator for the type of price that was used | INVALID(0), <br>SAME_DAY(1), <br>EXPRESS(2), <br>OVERNIGHT(3), <br>STANDARD(4), <br>SAVER(5); |
 |totalCirculation| The total number of copies (Integer) | |
 |assumedPrintType| The expected print technology | NONE(0), <br>LITHO(1), <br>DIGITAL(2), <br>INKJET(3) |
 |jobType| Classification of print job | PRIMARY_PRINT(0), <br>RIPPED_PROOF(1), <br>HARD_COPY_PROOF(2) |
