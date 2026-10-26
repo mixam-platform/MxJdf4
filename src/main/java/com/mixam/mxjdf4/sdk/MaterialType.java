@@ -70,7 +70,8 @@ public enum MaterialType {
     HONEYCOMB_CARDBOARD(65),
     LEATHER(66),
     SILVER_HALIDE_LUSTRE(67),
-    SILVER_HALIDE_PEARL(68)
+    SILVER_HALIDE_PEARL(68),
+    EMBOSSED_PEARL(69)
     ;
 
     private final int value;
