@@ -71,7 +71,8 @@ public enum MaterialType {
     LEATHER(66),
     SILVER_HALIDE_LUSTRE(67),
     SILVER_HALIDE_PEARL(68),
-    EMBOSSED_PEARL(69)
+    EMBOSSED_PEARL(69),
+    ALUMINIUM(70)
     ;
 
     private final int value;
