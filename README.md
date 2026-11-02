@@ -375,15 +375,14 @@ Content rated beyond level 4 is perceived to include illegal content and will be
 EU Product Identifiers (PIDs) for the item. Since 1 November 2026 EU customs require these for goods imported
 into the EU customs territory (EU27 and Northern Ireland). If you book your own carrier for a delivery into the EU,
 you **must** send these values to the carrier on the customs / commercial invoice line for this item, using the
-carrier's PID fields where available. Otherwise add `customsDescription` to the end of the goods description on
-the commercial invoice / packing list.
+carrier's PID fields where available. Otherwise add them to the end of the goods description on the commercial
+invoice / packing list, each preceded by its abbreviation, e.g. `M-PID7-100016 NS-PIDMX-7-100016 S-PIDNO`.
 
 ```javascript
 "productIdentifiers": {
     "merchantProductId": "7-100016",
     "nonStandardManufacturerProductId": "MX-7-100016",
-    "standardManufacturerProductId": "NO",
-    "customsDescription": "M-PID7-100016 NS-PIDMX-7-100016 S-PIDNO"
+    "standardManufacturerProductId": "NO"
 }
 ```
 
@@ -392,7 +391,6 @@ the commercial invoice / packing list.
 |merchantProductId|M-PID: Merchant Product Identifier (String)|`{product}-{subProduct}`, e.g. `7-100016`|
 |nonStandardManufacturerProductId|NS-PID: Non-Standardised Manufacturer Product Identifier (String)|`MX-{product}-{subProduct}`, e.g. `MX-7-100016`|
 |standardManufacturerProductId|S-PID: Standardised Manufacturer Product Identifier such as an ISBN or GTIN (String)|The identifier, or `NO` when the item doesn't have one. Some carrier APIs want a different value for "none" (e.g. FedEx uses `NA`), or for the field to be left out.|
-|customsDescription|The identifiers formatted for the end of a commercial invoice goods description (String)|e.g. `M-PID7-100016 NS-PIDMX-7-100016 S-PIDNO`|
 >
 > # 14. Element: bundling
 ```javascript

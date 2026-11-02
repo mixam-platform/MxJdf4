@@ -27,12 +27,6 @@ public class ProductIdentifiers {
      */
     private String standardManufacturerProductId;
 
-    /**
-     * The identifiers formatted for a commercial invoice / goods description, e.g.
-     * "M-PID7-100016 NS-PIDMX-7-100016 S-PIDNO".
-     */
-    private String customsDescription;
-
     public String getMerchantProductId() {
         return merchantProductId;
     }
@@ -57,15 +51,6 @@ public class ProductIdentifiers {
 
     public ProductIdentifiers setStandardManufacturerProductId(String standardManufacturerProductId) {
         this.standardManufacturerProductId = standardManufacturerProductId;
-        return this;
-    }
-
-    public String getCustomsDescription() {
-        return customsDescription;
-    }
-
-    public ProductIdentifiers setCustomsDescription(String customsDescription) {
-        this.customsDescription = customsDescription;
         return this;
     }
 }
