@@ -43,6 +43,7 @@ using HTTPS or SFTP.
 | [Element: details](#11-element-details)                                      |     11 |
 | [Element: associatedProof](#12-element-associatedProof)                      |     12 |
 | [Element: shipment](#13-element-shipment)                                    |     13 |
+| [Element: productIdentifiers](#13a-element-productidentifiers)              |    13a |
 | [Element: bundling](#14-element-bundling)                                    |     14 |
 | [Element: RecipientAddress](#15-element-recipientaddress)                    |     15 |
 | [Element: address](#16-element-address)                                      |     16 |
@@ -354,7 +355,8 @@ Content rated beyond level 4 is perceived to include illegal content and will be
    "senderForLabel": {...},
    "weight": 1.2
    "units": 1,
-    "splitDeliveryAdditionalCharge": 0
+    "splitDeliveryAdditionalCharge": 0,
+    "productIdentifiers": {...}
 }
 ```
 
@@ -365,8 +367,30 @@ Content rated beyond level 4 is perceived to include illegal content and will be
 |Weight|The expected weight of the goods. (Double precision number)||
 |units|The units in which the weight is specified. KILOGRAM on metric system, LIBRA on imperial.|KILOGRAM(0), <br>LIBRA(1),|
 |splitDeliveryAdditionalCharge|Additional charge for split shipments||
+|productIdentifiers|EU Product Identifiers (PIDs) for the item. (ProductIdentifiers)|See [Element: productIdentifiers](#13a-element-productidentifiers)|
 
 > NOTE: ripped (digital) proof jobs will not contain a `shipment` element.
+
+# 13a. Element: productIdentifiers
+EU Product Identifiers (PIDs) for the item. Since 1 November 2026 EU customs require these for goods imported
+into the EU customs territory (EU27 and Northern Ireland). If you book your own carrier for a delivery into the EU,
+you **must** send these values to the carrier on the customs / commercial invoice line for this item, using the
+carrier's PID fields where available. Otherwise add them to the end of the goods description on the commercial
+invoice / packing list, each preceded by its abbreviation, e.g. `M-PID7-100016 NS-PIDMX-7-100016 S-PIDNO`.
+
+```javascript
+"productIdentifiers": {
+    "merchantProductId": "7-100016",
+    "nonStandardManufacturerProductId": "MX-7-100016",
+    "standardManufacturerProductId": "NO"
+}
+```
+
+| Property | Description | Values |
+|---|---|---|
+|merchantProductId|M-PID: Merchant Product Identifier (String)|`{product}-{subProduct}`, e.g. `7-100016`|
+|nonStandardManufacturerProductId|NS-PID: Non-Standardised Manufacturer Product Identifier (String)|`MX-{product}-{subProduct}`, e.g. `MX-7-100016`|
+|standardManufacturerProductId|S-PID: Standardised Manufacturer Product Identifier such as an ISBN or GTIN (String)|The identifier, or `NO` when the item doesn't have one. Some carrier APIs want a different value for "none" (e.g. FedEx uses `NA`), or for the field to be left out.|
 >
 > # 14. Element: bundling
 ```javascript
