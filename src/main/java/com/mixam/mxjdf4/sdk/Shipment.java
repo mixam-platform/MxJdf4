@@ -18,6 +18,7 @@ public class Shipment {
     private double weight;
     private WeightUnitType units;
     private double splitDeliveryAdditionalCharge;
+    private ProductIdentifiers productIdentifiers;
 
     public double getWeight() {
         return weight;
@@ -55,6 +56,15 @@ public class Shipment {
 
     public Shipment setDeliveryAddresses(List<RecipientAddress> deliveryAddresses) {
         this.deliveryAddresses = deliveryAddresses;
+        return this;
+    }
+
+    public ProductIdentifiers getProductIdentifiers() {
+        return productIdentifiers;
+    }
+
+    public Shipment setProductIdentifiers(ProductIdentifiers productIdentifiers) {
+        this.productIdentifiers = productIdentifiers;
         return this;
     }
 
