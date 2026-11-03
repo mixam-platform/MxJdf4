@@ -6,13 +6,9 @@ public enum NsfwLevel {
 
     UNIVERSALLY_ACCEPTABLE(0),
 
-    MILDLY_SENSITIVE(1),
+    NUDITY(2),
 
-    MATURE(2),
-
-    HIGHLY_EXPLICIT(3),
-
-    EXTREMELY_EXPLICIT(4);
+    EXPLICIT(4);
 
     private final int value;
 
