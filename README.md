@@ -327,7 +327,6 @@ will match the trim box of the actual artwork for the just jacket.
 | NUDITY (2) | Level 1 - Nudity without sexual activity. The files contain full or partial nudity but do not depict sexual activity, explicitly focus on genitalia, or contain highly graphic violence or gore. |
 | EXPLICIT (4) | Level 2 - Sexual activity or highly graphic violence. The files contain depictions or descriptions of graphic sexual activity, invasive or close-up focus on genitalia, explicit injuries, torture, mutilation, blood, dismemberment or open wounds. |
 
-Content rated beyond level 2 is perceived to include illegal content and will be refused.
 
 # 12. Element: associatedProof
 ```javascript
