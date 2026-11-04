@@ -324,12 +324,9 @@ will match the trim box of the actual artwork for the just jacket.
 | Value | Description |
 |---|---|
 | UNIVERSALLY_ACCEPTABLE (0) | No rating means the content is universally acceptable. |
-| MILDLY_SENSITIVE (1) | Level 1 - Mildly sensitive to some audiences. Generally safe for most audiences but may be unsuitable for children. May include mild profanity, references to alcohol, gambling or substance use, suggestive themes or light innuendos, or satirical, historical or educational themes which out of context would be considered controversial or offensive. |
-| MATURE (2) | Level 2 - Mature content but not overly graphic. Produced by consenting adults and intended for mature audiences. May include partial artistic nudity, alcohol, gambling or substance use, adult themed jokes or potentially offensive humour, moderate gore, horror or violence, or moderate profanity. |
-| HIGHLY_EXPLICIT (3) | Level 3 - Highly explicit, violent or offensive. Intended for mature audiences, adults only. May include full or partial provocative or artistic nudity, implied but non graphic sexual acts, realistic violence, blood, gore, horror or serious injuries, graphic substance abuse, or heavy profanity. |
-| EXTREMELY_EXPLICIT (4) | Level 4 - Extremely explicit, violent or offensive. The highest level of explicit content whilst remaining legal. May include full/partial or invasive nudity, explicitly graphic pornography or sexual acts, bestiality or fetish content, graphic violence, torture, mutilation, dismemberment, wound detail or excessive gore, or pervasive profanity. |
+| NUDITY (2) | Level 1 - Nudity without sexual activity. The files contain full or partial nudity but do not depict sexual activity, explicitly focus on genitalia, or contain highly graphic violence or gore. |
+| EXPLICIT (4) | Level 2 - Sexual activity or highly graphic violence. The files contain depictions or descriptions of graphic sexual activity, invasive or close-up focus on genitalia, explicit injuries, torture, mutilation, blood, dismemberment or open wounds. |
 
-Content rated beyond level 4 is perceived to include illegal content and will be refused.
 
 # 12. Element: associatedProof
 ```javascript
