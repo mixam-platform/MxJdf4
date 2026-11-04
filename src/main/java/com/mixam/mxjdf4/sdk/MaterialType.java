@@ -72,7 +72,10 @@ public enum MaterialType {
     SILVER_HALIDE_LUSTRE(67),
     SILVER_HALIDE_PEARL(68),
     EMBOSSED_PEARL(69),
-    ALUMINIUM(70)
+    ALUMINIUM(70),
+    TWILL(71),
+    PEARL_ICE_WHITE(72),
+    WOODSTOCK_BETULLA(73)
     ;
 
     private final int value;
