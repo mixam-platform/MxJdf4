@@ -160,22 +160,26 @@ as alternatives.
 These answer different questions:
 
 -   **`deliveryNumber`** (on `referencedJobNumber`/`fulfilmentReference`) says *which delivery, by
-    position* - "the 2nd of this item's deliveries." It's always `1` today, since every job
-    currently covers every delivery address for its item (see
-    [Submitting Split Delivery Orders](#submitting-split-delivery-orders) below); it would only
-    vary if Mixam starts sending one job per delivery address.
+    position* - "the 2nd of this item's deliveries," derived entirely from the order, with
+    nothing for a supplier to report back correctly. It's always `1` today, since every job
+    currently covers every delivery address for its item - see
+    [Submitting Split Delivery Orders](#submitting-split-delivery-orders) below for why that's
+    expected to change.
 -   **`deliveryId`** (on [`RecipientAddress`](#17-element-recipientaddress)) is the actual unique
     identifier *of* a delivery - Mixam's own reference for the specific address, generated once
-    and never reused. It's what Mixam actually looks a shipment update up by, and every address
-    on a job's `shipment.deliveryAddresses` has its own, regardless of how many addresses that
-    job covers.
+    and never reused, and reported back by the supplier on a shipment callback. It's what Mixam
+    looks a shipment update up by today, but **not every supplier reports it back correctly on
+    every callback**.
 
 These aren't callback field names themselves - the Mixam Webhooks API (see
 [Mixam Webhooks Documentation](WEBHOOKS.md)) reports status back on its own `externalOrderId` and
 `deliveryId` properties, not as `referencedJobNumber`/`fulfilmentReference` or `deliveryNumber`.
 `externalOrderId` carries this job's identity (quote `referencedJobNumber` back for it exactly -
-see above); `deliveryId`, required on a `SHIPPED` callback for a split delivery item, is what
-actually identifies which address that shipment update is for.
+see above); `deliveryId`, required on a `SHIPPED` callback for a split delivery item, is Mixam's
+primary way of identifying which address that shipment update is for today - but because it isn't
+always reported correctly, `deliveryNumber` exists precisely so Mixam can resolve a callback
+positionally from `referencedJobNumber` alone instead, once a job actually encodes which delivery
+it's for (see [Submitting Split Delivery Orders](#submitting-split-delivery-orders) below).
 
 # 3. Element: job
 ```javascript
@@ -1049,18 +1053,31 @@ It's an order-level concept, independent of how Mixam submits that item's jobs t
 Today, Mixam always submits a split delivery item as **one payload**, listing every delivery
 address on its `shipment.deliveryAddresses`. That payload's `referencedJobNumber`/
 `fulfilmentReference.deliveryNumber` is always `1`, since the one payload already covers every
-address; each address still has its own real `deliveryId`.
+address; each address still has its own real `deliveryId`, which is Mixam's only way today of
+telling a shipment callback's addresses apart.
 
-Mixam's fulfilment id scheme was designed so that it could also, in future, support **one payload
-per address** instead - so a supplier whose own system can't accept more than one address on a
-single job could receive each address as its own payload, indistinguishable to them from an
-ordinary single-address order. **No integration sends payloads this way today, including MXJDF** -
-this isn't something a supplier can request or be switched onto yet. If Mixam ever builds it for a
-given supplier, that would still need to be agreed with **Mixam's supply chain team** first; it
-wouldn't be something that varies order-to-order, or that a supplier could switch on unilaterally.
+That's not good enough on its own: **not every supplier reports `deliveryId` back correctly on
+every callback** - some suppliers' own systems have been observed to lose or garble it. Mixam's
+fulfilment id scheme (`referencedJobNumber`/`fulfilmentReference`) was built with this problem in
+mind, so that a callback can eventually be resolved from the id alone, without depending on a
+supplier reporting anything else back correctly at all. Making that work means moving to **one
+payload per address** instead of one combined payload per item - each address becomes its own
+job, with its own `fulfilmentReference.deliveryNumber` encoded directly into its
+`referencedJobNumber`, so Mixam can tell which address a callback is about purely by decoding the
+id it's quoted back, `deliveryId` notwithstanding. This also suits a supplier whose own system
+can't accept more than one address on a single job - each address would look to them like an
+ordinary single-address order.
 
-Either way, `deliveryNumber` and `deliveryId` answer different questions, and a Mixam Webhooks
-callback should generally report both - as `deliveryId` itself, and as part of the
+**No integration sends payloads this way yet, including MXJDF** - adopting it, for MXJDF or any
+other integration, is tracked separately and hasn't shipped yet. Mixam's webhook resolution
+already falls back to decoding the delivery number straight from a callback's id when it's given
+one, ready for whichever integration adopts this first; building the MXJDF side of it would still
+need to be agreed with **Mixam's supply chain team** per supplier account, since it changes what a
+supplier should expect to receive - it isn't something a supplier could switch on unilaterally, or
+that would vary order-to-order once built.
+
+Either way, today, `deliveryNumber` and `deliveryId` answer different questions, and a Mixam
+Webhooks callback should generally report both - as `deliveryId` itself, and as part of the
 `externalOrderId` that carries `referencedJobNumber`'s identity back - see
 [`deliveryNumber` vs. `deliveryId`](#deliverynumber-vs-deliveryid) above.
 
