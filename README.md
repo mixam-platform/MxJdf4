@@ -31,6 +31,7 @@ using HTTPS or SFTP.
 | Chapter                                                                      | Number |
 |------------------------------------------------------------------------------|-------:|
 | [Root Element](#1-top-level-element)                                         |      1 |
+| [Element: fulfilmentReference](#1a-element-fulfilmentreference)              |     1a |
 | [Element: job](#2-element-job)                                               |      2 |
 | [Element: article](#3-element-article)                                       |      3 |
 | [Element: component](#4-element-component)                                   |      4 |
@@ -66,7 +67,8 @@ The top level of the MxJdf document contains the following elements:
   "desc": "mixam.job.description",
   "dateCreated": 1579177108174,
   "author" : "Sherlock Holmes",
-  "referencedJobNumber": 303171489,
+  "referencedJobNumber": "1234567003",
+  "fulfilmentReference": {...},
   "shopName" : "mixam",
   "price" : 105.31,
   "packagingCost" : 2.50,
@@ -83,13 +85,53 @@ The top level of the MxJdf document contains the following elements:
 |desc|Document description. (String)|Always "mixam.job.description"|
 |dateCreated|Epoch date of creation. (Long number)|A Unix Timestamp of the date the document was created|
 |author|The name of the person who created the document. (String)|   |
-|referencedJobNumber|The `id` of the associated order in the Mixam system. (String)|   |
+|referencedJobNumber|Mixam's own identifier for this job, as a single string: the order's case number, optionally followed by digits identifying which item on the order this is and which attempt at fulfilling it this is (see below). Quote this back exactly in any webhook callback concerning this job. (String)|e.g. `"1234567"` (a single-item order, first attempt), `"1234567003"` (the 3rd item on a multi-item order, first attempt), `"123456700302"` (the 3rd item, 2nd attempt after an earlier one was abandoned)|
+|fulfilmentReference|The same identity as `referencedJobNumber`, broken out into plain fields instead of packed into one string - see [below](#1a-element-fulfilmentreference).|See below|
 |shopName|The name of the shop where the order originated from (String)|   |
 |price|The pre-agreed cost price of the job (Double precision number)|   |
 |packagingCost|Cost attributed towards packaging (Double precision number)|   |
 |currencyCode|The currency in which the price is specified. (String)|“GBP”, “USD”, “CAD”, “AUD”|
 |job|A map of properties describing the job.|See bellow|
 |export|A map of properties describing the export value of the goods. (Map). Applicable only when goods are shipped overseas.| See bellow.|
+
+### How `referencedJobNumber` is built
+
+`referencedJobNumber` is the order's case number, with up to two more parts appended - each present
+only when it isn't the default, so a single-item order's first attempt is just the bare case
+number:
+
+| Order | referencedJobNumber | Why |
+|---|---|---|
+| Case `1234567`, single item, first attempt | `1234567` | Nothing to append - the common case |
+| Case `1234567`, 3rd item of several, first attempt | `1234567003` | `003` is this item's 1-based position on the order |
+| Case `1234567`, single item, 2nd attempt (a previous one was abandoned and the item re-fulfilled) | `123456704` | `04` is the attempt number |
+| Case `1234567`, 3rd item, 2nd attempt | `123456700304` | Both appended, item position first |
+
+A consumer that wants one specific piece of this (the case number alone, say) without parsing the
+packed string can read it directly off `fulfilmentReference` instead - see below.
+
+# 1a. Element: fulfilmentReference
+```javascript
+"fulfilmentReference": {
+  "caseNumber": 1234567,
+  "itemNumber": 3,
+  "deliveryNumber": 1,
+  "revision": 1
+}
+```
+
+| Property | Description | Values |
+|---|---|---|
+|caseNumber|Mixam's order case number - the same number visible to the customer and to Mixam staff for this order. (Integer number)|e.g. `1234567`|
+|itemNumber|This item's 1-based position among the order's items. Always `1` for an order with only one item. (Integer number)|1, 2, 3, …|
+|deliveryNumber|Reserved for future use. Always `1` today: Mixam sends one combined job per item, covering every delivery address, rather than one job per delivery address, so there's only ever a "delivery 1" to refer to. (Integer number)|`1`|
+|revision|Which attempt at fulfilling this item this is, 1-based. `1` for the first (and, almost always, only) attempt; higher only if an earlier attempt was abandoned and the item re-fulfilled. (Integer number)|1, 2, 3, …|
+
+This carries exactly the same identity as `referencedJobNumber` on the item - see
+[How `referencedJobNumber` is built](#how-referencedjobnumber-is-built) above - just as plain,
+always-present fields instead of a string that packs them together and omits a part when it's the
+default. Nothing about `referencedJobNumber` itself changes because of this; the two are sent
+alongside each other, not as alternatives.
 
 # 2. Element: job
 ```javascript
@@ -632,6 +674,12 @@ Flexible, open-ended model for including additional metadata with an MxJdf4 docu
   "version": "4.01.05",
   "desc": "mixam.job.description",
   "referencedJobNumber": "484134",
+  "fulfilmentReference": {
+    "caseNumber": 484134,
+    "itemNumber": 1,
+    "deliveryNumber": 1,
+    "revision": 1
+  },
   "author": "Sherlock Holmes",
   "dateCreated": 1603279100614,
   "job": {
@@ -791,7 +839,13 @@ Flexible, open-ended model for including additional metadata with an MxJdf4 docu
 <MxJdf4>
     <version>4.01</version>
     <desc>mixam.job.description</desc>
-    <referencedJobNumber>37663402</referencedJobNumber>
+    <referencedJobNumber>3766340002</referencedJobNumber>
+    <fulfilmentReference>
+        <caseNumber>3766340</caseNumber>
+        <itemNumber>2</itemNumber>
+        <deliveryNumber>1</deliveryNumber>
+        <revision>1</revision>
+    </fulfilmentReference>
     <author>Sherlock Holmes</author>
     <dateCreated>1603279655663</dateCreated>
     <job>
@@ -926,12 +980,22 @@ Even when an order contains multiple items for the same supplier, Mixam will **n
 
 -   Each item results in **a separate order payload** being posted to the supplier.
 
--   The **first part of the order numbers will match** across these items, but each item will have a **unique order number**.\
-    For example:
+-   The **leading digits of `referencedJobNumber` will match** across these items (they're the
+    shared order case number), but each item will have a **unique `referencedJobNumber`** - see
+    [How `referencedJobNumber` is built](#how-referencedjobnumber-is-built) above.\
+    For example, for case number `1234567`:
 
-    `123456-1`<br>
-    `123456-2`<br>
-    `123456-3`
+    `1234567001`<br>
+    `1234567002`<br>
+    `1234567003`
+
+    Read `fulfilmentReference.itemNumber` directly if you'd rather not parse these.
+
+-   If an item is ever abandoned and re-fulfilled (to the same supplier or a different one), the
+    new attempt's `referencedJobNumber` gets two more digits appended for which attempt it is -
+    `1234567002` becomes `123456700202` on a second attempt. `fulfilmentReference.revision` gives
+    the same number directly. A first-time attempt is never given a revision number in the string
+    - only a second or later one is.
 
 ### **Supplier Consolidation**
 
@@ -947,7 +1011,7 @@ Even when an order contains multiple items for the same supplier, Mixam will **n
 
 2.  Mixam processes each item independently.
 
-3.  Each item triggers an order payload (e.g., 123456-1, 123456-2, 123456-3).
+3.  Each item triggers an order payload (e.g., `referencedJobNumber` values `1234567001`, `1234567002`, `1234567003`).
 
 4.  Supplier receives each payload separately.
 
