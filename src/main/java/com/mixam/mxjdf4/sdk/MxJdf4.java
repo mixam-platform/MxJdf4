@@ -16,19 +16,19 @@ public class MxJdf4 {
     private String desc;
 
     /**
-     * Mixam's own identifier for this job: an order case number, optionally followed by digits for
-     * which item on the order this is and which attempt at fulfilling it this is - present only
-     * when the corresponding value isn't the default, so a single-item order's first attempt is
-     * just the bare case number. Quote this back exactly in any callback concerning this job.
+     * Mixam's reference number for this job: the order's case number, followed by a 3-digit item
+     * number and a 3-digit delivery number, e.g. {@code 1234567003001}. A job that is sent again
+     * has a 2-digit revision added to the end, e.g. {@code 123456700300102}. Quote this back
+     * exactly in any callback concerning this job.
      * <p>
-     * {@link #fulfilmentReference} carries the same identity broken out into plain fields, for a
-     * consumer that would rather not parse this string to get at one of them.
+     * {@link #fulfilmentReference} carries the same numbers as separate fields, for a consumer
+     * that would rather not read them out of this string.
      */
     private String referencedJobNumber;
 
     /**
-     * The same identity as {@link #referencedJobNumber}, broken out into independently-readable
-     * fields - see {@link FulfilmentReference}.
+     * The same information as {@link #referencedJobNumber}, as separate fields - see
+     * {@link FulfilmentReference}.
      */
     private FulfilmentReference fulfilmentReference;
 

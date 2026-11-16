@@ -4,43 +4,37 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
- * The same identity {@link MxJdf4#getReferencedJobNumber()} packs into one string of digits,
- * broken out here as plain, independently-readable fields instead - so a consumer that wants one
- * of these values doesn't have to know the packed id's shape (how many digits each part takes, or
- * when a part is omitted) to get at it.
+ * The numbers {@link MxJdf4#getReferencedJobNumber()} packs into one string of digits, as
+ * separate fields - so a consumer that wants one of them doesn't have to know how many digits
+ * each part of the string takes to get at it.
  * <p>
- * {@code referencedJobNumber} stays exactly as it's always been, alongside this - nothing about
- * this object changes how that's built or read. See Mixam's {@code FulfilmentService} for the
- * packing/unpacking logic itself.
+ * Sent alongside {@code referencedJobNumber}, not instead of it.
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class FulfilmentReference {
 
     /**
-     * Mixam's order case number, e.g. {@code 1234567}. The same number visible to the customer and
-     * to Mixam staff for this order.
+     * The order's case number, e.g. {@code 1234567}.
      */
     private int caseNumber;
 
     /**
-     * This article's 1-based position among the order's items, e.g. {@code 3} for the 3rd item on
-     * the order. Always {@code 1} for an order with only one item.
+     * The item's 1-based position on the order, e.g. {@code 3} for the 3rd item. {@code 1} for an
+     * order with only one item.
      */
     private int itemNumber;
 
     /**
-     * Which of this article's deliveries this job is for, 1-based. Always {@code 1} today: Mixam
-     * sends one combined job per article, covering every delivery address, rather than one job per
-     * delivery address - so there's only ever a "delivery 1" to refer to. Present now so a consumer
-     * reading this field doesn't need to change if that ever stops being true.
+     * Which of the item's deliveries this job covers, 1-based. {@code 1} when the job covers all
+     * of the item's delivery addresses. When a split delivery is sent as one job per delivery
+     * address, the number of the address this job is for.
      */
     private int deliveryNumber;
 
     /**
-     * Which attempt at fulfilling this article this is, 1-based. {@code 1} for the first (and,
-     * almost always, only) attempt; higher only if a previous attempt had to be abandoned and the
-     * article re-fulfilled.
+     * {@code 1} the first time a job is sent, {@code 2} or higher when it has been sent again. A
+     * revision of {@code 1} is not written into {@code referencedJobNumber}.
      */
     private int revision;
 
