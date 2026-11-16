@@ -14,7 +14,24 @@ import java.util.List;
 public class MxJdf4 {
     private String version;
     private String desc;
+
+    /**
+     * Mixam's own identifier for this job: an order case number, optionally followed by digits for
+     * which item on the order this is and which attempt at fulfilling it this is - present only
+     * when the corresponding value isn't the default, so a single-item order's first attempt is
+     * just the bare case number. Quote this back exactly in any callback concerning this job.
+     * <p>
+     * {@link #fulfilmentReference} carries the same identity broken out into plain fields, for a
+     * consumer that would rather not parse this string to get at one of them.
+     */
     private String referencedJobNumber;
+
+    /**
+     * The same identity as {@link #referencedJobNumber}, broken out into independently-readable
+     * fields - see {@link FulfilmentReference}.
+     */
+    private FulfilmentReference fulfilmentReference;
+
     private String shopName;
     private String author;
     private Date dateCreated;
@@ -67,6 +84,15 @@ public class MxJdf4 {
 
     public MxJdf4 setReferencedJobNumber(String referencedJobNumber) {
         this.referencedJobNumber = referencedJobNumber;
+        return this;
+    }
+
+    public FulfilmentReference getFulfilmentReference() {
+        return fulfilmentReference;
+    }
+
+    public MxJdf4 setFulfilmentReference(FulfilmentReference fulfilmentReference) {
+        this.fulfilmentReference = fulfilmentReference;
         return this;
     }
 
