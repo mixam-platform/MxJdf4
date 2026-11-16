@@ -1063,7 +1063,11 @@ This option is for systems that work with one delivery address per order.
     `1234567001004`<br>
     `1234567001005`
 
--   Each payload can be handled as an order in its own right. When you report back to Mixam, its `referencedJobNumber` identifies the delivery address as well as the item.
+-   Each payload is received and reported on as an order in its own right. When you report back to Mixam, its `referencedJobNumber` identifies the delivery address as well as the item.
+
+-   The payloads for one item are still a single print job. It is up to the receiving integration to manage this within its own operational workflow: a production centre will usually want to print the item once and then divide the copies between the delivery addresses, not run a separate print job for each address. For 1,000 copies going to 5 addresses, that is one print run of 1,000 copies, not 5 print runs of 200.
+
+-   Payloads that belong to the same item have the same case number and item number, in `referencedJobNumber` and in `fulfilmentReference`, so they can be recognised and grouped.
 
 -   To have this option enabled for your account, please contact Mixam's supply chain team. Once enabled, it applies to every split delivery item sent to that account.
 
