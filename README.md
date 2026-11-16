@@ -104,8 +104,8 @@ number:
 |---|---|---|
 | Case `1234567`, single item, first attempt | `1234567` | Nothing to append - the common case |
 | Case `1234567`, 3rd item of several, first attempt | `1234567003` | `003` is this item's 1-based position on the order |
-| Case `1234567`, single item, 2nd attempt (a previous one was abandoned and the item re-fulfilled) | `123456704` | `04` is the attempt number |
-| Case `1234567`, 3rd item, 2nd attempt | `123456700304` | Both appended, item position first |
+| Case `1234567`, single item, 2nd attempt (a previous one was abandoned and the item re-fulfilled) | `123456702` | `02` is the attempt number |
+| Case `1234567`, 3rd item, 2nd attempt | `123456700302` | Both appended, item position first |
 
 A consumer that wants one specific piece of this (the case number alone, say) without parsing the
 packed string can read it directly off `fulfilmentReference` instead - see below.
