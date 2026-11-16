@@ -67,7 +67,7 @@ The top level of the MxJdf document contains the following elements:
   "desc": "mixam.job.description",
   "dateCreated": 1579177108174,
   "author" : "Sherlock Holmes",
-  "referencedJobNumber": "1234567003",
+  "referencedJobNumber": "1234567003002",
   "fulfilmentReference": {...},
   "shopName" : "mixam",
   "price" : 105.31,
@@ -85,7 +85,7 @@ The top level of the MxJdf document contains the following elements:
 |desc|Document description. (String)|Always "mixam.job.description"|
 |dateCreated|Epoch date of creation. (Long number)|A Unix Timestamp of the date the document was created|
 |author|The name of the person who created the document. (String)|   |
-|referencedJobNumber|Mixam's own identifier for this job, as a single string: the order's case number, optionally followed by digits identifying which item on the order this is and which attempt at fulfilling it this is (see below). Quote this back exactly in any webhook callback concerning this job. (String)|e.g. `"1234567"` (a single-item order, first attempt), `"1234567003"` (the 3rd item on a multi-item order, first attempt), `"123456700302"` (the 3rd item, 2nd attempt after an earlier one was abandoned)|
+|referencedJobNumber|Mixam's own identifier for this job, as a single string: the order's case number, which item on the order this is, which of that item's deliveries this one job is for, and (only once relevant) which attempt at fulfilling it this is - see below. Quote this back exactly in any webhook callback concerning this job. (String)|e.g. `"1234567003002"` (the 3rd item on the order, the 2nd of its deliveries, first attempt), `"123456700300202"` (the same delivery, 2nd attempt after an earlier one was abandoned)|
 |fulfilmentReference|The same identity as `referencedJobNumber`, broken out into plain fields instead of packed into one string - see [below](#1a-element-fulfilmentreference).|See below|
 |shopName|The name of the shop where the order originated from (String)|   |
 |price|The pre-agreed cost price of the job (Double precision number)|   |
@@ -96,16 +96,39 @@ The top level of the MxJdf document contains the following elements:
 
 ### How `referencedJobNumber` is built
 
-`referencedJobNumber` is the order's case number, with up to two more parts appended - each present
-only when it isn't the default, so a single-item order's first attempt is just the bare case
-number:
+Mixam sends **one job per delivery address**: an item going to 2 addresses (a *split delivery*)
+arrives as 2 separate MxJdf4 documents, one per address, each with its own `shipment` containing a
+single `RecipientAddress`. `referencedJobNumber` identifies exactly which one of those jobs this
+is - the order's case number, which item on the order it's for, and which of that item's
+deliveries this particular job covers, with a 2-digit suffix added only once it's needed (see
+*Revisions*, below):
 
-| Order | referencedJobNumber | Why |
-|---|---|---|
-| Case `1234567`, single item, first attempt | `1234567` | Nothing to append - the common case |
-| Case `1234567`, 3rd item of several, first attempt | `1234567003` | `003` is this item's 1-based position on the order |
-| Case `1234567`, single item, 2nd attempt (a previous one was abandoned and the item re-fulfilled) | `123456702` | `02` is the attempt number |
-| Case `1234567`, 3rd item, 2nd attempt | `123456700302` | Both appended, item position first |
+```
+      "1234567003002"
+       │      │  └─ deliveryNumber (3 digits): the 2nd of this item's deliveries
+       │      └─ itemNumber (3 digits): the 3rd item on the order
+       └─ caseNumber: the order's case number
+```
+
+`itemNumber` and `deliveryNumber` are always present, 1-based, even when there's only one item on
+the order or only one delivery for it - so `referencedJobNumber` always has the same shape no
+matter how many items or deliveries are actually involved. A single-item order with one delivery
+still gets `1234567001001` (item 1, delivery 1 of 1), not a bare case number.
+
+#### Revisions
+
+If a job is abandoned (the supplier can't produce it, say) and Mixam re-fulfils that delivery -
+to the same supplier or a different one - the new attempt's `referencedJobNumber` gets 2 more
+digits appended for which attempt it is. A first attempt never has this suffix; a second or later
+one always does:
+
+```
+      "123456700300202"
+       │      │  │  └─ revision (2 digits): the 2nd attempt at this delivery
+       │      │  └─ deliveryNumber (3 digits)
+       │      └─ itemNumber (3 digits)
+       └─ caseNumber
+```
 
 A consumer that wants one specific piece of this (the case number alone, say) without parsing the
 packed string can read it directly off `fulfilmentReference` instead - see below.
@@ -115,7 +138,7 @@ packed string can read it directly off `fulfilmentReference` instead - see below
 "fulfilmentReference": {
   "caseNumber": 1234567,
   "itemNumber": 3,
-  "deliveryNumber": 1,
+  "deliveryNumber": 2,
   "revision": 1
 }
 ```
@@ -123,15 +146,32 @@ packed string can read it directly off `fulfilmentReference` instead - see below
 | Property | Description | Values |
 |---|---|---|
 |caseNumber|Mixam's order case number - the same number visible to the customer and to Mixam staff for this order. (Integer number)|e.g. `1234567`|
-|itemNumber|This item's 1-based position among the order's items. Always `1` for an order with only one item. (Integer number)|1, 2, 3, …|
-|deliveryNumber|Reserved for future use. Always `1` today: Mixam sends one combined job per item, covering every delivery address, rather than one job per delivery address, so there's only ever a "delivery 1" to refer to. (Integer number)|`1`|
-|revision|Which attempt at fulfilling this item this is, 1-based. `1` for the first (and, almost always, only) attempt; higher only if an earlier attempt was abandoned and the item re-fulfilled. (Integer number)|1, 2, 3, …|
+|itemNumber|This item's 1-based position among the order's items. `1` when the order has only one item. (Integer number)|1, 2, 3, …|
+|deliveryNumber|Which of this item's deliveries this job is for, 1-based - the same delivery as the one `RecipientAddress` in this job's own `shipment.deliveryAddresses`. `1` when the item has only one delivery. (Integer number)|1, 2, 3, …|
+|revision|Which attempt at fulfilling this delivery this is, 1-based. `1` for the first (and, almost always, only) attempt; higher only if an earlier attempt was abandoned and the delivery re-fulfilled. (Integer number)|1, 2, 3, …|
 
-This carries exactly the same identity as `referencedJobNumber` on the item - see
+This carries exactly the same identity as `referencedJobNumber` on the job - see
 [How `referencedJobNumber` is built](#how-referencedjobnumber-is-built) above - just as plain,
-always-present fields instead of a string that packs them together and omits a part when it's the
-default. Nothing about `referencedJobNumber` itself changes because of this; the two are sent
-alongside each other, not as alternatives.
+always-present fields instead of a string that packs them together. Nothing about
+`referencedJobNumber` itself changes because of this; the two are sent alongside each other, not
+as alternatives.
+
+#### `deliveryNumber` vs. `deliveryId`
+
+These answer different questions, and a callback should generally give both:
+
+-   **`deliveryNumber`** (on `referencedJobNumber`/`fulfilmentReference`) says *which delivery,
+    by position* - "the 2nd of this item's deliveries" - derived purely from order, with nothing
+    to look up.
+-   **`deliveryId`** (on [`RecipientAddress`](#15-element-recipientaddress)) is the actual unique
+    identifier *of* that delivery - Mixam's own reference for the specific address, generated
+    once and never reused. It's what Mixam actually looks a shipment update up by.
+
+A job for a split delivery's 2nd address carries `deliveryNumber: 2` *and* that same delivery's
+real `deliveryId` on its one `RecipientAddress` - reporting back `deliveryId` on a webhook
+callback (see [Mixam Webhooks Documentation](WEBHOOKS.md)) is what actually identifies which
+address a shipment update is for; `referencedJobNumber`/`fulfilmentReference` on that same
+callback identifies which order, item and attempt it belongs to.
 
 # 2. Element: job
 ```javascript
@@ -673,7 +713,7 @@ Flexible, open-ended model for including additional metadata with an MxJdf4 docu
 {
   "version": "4.01.05",
   "desc": "mixam.job.description",
-  "referencedJobNumber": "484134",
+  "referencedJobNumber": "484134001001",
   "fulfilmentReference": {
     "caseNumber": 484134,
     "itemNumber": 1,
@@ -839,7 +879,7 @@ Flexible, open-ended model for including additional metadata with an MxJdf4 docu
 <MxJdf4>
     <version>4.01</version>
     <desc>mixam.job.description</desc>
-    <referencedJobNumber>3766340002</referencedJobNumber>
+    <referencedJobNumber>3766340002001</referencedJobNumber>
     <fulfilmentReference>
         <caseNumber>3766340</caseNumber>
         <itemNumber>2</itemNumber>
@@ -963,59 +1003,79 @@ Flexible, open-ended model for including additional metadata with an MxJdf4 docu
 # 27. Multi-Item Orders and Payloads FAQ
 ### **Overview**
 
-The Mixam JDF (MXJDF) integration sends **one order payload per item**.\
-Even when an order contains multiple items for the same supplier, Mixam will **not combine them** into a single JDF submission.
+The Mixam JDF (MXJDF) integration sends **one order payload per item**, and - when an item is
+going to more than one address - **one payload per delivery within that item**.\
+Mixam will **not combine any of these** into a single JDF submission; each one is its own
+complete MxJdf4 document, with its own `shipment` containing exactly one `RecipientAddress`.
 
 ### **Single Item Payloads**
 
--   Each payload corresponds to a **single item** in the customer's order.
+-   Each payload corresponds to a **single item, single delivery** in the customer's order.
 
--   Mixam's internal fulfilment process operates at the **item level** --- once an item is ready, it **triggers its own submission**.
+-   Mixam's internal fulfilment process operates at the **item level** --- once an item is ready, it **triggers its own submission(s)**, one per delivery address it has.
 
--   This ensures production workflows are consistent with Mixam's per-item fulfilment model.
+-   This ensures production workflows are consistent with Mixam's per-item, per-delivery fulfilment model.
 
 ### **Multi-Item Orders**
 
 -   When a customer places a multi-item order (e.g., a book and a poster), Mixam creates multiple internal items.
 
--   Each item results in **a separate order payload** being posted to the supplier.
+-   Each item results in **a separate order payload** being posted to the supplier (or several, if that item itself has more than one delivery - see *Split-Delivery Items* below).
 
 -   The **leading digits of `referencedJobNumber` will match** across these items (they're the
     shared order case number), but each item will have a **unique `referencedJobNumber`** - see
     [How `referencedJobNumber` is built](#how-referencedjobnumber-is-built) above.\
-    For example, for case number `1234567`:
+    For example, for case number `1234567`, each item going to a single address:
 
-    `1234567001`<br>
-    `1234567002`<br>
-    `1234567003`
+    `1234567001001`<br>
+    `1234567002001`<br>
+    `1234567003001`
 
     Read `fulfilmentReference.itemNumber` directly if you'd rather not parse these.
 
--   If an item is ever abandoned and re-fulfilled (to the same supplier or a different one), the
-    new attempt's `referencedJobNumber` gets two more digits appended for which attempt it is -
-    `1234567002` becomes `123456700202` on a second attempt. `fulfilmentReference.revision` gives
-    the same number directly. A first-time attempt is never given a revision number in the string
-    - only a second or later one is.
+### **Split-Delivery Items**
+
+-   A single item going to more than one address (e.g., 200 copies of a flyer split between 2
+    addresses) results in **one payload per address**, not one payload listing both.
+
+-   Each of those payloads has its own `RecipientAddress` (with its own real `deliveryId`) and its
+    own `referencedJobNumber`/`fulfilmentReference.deliveryNumber`, 1-based in the order the
+    deliveries were requested.\
+    For example, item 1 of case `1234567`, split across 2 addresses:
+
+    `1234567001001` (1st address)<br>
+    `1234567001002` (2nd address)
+
+-   `deliveryNumber` and `deliveryId` answer different questions and a callback should generally
+    give both - see [`deliveryNumber` vs. `deliveryId`](#deliverynumber-vs-deliveryid) above.
+
+### **Revisions**
+
+-   If a delivery is ever abandoned and re-fulfilled (to the same supplier or a different one),
+    the new attempt's `referencedJobNumber` gets two more digits appended for which attempt it is
+    - `1234567002001` becomes `123456700200102` on a second attempt. `fulfilmentReference.revision`
+    gives the same number directly. A first-time attempt is never given a revision number in the
+    string - only a second or later one is.
 
 ### **Supplier Consolidation**
 
--   Some suppliers choose to **wait 30--60 minutes** to receive all related item payloads.
+-   Some suppliers choose to **wait 30--60 minutes** to receive all related item and delivery payloads.
 
--   Once all items for a shared customer order have been received, suppliers may **consolidate them internally** before moving into production.
+-   Once all payloads for a shared customer order have been received, suppliers may **consolidate them internally** before moving into production.
 
 -   Mixam's API does not coordinate this consolidation --- it's managed entirely by the supplier's system.
 
 ### **Example Workflow**
 
-1.  Customer places an order with 3 items to the same supplier.
+1.  Customer places an order with 3 items to the same supplier, one of which is split across 2 addresses.
 
-2.  Mixam processes each item independently.
+2.  Mixam processes each item, and each delivery within it, independently.
 
-3.  Each item triggers an order payload (e.g., `referencedJobNumber` values `1234567001`, `1234567002`, `1234567003`).
+3.  Each delivery triggers an order payload (e.g., `referencedJobNumber` values `1234567001001`, `1234567001002`, `1234567002001`, `1234567003001`).
 
 4.  Supplier receives each payload separately.
 
-5.  Supplier optionally waits (e.g., 30--60 minutes) to collect all items and combine them into a single job.
+5.  Supplier optionally waits (e.g., 30--60 minutes) to collect all items and deliveries and combine them into a single job.
 
 ## License
 The Mixam Job Description Format is an Open Source software released under the
