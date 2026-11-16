@@ -14,7 +14,24 @@ import java.util.List;
 public class MxJdf4 {
     private String version;
     private String desc;
+
+    /**
+     * Mixam's reference number for this job: the order's case number, followed by a 3-digit item
+     * number and a 3-digit delivery number, e.g. {@code 1234567003001}. A job that is sent again
+     * has a 2-digit revision added to the end, e.g. {@code 123456700300102}. Quote this back
+     * exactly in any callback concerning this job.
+     * <p>
+     * {@link #fulfilmentReference} carries the same numbers as separate fields, for a consumer
+     * that would rather not read them out of this string.
+     */
     private String referencedJobNumber;
+
+    /**
+     * The same information as {@link #referencedJobNumber}, as separate fields - see
+     * {@link FulfilmentReference}.
+     */
+    private FulfilmentReference fulfilmentReference;
+
     private String shopName;
     private String author;
     private Date dateCreated;
@@ -67,6 +84,15 @@ public class MxJdf4 {
 
     public MxJdf4 setReferencedJobNumber(String referencedJobNumber) {
         this.referencedJobNumber = referencedJobNumber;
+        return this;
+    }
+
+    public FulfilmentReference getFulfilmentReference() {
+        return fulfilmentReference;
+    }
+
+    public MxJdf4 setFulfilmentReference(FulfilmentReference fulfilmentReference) {
+        this.fulfilmentReference = fulfilmentReference;
         return this;
     }
 

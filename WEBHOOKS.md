@@ -57,7 +57,7 @@ The body of the Webhook HTTP `POST` request must be valid JSON containing the fo
 | `externalOrderId`    | All | `String` (Required) | Mixam's reference number for the item (e.g. `11/111111001`) |
 | `orderStatus`        | All | `String` | One of the following:<br>`ACCEPTED`<br>`REJECTED`<br>`DELAYED`<br>`SHIPPED`<br>`CANCELLED`<br>If status is `DELAYED`, `UpdateDispatchDate` must be specified. |
 | `updateDispatchDate` | `DELAYED` | `Long` | New estimated dispatch date/time expressed as Unix Epoch Time in milliseconds. Suppliers must convert their local dispatch date/time (in their own timezone) to UTC before generating the epoch value. (e.g. `1655897807000`) |
-| `deliveryId`         | `SHIPPED` | `String` | (Required for Split Delivery items) Mixam's reference number for the delivery (e.g. `ed642885-226a-4416-8b70-22d415866244`) |
+| `deliveryId`         | `SHIPPED` | `String` | (Required when the job has more than one delivery address) Mixam's reference number for the delivery (e.g. `ed642885-226a-4416-8b70-22d415866244`) |
 | `trackingCode`       | `SHIPPED` | `String` | The tracking number/code as provided by the carrier |
 | `sourceShipmentId`   | `SHIPPED` | `Long` | Integer id assigned to the shipment by the carrier |
 | `numberOfItems`      | `SHIPPED` | `Long` | (Optional) Number of copies shipped; if omitted, Mixam assumes all copies in the delivery |

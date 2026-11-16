@@ -31,33 +31,34 @@ using HTTPS or SFTP.
 | Chapter                                                                      | Number |
 |------------------------------------------------------------------------------|-------:|
 | [Root Element](#1-top-level-element)                                         |      1 |
-| [Element: job](#2-element-job)                                               |      2 |
-| [Element: article](#3-element-article)                                       |      3 |
-| [Element: component](#4-element-component)                                   |      4 |
-| [Element: chromaticity](#5-element-chromaticity)                             |      5 |
-| [Element: format](#6-element-format)                                         |      6 |
-| [Element: material](#7-element-material)                                     |      7 |
-| [Element: refining](#8-element-refining)                                     |      8 |
-| [Element: processing](#9-element-processing)                                 |      9 |
-| [Element: binding](#10-element-binding)                                      |     10 |
-| [Element: details](#11-element-details)                                      |     11 |
-| [Element: associatedProof](#12-element-associatedProof)                      |     12 |
-| [Element: shipment](#13-element-shipment)                                    |     13 |
-| [Element: productIdentifiers](#13a-element-productidentifiers)              |    13a |
-| [Element: bundling](#14-element-bundling)                                    |     14 |
-| [Element: RecipientAddress](#15-element-recipientaddress)                    |     15 |
-| [Element: address](#16-element-address)                                      |     16 |
-| [Element: senderForLabel (Address)](#17-element-senderForLabel-address)      |     17 |
-| [Type: Address](#18-type-address)                                            |     18 |
-| [Element: Delivery](#19-element-delivery)                                    |     19 |
-| [Element: File](#20-element-file)                                            |     20 |
-| [Element: fileFlags](#21-element-fileFlags)                                  |     21 |
-| [Type: Dimensions](#22-type-dimensions)                                      |     22 |
-| [Element: export](#23-element-export)                                        |     23 |
-| [Type: Attribute](#24-type-attribute)                                        |     24 |
-| [JSON Example](#25-json-example)                                             |     25 |
-| [XML Example](#26-xml-example)                                               |     26 |
-| [Multi-Item Orders and Payloads FAQ](#27-multi-item-orders-and-payloads-faq) |     27 |
+| [Element: fulfilmentReference](#2-element-fulfilmentreference)               |      2 |
+| [Element: job](#3-element-job)                                               |      3 |
+| [Element: article](#4-element-article)                                       |      4 |
+| [Element: component](#5-element-component)                                   |      5 |
+| [Element: chromaticity](#6-element-chromaticity)                             |      6 |
+| [Element: format](#7-element-format)                                         |      7 |
+| [Element: material](#8-element-material)                                     |      8 |
+| [Element: refining](#9-element-refining)                                     |      9 |
+| [Element: processing](#10-element-processing)                                |     10 |
+| [Element: binding](#11-element-binding)                                      |     11 |
+| [Element: details](#12-element-details)                                      |     12 |
+| [Element: associatedProof](#13-element-associatedProof)                      |     13 |
+| [Element: shipment](#14-element-shipment)                                    |     14 |
+| [Element: productIdentifiers](#15-element-productidentifiers)                |     15 |
+| [Element: bundling](#16-element-bundling)                                    |     16 |
+| [Element: RecipientAddress](#17-element-recipientaddress)                    |     17 |
+| [Element: address](#18-element-address)                                      |     18 |
+| [Element: senderForLabel (Address)](#19-element-senderForLabel-address)      |     19 |
+| [Type: Address](#20-type-address)                                            |     20 |
+| [Element: Delivery](#21-element-delivery)                                    |     21 |
+| [Element: File](#22-element-file)                                            |     22 |
+| [Element: fileFlags](#23-element-fileFlags)                                  |     23 |
+| [Type: Dimensions](#24-type-dimensions)                                      |     24 |
+| [Element: export](#25-element-export)                                        |     25 |
+| [Type: Attribute](#26-type-attribute)                                        |     26 |
+| [JSON Example](#27-json-example)                                             |     27 |
+| [XML Example](#28-xml-example)                                               |     28 |
+| [Multi-Item Orders and Payloads FAQ](#29-multi-item-orders-and-payloads-faq) |     29 |
 # 1. Top Level Element
 The top level of the MxJdf document contains the following elements:
 ```javascript
@@ -66,7 +67,8 @@ The top level of the MxJdf document contains the following elements:
   "desc": "mixam.job.description",
   "dateCreated": 1579177108174,
   "author" : "Sherlock Holmes",
-  "referencedJobNumber": 303171489,
+  "referencedJobNumber": "1234567003001",
+  "fulfilmentReference": {...},
   "shopName" : "mixam",
   "price" : 105.31,
   "packagingCost" : 2.50,
@@ -83,7 +85,8 @@ The top level of the MxJdf document contains the following elements:
 |desc|Document description. (String)|Always "mixam.job.description"|
 |dateCreated|Epoch date of creation. (Long number)|A Unix Timestamp of the date the document was created|
 |author|The name of the person who created the document. (String)|   |
-|referencedJobNumber|The `id` of the associated order in the Mixam system. (String)|   |
+|referencedJobNumber|Mixam's reference number for this job: the order's case number, the item's number on the order and a delivery number, with a revision added when a job is sent again. See [How `referencedJobNumber` is built](#how-referencedjobnumber-is-built). Send it back, unchanged, as `externalOrderId` when you update Mixam through the [Webhooks API](WEBHOOKS.md). (String)|e.g. `"1234567003001"`|
+|fulfilmentReference|The same information as `referencedJobNumber`, as separate fields. (FulfilmentReference)|See [Element: fulfilmentReference](#2-element-fulfilmentreference)|
 |shopName|The name of the shop where the order originated from (String)|   |
 |price|The pre-agreed cost price of the job (Double precision number)|   |
 |packagingCost|Cost attributed towards packaging (Double precision number)|   |
@@ -91,7 +94,89 @@ The top level of the MxJdf document contains the following elements:
 |job|A map of properties describing the job.|See bellow|
 |export|A map of properties describing the export value of the goods. (Map). Applicable only when goods are shipped overseas.| See bellow.|
 
-# 2. Element: job
+### How `referencedJobNumber` is built
+
+`referencedJobNumber` is made up of the order's case number, the item's number on that order and
+a delivery number:
+
+```
+      "1234567003001"
+       │      │  └─ deliveryNumber (3 digits): which of the item's deliveries this job covers
+       │      └─ itemNumber (3 digits): the 3rd item on the order
+       └─ caseNumber: the order's case number
+```
+
+-   `itemNumber` and `deliveryNumber` are always present, are always 3 digits, and start at `001`.
+    An order with a single item going to a single address is `1234567001001`.
+-   `deliveryNumber` is `001` when the job covers all of the item's delivery addresses, which is
+    how Mixam sends jobs by default. When a split delivery is sent as one job per address, it is
+    the number of the address the job is for: `001`, `002`, `003`, and so on. See
+    [Split Delivery Orders](#split-delivery-orders).
+
+#### Revisions
+
+If a job is withdrawn and the item is sent again, to the same supplier or to a different one, the
+new job's `referencedJobNumber` has a 2-digit revision added to the end, starting at `02`:
+
+```
+      "123456700300102"
+       │      │  │  └─ revision (2 digits): the 2nd time this job has been sent
+       │      │  └─ deliveryNumber (3 digits)
+       │      └─ itemNumber (3 digits)
+       └─ caseNumber
+```
+
+The first job sent for an item never has a revision.
+
+#### Working with the reference
+
+-   Case numbers are not a fixed length, and the revision is only there on a job that has been
+    sent again, so we recommend treating `referencedJobNumber` as a single value and reading the
+    individual numbers from [`fulfilmentReference`](#2-element-fulfilmentreference) instead.
+-   Store it as text. It can be up to 15 digits long, which does not fit in a 32-bit integer.
+-   Jobs sent before this format was introduced have a shorter `referencedJobNumber` (the case
+    number on its own, or followed by an item number, a revision, or both). They are still valid.
+    Always send a reference back exactly as you received it.
+
+# 2. Element: fulfilmentReference
+
+The same information as `referencedJobNumber`, as separate fields, so that nothing has to be read
+out of the string. Both are sent on every job.
+
+```javascript
+"fulfilmentReference": {
+  "caseNumber": 1234567,
+  "itemNumber": 3,
+  "deliveryNumber": 1,
+  "revision": 1
+}
+```
+
+| Property | Description | Values |
+|---|---|---|
+|caseNumber|The order's case number. (Integer number)|e.g. `1234567`|
+|itemNumber|The item's position on the order, starting at 1. (Integer number)|1, 2, 3, …|
+|deliveryNumber|Which of the item's deliveries this job covers, starting at 1. `1` when the job covers all of the item's delivery addresses. When a split delivery is sent as one job per address, the number of the address this job is for. See [Split Delivery Orders](#split-delivery-orders). (Integer number)|1, 2, 3, …|
+|revision|`1` the first time a job is sent, `2` or higher when it has been sent again. A revision of `1` is not written into `referencedJobNumber`. (Integer number)|1, 2, 3, …|
+
+#### `deliveryNumber` and `deliveryId`
+
+-   **`deliveryNumber`** is a position: the 1st, 2nd or 3rd of an item's deliveries. It is part of
+    the job's reference.
+-   **`deliveryId`** is the unique identifier of one delivery address. Every
+    [`RecipientAddress`](#17-element-recipientaddress) has its own.
+
+When you update Mixam through the [Webhooks API](WEBHOOKS.md):
+
+-   Send `referencedJobNumber` back, unchanged, as `externalOrderId`.
+-   When you report a shipment, send the `deliveryId` of the address it was shipped to. This is
+    required when the job lists more than one delivery address. When the job has a single
+    delivery address, `externalOrderId` already identifies the delivery, but we recommend sending
+    `deliveryId` as well.
+
+`fulfilmentReference` and `deliveryNumber` are not sent back as fields of their own.
+
+# 3. Element: job
 ```javascript
 "job": {
     "article": {...},
@@ -107,7 +192,7 @@ The top level of the MxJdf document contains the following elements:
 |shipment|Contains addresses and delivery details|See bellow|
 
 
-# 3. Element: article
+# 4. Element: article
 ```javascript
 "article": {
   "components": [...],
@@ -132,7 +217,7 @@ The top level of the MxJdf document contains the following elements:
 |additionalFiles|A list of additional artwork files that aren't associated with a specific component. (List<File>)| See bellow                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 
 
-# 4. Element: component
+# 5. Element: component
 ```javascript
 {
   "pages": 4,
@@ -155,7 +240,7 @@ The top level of the MxJdf document contains the following elements:
 |files|A list of artwork files associated with the component. (List<File>)|See bellow|
 |type|ComponentType|INVALID(0),<br>CONTENT(1),<br>COVER(2),<br>JACKET(3),<br>BOOKMARK(4),<br>ENVELOPE (5),<br>ENDPAPER(6)|
 
-# 5. Element: chromaticity
+# 6. Element: chromaticity
 ```javascript
 {
   "front": 3,
@@ -168,7 +253,7 @@ The top level of the MxJdf document contains the following elements:
 |front|Colour space on front / outside. (ColorType)|INVALID (0),<br>HKS (1),<br>BLACK (2),<br>PROCESS (3);|
 |back|Colour space on back / inside. (ColorType)|INVALID (0),<br>HKS (1),<br>BLACK (2),<br>PROCESS (3);|
 
-# 6. Element: format
+# 7. Element: format
 
 Specifies the dimensions of the component in localised units (i.e. mm or inches). These are
 ordinarily the dimensions at which the article was sold; so in the case of an A5 hardcover book,
@@ -196,7 +281,7 @@ will match the trim box of the actual artwork for the just jacket.
 |orientation|(OrientationType)|PORTRAIT(0),<br>LANDSCAPE(1);|
 |units|The units in which the edges are specified. mm on metric system, inch on imperial.|MM (0),<br>INCH(1),|
 
-# 7. Element: material
+# 8. Element: material
 ```javascript
 "material": {
     "glossiness": 1,
@@ -223,7 +308,7 @@ will match the trim box of the actual artwork for the just jacket.
 - `MATT`
 - `WEATHERPROOF_VINYL`
 
-# 8. Element: refining
+# 9. Element: refining
 ```javascript
 "refining": {
   "effect": 2,
@@ -238,7 +323,7 @@ will match the trim box of the actual artwork for the just jacket.
 |side|(RefiningSideType)|NONE(0),<br>FRONT(1),<br>BACK(2),<br>FRONT_AND_BACK(3),<br>OUTSIDE(4),<br>INSIDE (5)<br>OUTSIDE_AND_INSIDE(6)|
 |type|(RefiningType)|NONE (0) <br>ULTRA_VIOLET_COATING(1) <br>LAMINATION (2), <br>PROTECTIVE_FOIL (3) <br>METAL_FOIL (4) <br>SOFT_PVC_FILM_LAMINATION (5) <br>ULTRA_VIOLET_SPOT_COATING (6) <br>DISPERSION_COATING (7) <br>BIND_EMBOSSING (8) <br>RELIEF_SPOT_COATING (9) <br>ULTRA_VIOLET_3D_SPOT_COATING(10)|
 
-# 9. Element: processing
+# 10. Element: processing
 ```javascript
 "processing": {
     "binding": {...},
@@ -267,7 +352,7 @@ will match the trim box of the actual artwork for the just jacket.
 | substrateDesign | Supplier supplied pre-printed design  | NONE(0), <br>LINED(1<br/>)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | preDrilledHoles | Hole Drilling                         | NONE(0) <br>ONE_HOLE_OPPOSITE_BINDING_CENTER(1) <br>ONE_HOLE_TOP_CENTER(2) <br>TOP_CORNERS(3) <br>ALL_CORNERS(4)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 
-# 10. Element: binding
+# 11. Element: binding
 ```javascript
 {
    "type": 2,
@@ -290,7 +375,7 @@ will match the trim box of the actual artwork for the just jacket.
 |sewn|Indicates if the sections are sewn|FALSE, <br>TRUE|
 |edge|Indicates which edge the item is bound upon|LEFT_RIGHT(0), <br>TOP_BOTTOM(1)|
 
-# 11. Element: details
+# 12. Element: details
 ```javascript
  "details": {
    "additionalProjectName": "370260/1",
@@ -328,7 +413,7 @@ will match the trim box of the actual artwork for the just jacket.
 | EXPLICIT (4) | Level 2 - Sexual activity or highly graphic violence. The files contain depictions or descriptions of graphic sexual activity, invasive or close-up focus on genitalia, explicit injuries, torture, mutilation, blood, dismemberment or open wounds. |
 
 
-# 12. Element: associatedProof
+# 13. Element: associatedProof
 ```javascript
 "associatedProof": {
     "proofJobNumber": "532809",
@@ -345,7 +430,7 @@ will match the trim box of the actual artwork for the just jacket.
 
 > NOTE: jobs that did not have a proof previously will not include the `associatedProof` element.
 
-# 13. Element: shipment
+# 14. Element: shipment
 ```javascript
 "shipment": {
    "deliveryAddresses": [...],
@@ -364,11 +449,11 @@ will match the trim box of the actual artwork for the just jacket.
 |Weight|The expected weight of the goods. (Double precision number)||
 |units|The units in which the weight is specified. KILOGRAM on metric system, LIBRA on imperial.|KILOGRAM(0), <br>LIBRA(1),|
 |splitDeliveryAdditionalCharge|Additional charge for split shipments||
-|productIdentifiers|EU Product Identifiers (PIDs) for the item. (ProductIdentifiers)|See [Element: productIdentifiers](#13a-element-productidentifiers)|
+|productIdentifiers|EU Product Identifiers (PIDs) for the item. (ProductIdentifiers)|See [Element: productIdentifiers](#15-element-productidentifiers)|
 
 > NOTE: ripped (digital) proof jobs will not contain a `shipment` element.
 
-# 13a. Element: productIdentifiers
+# 15. Element: productIdentifiers
 EU Product Identifiers (PIDs) for the item. Since 1 November 2026 EU customs require these for goods imported
 into the EU customs territory (EU27 and Northern Ireland). If you book your own carrier for a delivery into the EU,
 you **must** send these values to the carrier on the customs / commercial invoice line for this item, using the
@@ -388,8 +473,8 @@ invoice / packing list, each preceded by its abbreviation, e.g. `M-PID7-100016 N
 |merchantProductId|M-PID: Merchant Product Identifier (String)|`{product}-{subProduct}`, e.g. `7-100016`|
 |nonStandardManufacturerProductId|NS-PID: Non-Standardised Manufacturer Product Identifier (String)|`MX-{product}-{subProduct}`, e.g. `MX-7-100016`|
 |standardManufacturerProductId|S-PID: Standardised Manufacturer Product Identifier such as an ISBN or GTIN (String)|The identifier, or `NO` when the item doesn't have one. Some carrier APIs want a different value for "none" (e.g. FedEx uses `NA`), or for the field to be left out.|
->
-> # 14. Element: bundling
+
+# 16. Element: bundling
 ```javascript
 "bundling": {
    "bundlingType": {...},
@@ -402,7 +487,7 @@ invoice / packing list, each preceded by its abbreviation, e.g. `M-PID7-100016 N
 |bundlingType|The type of bundling|SHRINK_WRAP(1)|
 |bundleSize|Number of items in each bundle||
 
-# 15. Element: RecipientAddress
+# 17. Element: RecipientAddress
 ```javascript
 {
   "deliveryId": "abc123456",
@@ -429,7 +514,7 @@ invoice / packing list, each preceded by its abbreviation, e.g. `M-PID7-100016 N
 |deliveryDateIso8601|ISO 8601 date format of the `deliveryDate`|ISO 8601 date format. All date fields must be converted to local date and time in the relevant timezone to ensure alignment.<br/>Examples:<br/>GMT: `2024-01-02T12:00:00Z`<br/>BST: `2024-06-02T12:00:00+01:00`<br/>EST: `2024-01-02T12:00:00-05:00`|
 |instructions|Delivery instructions (String)||
 
-# 16. Element: address
+# 18. Element: address
 ```javascript
 "address": {
       "salutation": "Mr.",
@@ -447,7 +532,7 @@ invoice / packing list, each preceded by its abbreviation, e.g. `M-PID7-100016 N
 
 See type ‘Address’
 
-# 17. Element: senderForLabel (Address)
+# 19. Element: senderForLabel (Address)
 ```javascript
 "senderForLabel": {
     "salutation": "Mr.",
@@ -466,7 +551,7 @@ See type ‘Address’
 ```
 See type ‘Address’
 
-# 18. Type: Address
+# 20. Type: Address
 ```javascript
 {
     "salutation": "Mr.",
@@ -504,7 +589,7 @@ See type ‘Address’
 |locationType|(AddressLocationType)| RESIDENTIAL(0), <br>BUSINESS_DOCK(1), <br>BUSINESS_NO_DOCK(2), <br>LIMITED_ACCESS(3), <br>TRADE_SHOW(4), <br>CONSTRUCTION(5), <br>FARM(6), <br>LOCKER(7), |
 |carrierLocationId|Identifier of a carrier pickup point/locker used when a non-standard delivery location is selected. Format is defined by the carrier. | |
 
-# 19. Element: delivery
+# 21. Element: delivery
 ```javascript
 "delivery": {
     "type": "parcel",
@@ -529,7 +614,7 @@ See type ‘Address’
 |url|Points to a page where collection can be summoned and shipment labels printed. (String)||
 |packagingType|Type of packaging that should be used with this delivery|STANDARD(0), <br>PLAIN(1)|
 
-# 20. Element: file
+# 22. Element: file
 ```javascript
  {
     "type": 0,
@@ -551,7 +636,7 @@ See type ‘Address’
 |flags|Helpful metadata that describes the content of the file. (FileFlags)|See below|
 |trimBox|Dimensions of the artwork file's _trim box_. (Dimensions)|See bellow|
 
-# 21. Element: fileFlags
+# 23. Element: fileFlags
 ```javascript
  {
     "headToHead": true,
@@ -579,7 +664,7 @@ See type ‘Address’
 |foilBlue|(Optional) the file contains a separation (guide) layer for blue foil|`true` or absent|
 |foilGreen|(Optional) the file contains a separation (guide) layer for green foil|`true` or absent|
 
-# 22. Type: Dimensions
+# 24. Type: Dimensions
 ```javascript
  "format": {
     "longEdge": 210,
@@ -595,7 +680,7 @@ See type ‘Address’
 |units|The units in which the edges are specified. mm on metric system, inch on imperial.|MM (0),<br>INCH(1),|
 
 
-# 23. Element: export
+# 25. Element: export
 Optional, applicable only when goods are shipped overseas.
  ```javascript
 "export": {
@@ -611,7 +696,7 @@ Optional, applicable only when goods are shipped overseas.
 
 > NOTE: ripped (digital) proof documents will not contain an `export` element.
 
-# 24. Type: Attribute
+# 26. Type: Attribute
 Flexible, open-ended model for including additional metadata with an MxJdf4 document.
  ```javascript
 {
@@ -625,13 +710,19 @@ Flexible, open-ended model for including additional metadata with an MxJdf4 docu
 |name|The name of the attribute||
 |value|The value of the attribute||
 
-# 25. JSON Example
+# 27. JSON Example
 
 ```javascript
 {
   "version": "4.01.05",
   "desc": "mixam.job.description",
-  "referencedJobNumber": "484134",
+  "referencedJobNumber": "484134001001",
+  "fulfilmentReference": {
+    "caseNumber": 484134,
+    "itemNumber": 1,
+    "deliveryNumber": 1,
+    "revision": 1
+  },
   "author": "Sherlock Holmes",
   "dateCreated": 1603279100614,
   "job": {
@@ -785,13 +876,19 @@ Flexible, open-ended model for including additional metadata with an MxJdf4 docu
 }
 ```
 
-# 26. XML Example
+# 28. XML Example
 
 ```xml
 <MxJdf4>
     <version>4.01</version>
     <desc>mixam.job.description</desc>
-    <referencedJobNumber>37663402</referencedJobNumber>
+    <referencedJobNumber>37663400100102</referencedJobNumber>
+    <fulfilmentReference>
+        <caseNumber>376634</caseNumber>
+        <itemNumber>1</itemNumber>
+        <deliveryNumber>1</deliveryNumber>
+        <revision>2</revision>
+    </fulfilmentReference>
     <author>Sherlock Holmes</author>
     <dateCreated>1603279655663</dateCreated>
     <job>
@@ -906,7 +1003,7 @@ Flexible, open-ended model for including additional metadata with an MxJdf4 docu
 </MxJdf4>
 ```
 
-# 27. Multi-Item Orders and Payloads FAQ
+# 29. Multi-Item Orders and Payloads FAQ
 ### **Overview**
 
 The Mixam JDF (MXJDF) integration sends **one order payload per item**.\
@@ -926,12 +1023,59 @@ Even when an order contains multiple items for the same supplier, Mixam will **n
 
 -   Each item results in **a separate order payload** being posted to the supplier.
 
--   The **first part of the order numbers will match** across these items, but each item will have a **unique order number**.\
-    For example:
+-   The **first part of the order numbers will match** across these items, but each item will have a **unique order number** (`referencedJobNumber`).\
+    For example, for case number `1234567`:
 
-    `123456-1`<br>
-    `123456-2`<br>
-    `123456-3`
+    `1234567001001`<br>
+    `1234567002001`<br>
+    `1234567003001`
+
+    See [How `referencedJobNumber` is built](#how-referencedjobnumber-is-built). The same numbers are also sent as separate fields in [`fulfilmentReference`](#2-element-fulfilmentreference).
+
+### **Split Delivery Orders**
+
+A **split delivery** is a single item whose copies are delivered to more than one address --- for example, 1,000 copies delivered as 200 copies to each of 5 addresses. Each address is a [`RecipientAddress`](#17-element-recipientaddress) with its own `deliveryId` and `circulation`.
+
+Mixam can send a split delivery item in one of two ways. Which one is used is set per supplier account.
+
+**One request per item (default)**
+
+-   The item is sent as a **single payload** that lists every delivery address in `shipment.deliveryAddresses`.
+
+-   The delivery number in `referencedJobNumber` is `001`, e.g. `1234567001001`.
+
+-   When you report a shipment back to Mixam, the `deliveryId` of the address it was shipped to is required.
+
+This is how Mixam sends split delivery items unless something else has been agreed, and it is our preferred option.
+
+**One request per delivery address**
+
+This option is for systems that work with one delivery address per order.
+
+-   The item is sent as **one payload per delivery address**. Each payload is a complete MxJdf4 document with a single `RecipientAddress` and that address's copies.
+
+-   Each payload has its own `referencedJobNumber`. The case number and item number are the same, and the delivery number is different.\
+    For example, item 1 of case number `1234567`, delivered to 5 addresses:
+
+    `1234567001001`<br>
+    `1234567001002`<br>
+    `1234567001003`<br>
+    `1234567001004`<br>
+    `1234567001005`
+
+-   Each payload is received and reported on as an order in its own right. When you report back to Mixam, its `referencedJobNumber` identifies the delivery address as well as the item.
+
+-   The payloads for one item are still a single print job. It is up to the receiving integration to manage this within its own operational workflow: a production centre will usually want to print the item once and then divide the copies between the delivery addresses, not run a separate print job for each address. For 1,000 copies going to 5 addresses, that is one print run of 1,000 copies, not 5 print runs of 200.
+
+-   Payloads that belong to the same item have the same case number and item number, in `referencedJobNumber` and in `fulfilmentReference`, so they can be recognised and grouped.
+
+-   To have this option enabled for your account, please contact Mixam's supply chain team. Once enabled, it applies to every split delivery item sent to that account.
+
+### **Revisions**
+
+-   If a job is withdrawn and the item is sent again, the new payload's `referencedJobNumber` has a 2-digit revision added to the end --- `1234567002001` becomes `123456700200102`.
+
+-   The first payload sent for an item never has a revision.
 
 ### **Supplier Consolidation**
 
@@ -947,7 +1091,7 @@ Even when an order contains multiple items for the same supplier, Mixam will **n
 
 2.  Mixam processes each item independently.
 
-3.  Each item triggers an order payload (e.g., 123456-1, 123456-2, 123456-3).
+3.  Each item triggers an order payload (e.g., `1234567001001`, `1234567002001`, `1234567003001`).
 
 4.  Supplier receives each payload separately.
 
