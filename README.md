@@ -85,7 +85,7 @@ The top level of the MxJdf document contains the following elements:
 |desc|Document description. (String)|Always "mixam.job.description"|
 |dateCreated|Epoch date of creation. (Long number)|A Unix Timestamp of the date the document was created|
 |author|The name of the person who created the document. (String)|   |
-|referencedJobNumber|Mixam's own identifier for this job: the order's case number, optionally followed by which item on the order this is and/or which attempt at fulfilling it this is - present only when that value isn't the default, so a single-item order's first attempt is just the bare case number - see below. Quote this back exactly in any webhook callback concerning this job. (String)|e.g. `"1234567"` (single-item order, first attempt), `"1234567003"` (the 3rd item on a multi-item order, first attempt), `"123456700302"` (the same item, 2nd attempt after an earlier one was abandoned)|
+|referencedJobNumber|Mixam's own identifier for this job: the order's case number, optionally followed by which item on the order this is and/or which attempt at fulfilling it this is - present only when that value isn't the default, so a single-item order's first attempt is just the bare case number - see below. Quote this back exactly as `externalOrderId` on any Mixam Webhooks callback concerning this job (see [Mixam Webhooks Documentation](WEBHOOKS.md)). (String)|e.g. `"1234567"` (single-item order, first attempt), `"1234567003"` (the 3rd item on a multi-item order, first attempt), `"123456700302"` (the same item, 2nd attempt after an earlier one was abandoned)|
 |fulfilmentReference|The same identity as `referencedJobNumber`, broken out into plain fields instead of packed into one string - see [below](#2-element-fulfilmentreference).|See below|
 |shopName|The name of the shop where the order originated from (String)|   |
 |price|The pre-agreed cost price of the job (Double precision number)|   |
@@ -170,10 +170,12 @@ These answer different questions:
     on a job's `shipment.deliveryAddresses` has its own, regardless of how many addresses that
     job covers.
 
-Reporting back `deliveryId` on a webhook callback (see
-[Mixam Webhooks Documentation](WEBHOOKS.md)) is what actually identifies which address a shipment
-update is for; `referencedJobNumber`/`fulfilmentReference` on that same callback identifies which
-order, item and attempt it belongs to.
+These aren't callback field names themselves - the Mixam Webhooks API (see
+[Mixam Webhooks Documentation](WEBHOOKS.md)) reports status back on its own `externalOrderId` and
+`deliveryId` properties, not as `referencedJobNumber`/`fulfilmentReference` or `deliveryNumber`.
+`externalOrderId` carries this job's identity (quote `referencedJobNumber` back for it exactly -
+see above); `deliveryId`, required on a `SHIPPED` callback for a split delivery item, is what
+actually identifies which address that shipment update is for.
 
 # 3. Element: job
 ```javascript
@@ -1057,8 +1059,10 @@ this isn't something a supplier can request or be switched onto yet. If Mixam ev
 given supplier, that would still need to be agreed with **Mixam's supply chain team** first; it
 wouldn't be something that varies order-to-order, or that a supplier could switch on unilaterally.
 
-Either way, `deliveryNumber` and `deliveryId` answer different questions and a callback should
-generally give both - see [`deliveryNumber` vs. `deliveryId`](#deliverynumber-vs-deliveryid) above.
+Either way, `deliveryNumber` and `deliveryId` answer different questions, and a Mixam Webhooks
+callback should generally report both - as `deliveryId` itself, and as part of the
+`externalOrderId` that carries `referencedJobNumber`'s identity back - see
+[`deliveryNumber` vs. `deliveryId`](#deliverynumber-vs-deliveryid) above.
 
 ### **Revisions**
 
