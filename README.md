@@ -67,7 +67,7 @@ The top level of the MxJdf document contains the following elements:
   "desc": "mixam.job.description",
   "dateCreated": 1579177108174,
   "author" : "Sherlock Holmes",
-  "referencedJobNumber": "1234567003001",
+  "referencedJobNumber": "1234567003000",
   "fulfilmentReference": {...},
   "shopName" : "mixam",
   "price" : 105.31,
@@ -85,7 +85,7 @@ The top level of the MxJdf document contains the following elements:
 |desc|Document description. (String)|Always "mixam.job.description"|
 |dateCreated|Epoch date of creation. (Long number)|A Unix Timestamp of the date the document was created|
 |author|The name of the person who created the document. (String)|   |
-|referencedJobNumber|Mixam's reference number for this job: the order's case number, the item's number on the order and a delivery number, with a revision added when a job is sent again. See [How `referencedJobNumber` is built](#how-referencedjobnumber-is-built). Send it back, unchanged, as `externalOrderId` when you update Mixam through the [Webhooks API](WEBHOOKS.md). (String)|e.g. `"1234567003001"`|
+|referencedJobNumber|Mixam's reference number for this job: the order's case number, the item's number on the order and a delivery number, with a revision added when a job is sent again. See [How `referencedJobNumber` is built](#how-referencedjobnumber-is-built). Send it back, unchanged, as `externalOrderId` when you update Mixam through the [Webhooks API](WEBHOOKS.md). (String)|e.g. `"1234567003000"`|
 |fulfilmentReference|The same information as `referencedJobNumber`, as separate fields. (FulfilmentReference)|See [Element: fulfilmentReference](#2-element-fulfilmentreference)|
 |shopName|The name of the shop where the order originated from (String)|   |
 |price|The pre-agreed cost price of the job (Double precision number)|   |
@@ -100,15 +100,15 @@ The top level of the MxJdf document contains the following elements:
 a delivery number:
 
 ```
-      "1234567003001"
-       │      │  └─ deliveryNumber (3 digits): which of the item's deliveries this job covers
+      "1234567003000"
+       │      │  └─ deliveryNumber (3 digits): 000, the job covers every delivery of the item
        │      └─ itemNumber (3 digits): the 3rd item on the order
        └─ caseNumber: the order's case number
 ```
 
--   `itemNumber` and `deliveryNumber` are always present, are always 3 digits, and start at `001`.
-    An order with a single item going to a single address is `1234567001001`.
--   `deliveryNumber` is `001` when the job covers all of the item's delivery addresses, which is
+-   `itemNumber` and `deliveryNumber` are always present and are always 3 digits. `itemNumber`
+    starts at `001`. An order with a single item going to a single address is `1234567001000`.
+-   `deliveryNumber` is `000` when the job covers all of the item's delivery addresses, which is
     how Mixam sends jobs by default. When a split delivery is sent as one job per address, it is
     the number of the address the job is for: `001`, `002`, `003`, and so on. See
     [Split Delivery Orders](#split-delivery-orders).
@@ -119,7 +119,7 @@ If a job is withdrawn and the item is sent again, to the same supplier or to a d
 new job's `referencedJobNumber` has a 2-digit revision added to the end, starting at `02`:
 
 ```
-      "123456700300102"
+      "123456700300002"
        │      │  │  └─ revision (2 digits): the 2nd time this job has been sent
        │      │  └─ deliveryNumber (3 digits)
        │      └─ itemNumber (3 digits)
@@ -147,7 +147,7 @@ out of the string. Both are sent on every job.
 "fulfilmentReference": {
   "caseNumber": 1234567,
   "itemNumber": 3,
-  "deliveryNumber": 1,
+  "deliveryNumber": 0,
   "revision": 1
 }
 ```
@@ -156,13 +156,13 @@ out of the string. Both are sent on every job.
 |---|---|---|
 |caseNumber|The order's case number. (Integer number)|e.g. `1234567`|
 |itemNumber|The item's position on the order, starting at 1. (Integer number)|1, 2, 3, …|
-|deliveryNumber|Which of the item's deliveries this job covers, starting at 1. `1` when the job covers all of the item's delivery addresses. When a split delivery is sent as one job per address, the number of the address this job is for. See [Split Delivery Orders](#split-delivery-orders). (Integer number)|1, 2, 3, …|
+|deliveryNumber|Which of the item's deliveries this job covers. `0` when the job covers all of the item's delivery addresses. When a split delivery is sent as one job per address, the number of the address this job is for, starting at 1. See [Split Delivery Orders](#split-delivery-orders). (Integer number)|0, 1, 2, 3, …|
 |revision|`1` the first time a job is sent, `2` or higher when it has been sent again. A revision of `1` is not written into `referencedJobNumber`. (Integer number)|1, 2, 3, …|
 
 #### `deliveryNumber` and `deliveryId`
 
--   **`deliveryNumber`** is a position: the 1st, 2nd or 3rd of an item's deliveries. It is part of
-    the job's reference.
+-   **`deliveryNumber`** is a position: the 1st, 2nd or 3rd of an item's deliveries, or `0` when
+    the job covers all of them. It is part of the job's reference.
 -   **`deliveryId`** is the unique identifier of one delivery address. Every
     [`RecipientAddress`](#17-element-recipientaddress) has its own.
 
@@ -716,11 +716,11 @@ Flexible, open-ended model for including additional metadata with an MxJdf4 docu
 {
   "version": "4.01.05",
   "desc": "mixam.job.description",
-  "referencedJobNumber": "484134001001",
+  "referencedJobNumber": "484134001000",
   "fulfilmentReference": {
     "caseNumber": 484134,
     "itemNumber": 1,
-    "deliveryNumber": 1,
+    "deliveryNumber": 0,
     "revision": 1
   },
   "author": "Sherlock Holmes",
@@ -882,11 +882,11 @@ Flexible, open-ended model for including additional metadata with an MxJdf4 docu
 <MxJdf4>
     <version>4.01</version>
     <desc>mixam.job.description</desc>
-    <referencedJobNumber>37663400100102</referencedJobNumber>
+    <referencedJobNumber>37663400100002</referencedJobNumber>
     <fulfilmentReference>
         <caseNumber>376634</caseNumber>
         <itemNumber>1</itemNumber>
-        <deliveryNumber>1</deliveryNumber>
+        <deliveryNumber>0</deliveryNumber>
         <revision>2</revision>
     </fulfilmentReference>
     <author>Sherlock Holmes</author>
@@ -1026,9 +1026,9 @@ Even when an order contains multiple items for the same supplier, Mixam will **n
 -   The **first part of the order numbers will match** across these items, but each item will have a **unique order number** (`referencedJobNumber`).\
     For example, for case number `1234567`:
 
-    `1234567001001`<br>
-    `1234567002001`<br>
-    `1234567003001`
+    `1234567001000`<br>
+    `1234567002000`<br>
+    `1234567003000`
 
     See [How `referencedJobNumber` is built](#how-referencedjobnumber-is-built). The same numbers are also sent as separate fields in [`fulfilmentReference`](#2-element-fulfilmentreference).
 
@@ -1042,7 +1042,7 @@ Mixam can send a split delivery item in one of two ways. Which one is used is se
 
 -   The item is sent as a **single payload** that lists every delivery address in `shipment.deliveryAddresses`.
 
--   The delivery number in `referencedJobNumber` is `001`, e.g. `1234567001001`.
+-   The delivery number in `referencedJobNumber` is `000`, e.g. `1234567001000`.
 
 -   When you report a shipment back to Mixam, the `deliveryId` of the address it was shipped to is required.
 
@@ -1054,7 +1054,7 @@ This option is for systems that work with one delivery address per order.
 
 -   The item is sent as **one payload per delivery address**. Each payload is a complete MxJdf4 document with a single `RecipientAddress` and that address's copies.
 
--   Each payload has its own `referencedJobNumber`. The case number and item number are the same, and the delivery number is different.\
+-   Each payload has its own `referencedJobNumber`. The case number and item number are the same, and the delivery number is different, starting at `001`.\
     For example, item 1 of case number `1234567`, delivered to 5 addresses:
 
     `1234567001001`<br>
@@ -1073,7 +1073,7 @@ This option is for systems that work with one delivery address per order.
 
 ### **Revisions**
 
--   If a job is withdrawn and the item is sent again, the new payload's `referencedJobNumber` has a 2-digit revision added to the end --- `1234567002001` becomes `123456700200102`.
+-   If a job is withdrawn and the item is sent again, the new payload's `referencedJobNumber` has a 2-digit revision added to the end --- `1234567002000` becomes `123456700200002`.
 
 -   The first payload sent for an item never has a revision.
 
@@ -1091,7 +1091,7 @@ This option is for systems that work with one delivery address per order.
 
 2.  Mixam processes each item independently.
 
-3.  Each item triggers an order payload (e.g., `1234567001001`, `1234567002001`, `1234567003001`).
+3.  Each item triggers an order payload (e.g., `1234567001000`, `1234567002000`, `1234567003000`).
 
 4.  Supplier receives each payload separately.
 

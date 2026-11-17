@@ -26,9 +26,9 @@ public class FulfilmentReference {
     private int itemNumber;
 
     /**
-     * Which of the item's deliveries this job covers, 1-based. {@code 1} when the job covers all
-     * of the item's delivery addresses. When a split delivery is sent as one job per delivery
-     * address, the number of the address this job is for.
+     * Which of the item's deliveries this job covers. {@code 0} when the job covers all of the
+     * item's delivery addresses. When a split delivery is sent as one job per delivery address,
+     * the 1-based number of the address this job is for.
      */
     private int deliveryNumber;
 
