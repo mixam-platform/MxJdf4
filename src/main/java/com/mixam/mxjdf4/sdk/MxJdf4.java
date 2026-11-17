@@ -17,8 +17,8 @@ public class MxJdf4 {
 
     /**
      * Mixam's reference number for this job: the order's case number, followed by a 3-digit item
-     * number and a 3-digit delivery number, e.g. {@code 1234567003001}. A job that is sent again
-     * has a 2-digit revision added to the end, e.g. {@code 123456700300102}. Quote this back
+     * number and a 3-digit delivery number, e.g. {@code 1234567003000}. A job that is sent again
+     * has a 2-digit revision added to the end, e.g. {@code 123456700300002}. Quote this back
      * exactly in any callback concerning this job.
      * <p>
      * {@link #fulfilmentReference} carries the same numbers as separate fields, for a consumer
