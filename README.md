@@ -1054,6 +1054,8 @@ This option is for systems that work with one delivery address per order.
 
 -   The item is sent as **one payload per delivery address**. Each payload is a complete MxJdf4 document with a single `RecipientAddress` and that address's copies.
 
+-   The figures in each payload are for its own delivery address. `totalCirculation` is that address's copies and `shipment.weight` is their weight. `price`, `packagingCost`, `export.customsValueSum` and `shipment.splitDeliveryAdditionalCharge` are that address's share of the item's amounts, in proportion to its copies, so the payloads for one item add up to the item's totals. The item is priced once, as a whole: an address's copies are not priced as a job of their own.
+
 -   Each payload has its own `referencedJobNumber`. The case number and item number are the same, and the delivery number is different, starting at `001`.\
     For example, item 1 of case number `1234567`, delivered to 5 addresses:
 
